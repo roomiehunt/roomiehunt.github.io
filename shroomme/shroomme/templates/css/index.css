@@ -1,0 +1,7 @@
+body{
+	padding-top:50px;	
+	background-color:black;
+}
+
+html,body {height:100%;}
+.special,.special .jumbotron {height:100%;}
