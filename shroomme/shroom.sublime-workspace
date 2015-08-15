@@ -1,0 +1,674 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Profile",
+				"ProfileAdmin"
+			],
+			[
+				"shr",
+				"shroomme_home"
+			],
+			[
+				"Answer",
+				"AnswerTabularInline"
+			],
+			[
+				"question",
+				"questionText"
+			],
+			[
+				"que",
+				"question_text"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "shroomme/userprofile/views.py",
+			"settings":
+			{
+				"buffer_size": 957,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "shroomme/shroomme/views.py",
+			"settings":
+			{
+				"buffer_size": 3428,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "shroomme/templates/first_time_user.html",
+			"settings":
+			{
+				"buffer_size": 445,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "shroomme/userprofile/forms.py",
+			"settings":
+			{
+				"buffer_size": 612,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "shroomme/userprofile/admin.py",
+			"settings":
+			{
+				"buffer_size": 480,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "shroomme/userprofile/models.py",
+			"settings":
+			{
+				"buffer_size": 688,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "shroomme/templates/index.html",
+			"settings":
+			{
+				"buffer_size": 883,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "<!DOCTYPE html>\n<html>\n	<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css\">\n    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>\n\n	<!-- Optional theme -->\n	<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css\">\n\n	<!-- Latest compiled and minified JavaScript -->\n	<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js\"></script>\n\n\n	<head>\n\n	</head>\n\n	<body>\n		\n		Hi you logged in!\n	</body>\n</html>",
+			"file": "shroomme/templates/login.html",
+			"file_size": 127,
+			"file_write_time": 130839574974773214,
+			"settings":
+			{
+				"buffer_size": 565,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "shroomme/templates/myprofile.html",
+			"settings":
+			{
+				"buffer_size": 174,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "shroomme/templates/navbar.html",
+			"settings":
+			{
+				"buffer_size": 3540,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Dion/Dropbox/ids.txt",
+			"settings":
+			{
+				"buffer_size": 411,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 334.0,
+		"selected_items":
+		[
+		],
+		"width": 416.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Dion/shroomme-github/shroomme/shroomme/static/myprofile.css",
+		"/C/Users/Dion/shroomme-github/shroomme/shroomme/userprofile/tests.py",
+		"/C/Users/Dion/shroomme-github/shroomme/shroomme/templates/error.html",
+		"/C/Users/Dion/shroomme-github/shroomme/shroomme/userprofile/views.py",
+		"/C/Users/Dion/shroomme-github/shroomme/shroomme/shroomme/urls.py",
+		"/C/Users/Dion/shroomme-github/shroomme/shroomme/userprofile/models.py",
+		"/C/Users/Dion/shroomme-github/shroomme/shroomme/shroomme/views.py",
+		"/C/Users/Dion/shroomme-github/shroomme/shroomme/templates/error_login.html",
+		"/C/Users/Dion/shroomme-github/shroomme/shroomme/templates/test/error_login.html",
+		"/C/Users/Dion/shroomme-github/shroomme/shroomme/userprofile/urls.py",
+		"/C/Users/Dion/shroomme-github/shroomme/shroomme/userprofile/admin.py",
+		"/C/Users/Dion/shroomme-github/shroomme/shroomme/shroomme/settings.py",
+		"/C/Users/Dion/shroomme-github/shroomme/shroomme/templates/myprofile.html",
+		"/C/Users/Dion/shroomme-github/shroomme/shroomme/templates/static/myprofile.css",
+		"/C/Users/Dion/shroomme-github/shroomme/shroomme/templates/logout/myprofile.html",
+		"/C/Users/Dion/shroomme-github/shroomme/shroomme/templates/navbar/navbar.html",
+		"/C/Users/Dion/shroomme-github/shroomme/shroomme/templates/first-time-user.html",
+		"/C/Users/Dion/shroomme-github/shroomme/shroomme/templates/index.html",
+		"/C/Users/Dion/shroomme-github/shroomme/shroomme/shroomme/forms.py",
+		"/C/Users/Dion/Desktop/New Text Document.txt",
+		"/C/Users/Dion/matchmaking/src/matchmaker/urls.py",
+		"/C/Users/Dion/matchmaking/src/templates/base.html",
+		"/C/Users/Dion/env1.8/myProject/myProject/settings.py",
+		"/C/Users/Dion/env/myproject/myproject/settings.py",
+		"/C/Users/Dion/matchmaking/src/matchmaker/settings/base.py",
+		"/C/Users/Dion/matchmaking/src/matchmaker/settings/__init__.py",
+		"/C/Users/Dion/matchmaking/src/matchmaker/views.py",
+		"/C/Users/Dion/matchmaking/src/questions/views.py",
+		"/C/Users/Dion/Desktop/roomiehunt/roomiehunt.github.io/titit.txt",
+		"/C/Users/Dion/matchmaking/src/templates/questions/home.html",
+		"/C/Users/Dion/matchmaking/src/questions/admin.py",
+		"/C/Users/Dion/matchmaking/src/questions/models.py",
+		"/C/Users/Dion/matchmaking/src/questions/forms.py",
+		"/C/Users/Dion/matchmaking/src/newsletter/views.py",
+		"/C/Users/Dion/matchmaking/Lib/site-packages/django/db/models/fields/__init__.py",
+		"/C/Users/Dion/matchmaking/src/newsletter/__init__.py",
+		"/C/Users/Dion/matchmaking/src/templates/home.html",
+		"/C/Users/Dion/matchmaking/src/matchmaker/settings/local.py",
+		"/C/Users/Dion/Desktop/django notes",
+		"/C/Users/Dion/matchmaking/src/templates/navbar.html",
+		"/C/Users/Dion/matchmaking/src/matchmaker/__init__.py",
+		"/C/Users/Dion/matchmaking/src/matchmaker/settings/production.py",
+		"/C/Users/Dion/matchmaking/src/manage.py",
+		"/C/Users/Dion/matchmaking/src/.gitignore",
+		"/C/Users/Dion/matchmaking/src/matchmaker/wsgi.py",
+		"/C/Users/Dion/matchmaking/src/trydjango18/wsgi.py",
+		"/C/Users/Dion/env1.8/myProject/polls/urls.py",
+		"/C/Users/Dion/env1.8/myProject/myProject/urls.py",
+		"/C/Users/Dion/env1.8/myProject/polls/templates/index.html",
+		"/C/Users/Dion/env1.8/myProject/polls/views.py",
+		"/C/Users/Dion/env1.8/myProject/polls/admin.py",
+		"/C/Users/Dion/env1.8/myProject/polls/models.py",
+		"/C/Users/Dion/env1.8/myProject/manage.py",
+		"/C/Users/Dion/env/myproject/myproject/views.py",
+		"/C/Users/Dion/Desktop/roomiehunt.txt",
+		"/C/Users/Dion/Desktop/COURSERA/ANDROID CLOUD/LAST_COMMIT/mobilecloud-15/ex/VideoUploadClient/src/vandy/mooc/model/mediator/VideoDataMediator.java",
+		"/C/Users/Dion/Desktop/pppp.txt",
+		"/C/Users/Dion/Desktop/COURSERA/ANDROID CLOUD/LAST_COMMIT/mobilecloud-15/ex/VideoUploadClient/src/vandy/mooc/common/GenericAsyncTask.java",
+		"/C/Users/Dion/Desktop/COURSERA/ANDROID CLOUD/LAST_COMMIT/mobilecloud-15/ex/VideoUploadClient/src/vandy/mooc/common/GenericAsyncTaskOps.java",
+		"/C/Users/Dion/Desktop/COURSERA/ANDROID CLOUD/LAST_COMMIT/mobilecloud-15/ex/VideoUploadClient/src/vandy/mooc/common/GenericActivity.java",
+		"/C/Users/Dion/Desktop/COURSERA/ANDROID CLOUD/LAST_COMMIT/mobilecloud-15/ex/VideoUploadClient/src/vandy/mooc/common/ConfigurableOps.java",
+		"/C/Users/Dion/Desktop/COURSERA/ANDROID1/5 - 1 - User Interface Classes - Part 1 (16-56).txt",
+		"/C/Users/Dion/Desktop/target.txt",
+		"/C/Users/Dion/Desktop/COURSERA/ANDROID1/5 - 2 - User Interface Classes - Part 2 (15-44).txt",
+		"/C/Users/Dion/Desktop/SpringVideoController.java",
+		"/C/Users/Dion/Desktop/REVIEW SUBMISSION/76862dd0206c11e59f3f497a2d351eb7.java",
+		"/C/Users/Dion/Desktop/REVIEW SUBMISSION/Student3/AcronymProvider.java",
+		"/C/Users/Dion/Desktop/REVIEW SUBMISSION/Student3/AcronymOPs.java",
+		"/C/Users/Dion/Desktop/REVIEW SUBMISSION/Student3/TimeoutCache.java",
+		"/C/Users/Dion/Desktop/REVIEW SUBMISSION/Student3/DeleteReceiverCache.java",
+		"/C/Users/Dion/Desktop/REVIEW SUBMISSION/76910342206c11e59f3f497a2d351eb7.java",
+		"/C/Users/Dion/Desktop/REVIEW SUBMISSION/76910340206c11e59f3f497a2d351eb7.java",
+		"/C/Users/Dion/Desktop/REVIEW SUBMISSION/76854370206c11e59f3f497a2d351eb7.java",
+		"/C/Users/Dion/Desktop/REVIEW SUBMISSION/Student5/ContentProviderTimeoutCache.java",
+		"/C/Users/Dion/Desktop/REVIEW SUBMISSION/Student5/AcronymProvider.java",
+		"/C/Users/Dion/Desktop/REVIEW SUBMISSION/Student5/AcronymOps.java",
+		"/C/Users/Dion/Desktop/REVIEW SUBMISSION/Student5/DeleteCacheReceiver.java",
+		"/C/Users/Dion/Desktop/REVIEW SUBMISSION/Student4/acronymops.java",
+		"/C/Users/Dion/Desktop/REVIEW SUBMISSION/Student4/deletecache.java",
+		"/C/Users/Dion/Desktop/REVIEW SUBMISSION/Student4/timeout.java",
+		"/C/Users/Dion/Desktop/REVIEW SUBMISSION/Student4/acronymprovider.java",
+		"/C/Users/Dion/Desktop/REVIEW SUBMISSION/Student2/ContentProviderTimeoutCache.java",
+		"/C/Users/Dion/Desktop/REVIEW SUBMISSION/Student2/AcronymProvider.java",
+		"/C/Users/Dion/Desktop/REVIEW SUBMISSION/Student2/DeleteCacheReceiver.java",
+		"/C/Users/Dion/Desktop/REVIEW SUBMISSION/Student2/AcronymOps.java",
+		"/C/Users/Dion/Desktop/REVIEW SUBMISSION/Student1/DeleteCacheReceiver.java",
+		"/C/Users/Dion/Desktop/REVIEW SUBMISSION/Student1/ContentProviderTimeoutCache.java",
+		"/C/Users/Dion/Desktop/REVIEW SUBMISSION/Student1/AcronymProvider.java",
+		"/C/Users/Dion/Desktop/REVIEW SUBMISSION/Student1/AcronymOps.java",
+		"/C/Users/Dion/Desktop/COURSERA/android lab/coursera-android-labs-master/Intents/Lab3a_MyBrowser/AndroidManifest.xml",
+		"/C/Users/Dion/Desktop/COURSERA/android lab/coursera-android-labs-master/TheActivityClass/Lab2_ActivityLab/src/course/labs/activitylab/ActivityOne.java",
+		"/C/Users/Dion/Desktop/COURSERA/android lab/coursera-android-labs-master/SUBMISSION/AndroidManifest.xml",
+		"/C/Users/Dion/Desktop/COURSERA/android lab/coursera-android-labs-master/SUBMISSION/IntentsLabSubmit/IntentsLab/ActivityLoaderActivity.java",
+		"/C/Users/Dion/Desktop/COURSERA/ANDROID1/4 - 4 - The Fragment Class - Part 1 (11-19).txt",
+		"/C/Users/Dion/Desktop/COURSERA/ANDROID1/4 - 2 - The Intent Class - Part 2 (10-42).txt",
+		"/C/Users/Dion/Desktop/COURSERA/ANDROID CLOUD/mobilecloud-15/ex/HobbitContentProvider/src/vandy/mooc/operations/HobbitOps.java",
+		"/C/Users/Dion/Desktop/4 - 1 - The Intent Class - Part 1 (9-14).txt",
+		"/C/Users/Dion/Desktop/COURSERA/ANDROID CLOUD/mobilecloud-15/ex/HobbitContentProvider/src/vandy/mooc/activities/HobbitActivity.java",
+		"/C/Users/Dion/Desktop/COURSERA/ANDROID CLOUD/mobilecloud-15/ex/HobbitContentProvider/src/vandy/mooc/operations/HobbitOpsContentResolver.java",
+		"/C/Users/Dion/Desktop/COURSERA/android lab/coursera-android-labs-master/Intents/Lab3a_IntentsLab/AndroidManifest.xml",
+		"/C/Users/Dion/Desktop/COURSERA/android lab/coursera-android-labs-master/Intents/Lab3a_IntentsLab/src/course/labs/intentslab/ActivityLoaderActivity.java",
+		"/C/Users/Dion/Desktop/ContentProviderTimeoutCache.java",
+		"/C/Users/Dion/Desktop/COURSERA/ANDROID CLOUD/mobilecloud-15/ex/WeatherServiceProvider/src/vandy/mooc/provider/WeatherDatabaseHelper.java",
+		"/C/Users/Dion/Desktop/COURSERA/android lab/coursera-android-labs-master/assignment11/app/src/main/java/vandy/mooc/provider/cache/ContentProviderTimeoutCache.java",
+		"/C/Users/Dion/Desktop/COURSERA/ANDROID CLOUD/mobilecloud-15/ex/WeatherServiceProvider/src/vandy/mooc/provider/cache/TimeoutCache.java",
+		"/C/Users/Dion/Desktop/COURSERA/ANDROID CLOUD/mobilecloud-15/ex/WeatherServiceProvider/src/vandy/mooc/provider/WeatherProvider.java",
+		"/C/Users/Dion/Desktop/COURSERA/ANDROID CLOUD/mobilecloud-15/ex/WeatherServiceProvider/src/vandy/mooc/provider/cache/WeatherTimeoutCache.java",
+		"/C/Users/Dion/Desktop/COURSERA/ANDROID CLOUD/mobilecloud-15/ex/WeatherServiceProvider/src/vandy/mooc/provider/cache/CacheCleanupReceiver.java",
+		"/C/Users/Dion/Desktop/COURSERA/android lab/coursera-android-labs-master/assignment1/app/src/main/java/vandy/mooc/provider/cache/DeleteCacheReceiver.java",
+		"/C/Users/Dion/Desktop/COURSERA/android lab/coursera-android-labs-master/assignment1/app/src/main/java/vandy/mooc/provider/AcronymProvider.java",
+		"/C/Users/Dion/Desktop/COURSERA/android lab/coursera-android-labs-master/assignment1/app/src/main/java/vandy/mooc/provider/cache/ContentProviderTimeoutCache.java",
+		"/C/Users/Dion/Desktop/COURSERA/android lab/coursera-android-labs-master/assignment1/app/src/main/java/vandy/mooc/operations/AcronymOps.java",
+		"/C/Users/Dion/Desktop/COURSERA/ANDROID CLOUD/mobilecloud-15/ex/WeatherServiceProvider/src/vandy/mooc/operations/WeatherOps.java",
+		"/C/Users/Dion/Desktop/COURSERA/android lab/coursera-android-labs-master/assignment1/app/src/main/java/vandy/mooc/activities/AcronymActivity.java",
+		"/C/Users/Dion/Desktop/COURSERA/android lab/coursera-android-labs-master/TheActivityClass/Lab2_ActivityLab/Test4_DoubleRotateActivityTwoTest.txt",
+		"/C/Users/Dion/Desktop/COURSERA/ANDROID CLOUD/mobilecloud-15/assignments/assignment1/AndroidManifest.xml",
+		"/C/Users/Dion/Desktop/README_ampl.txt",
+		"/C/Users/Dion/Desktop/WEBSITE.txt",
+		"/C/Users/Dion/Desktop/COURSERA/android lab/coursera-android-labs-master/AsyncTask/Lab5-AsyncTaskLab/src/course/labs/asynctasklab/DownloaderTaskFragment.java",
+		"/C/Users/Dion/Desktop/COURSERA/android lab/coursera-android-labs-master/TheActivityClass/Lab2_ActivityLab/Test6_ReopenActivityTwoTest.txt",
+		"/C/Users/Dion/Desktop/COURSERA/android lab/coursera-android-labs-master/TheActivityClass/Lab2_ActivityLab/Test3_StartActivityTwoTest.txt",
+		"/C/Users/Dion/Desktop/COURSERA/android lab/coursera-android-labs-master/TheActivityClass/Lab2_ActivityLab/Test2_DoubleRotateActivityOneTest.txt",
+		"/C/Users/Dion/Desktop/COURSERA/android lab/coursera-android-labs-master/TheActivityClass/Lab2_ActivityLab/Test5_CloseActivityTwoTest.txt",
+		"/C/Users/Dion/Desktop/COURSERA/android_example/coursera-android-master/Examples/ThreadingAsyncTask/src/course/examples/threading/threadingasynctask/AsyncTaskActivity.java",
+		"/C/Users/Dion/Desktop/COURSERA/android lab/coursera-android-labs-master/TheActivityClass/Lab2_ActivityLab/Test1_StartActivityOneTest.txt",
+		"/C/Users/Dion/Desktop/COURSERA/android lab/coursera-android-labs-master/AsyncTask/Lab5-AsyncTaskLabTest/src/course/labs/asynctasklab/tests/FeedTest.java",
+		"/C/Users/Dion/Desktop/COURSERA/android_example/coursera-android-master/Examples/MapLocationFromContacts/src/course/examples/maplocationfromcontacts/MapLocationFromContactsActivity.java",
+		"/C/Users/Dion/Desktop/COURSERA/android_example/coursera-android-master/Examples/TheAnswer/src/course/examples/theanswer/TheAnswer.java"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"C:\\Users\\Dion\\matchmaking\\src"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"trydjango18",
+			"getOps",
+			"getOpts",
+			"contentResolver",
+			"TODO",
+			"values",
+			"shadow",
+			"hellfire",
+			"socket"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"matchmaker"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 10,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "shroomme/userprofile/views.py",
+					"settings":
+					{
+						"buffer_size": 957,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								709,
+								709
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "shroomme/shroomme/views.py",
+					"settings":
+					{
+						"buffer_size": 3428,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2139,
+								2139
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 225.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "shroomme/templates/first_time_user.html",
+					"settings":
+					{
+						"buffer_size": 445,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								273,
+								273
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "shroomme/userprofile/forms.py",
+					"settings":
+					{
+						"buffer_size": 612,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								612,
+								612
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "shroomme/userprofile/admin.py",
+					"settings":
+					{
+						"buffer_size": 480,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								480,
+								480
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "shroomme/userprofile/models.py",
+					"settings":
+					{
+						"buffer_size": 688,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								688,
+								688
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "shroomme/templates/index.html",
+					"settings":
+					{
+						"buffer_size": 883,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								549,
+								75
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "shroomme/templates/login.html",
+					"settings":
+					{
+						"buffer_size": 565,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								528,
+								528
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "shroomme/templates/myprofile.html",
+					"settings":
+					{
+						"buffer_size": 174,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								174,
+								174
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "shroomme/templates/navbar.html",
+					"settings":
+					{
+						"buffer_size": 3540,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1002,
+								1002
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 195.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "/C/Users/Dion/Dropbox/ids.txt",
+					"settings":
+					{
+						"buffer_size": 411,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 29.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 285.0,
+	"status_bar_visible": true
+}

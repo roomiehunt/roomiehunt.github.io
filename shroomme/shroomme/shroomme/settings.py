@@ -37,9 +37,13 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms',
-    'accounts',
+    #------OUR APPS--------------#
     'userprofile',
+    'notification',
+    'messaging',
+    'constants',
+    #-----3RD PARTY LIBRARY------#
+    'crispy_forms',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -103,5 +107,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+#STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static")
+    
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+    #os.path.join(BASE_DIR, "static_in_env"),
+    #'/var/www/static/',
+)
+
+CRISPY_TEMPLATE_PACK = 'bootstrap'
 
 LOGIN_URL = '' 
+LOGIN_REDIRECT_URL = '/'

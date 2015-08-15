@@ -25,8 +25,15 @@
 				Shroomme
 			</div>				
 			<ul class="nav navbar-nav navbar-right">
-		        <li class = "navbar-menu"><a data-toggle="modal" data-target="#log-in-modal">Log in</a></li>
-		        <li class = "navbar-menu"><a data-toggle="modal" data-target="#sign-up-modal">Sign up</a></li>
+				{% if user.is_authenticated %}
+					<li class = "navbar-menu"><a href="../find_people/">Find People</a></li>
+			        <li class = "navbar-menu"><a href="../edit_profile/"> {{user.username}}</a></li>
+			        <li class = "navbar-menu" id = "logout-button"><a href="../logout/">Log out</a></li>	
+		        {% else %}
+		        	<li class = "navbar-menu"><a href="/find_people/">Find People</a></li>
+			        <li class = "navbar-menu"><a data-toggle="modal" data-target="#log-in-modal">Log in</a></li>
+			        <li class = "navbar-menu"><a data-toggle="modal" data-target="#sign-up-modal">Sign up</a></li>
+			    {% endif %}
 <!-- 			        <li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
 		          <ul class="dropdown-menu">
@@ -57,7 +64,7 @@
 					    {% csrf_token %}
 					    Username:{{login.username}}<br/>
 					    Password:{{login.password}}<br/>
-					    <input type="submit" value="Submit" />
+					    <input type="submit" value="login-button" name = "login" />
 					</form>
 		      	</div>
 
@@ -86,8 +93,7 @@
 					    {% csrf_token %}
 					    {{signup.username}}<br/>
 					    {{signup.password}}<br/>
-					    {{signup.email}}<br/>
-					    <input type="submit" value="Submit" />
+					    <input type="submit" value="signup-button" name = "signup" />
 					</form>
 		      	</div>
 
@@ -97,8 +103,14 @@
 		  </div>
 		</div>
 
-
 	</body>
+
+
+	<script>
+
+
+
+	</script>
 
 
 </html>

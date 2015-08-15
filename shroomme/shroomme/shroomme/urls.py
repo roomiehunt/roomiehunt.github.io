@@ -17,13 +17,29 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^$', 'shroomme.views.home',name='home'),
-    url(r'^login/$','shroomme.views.login_view',name='login'),
-    url(r'^logout/$','shroomme.views.logout_view',name='logout'),
 
-    url(r'^first_time_user/$','shroomme.views.first_time_user',name='first_time_user'),
-    url(r'^myprofile/$','shroomme.views.userprofile',name='userprofile'),
+    #---------------NON - AUTHENTICATED URLS ---------------------------------#
+    #---------------HOME+ABOUT US + CONTACT US--------------------------------#
+    url(r'^$', 'shroomme.views.home',name='shroomme_home'),
+
+
+
+
+    #----------------AUTHENTICATED URLS---------------------------------------#
+    #----------------USER PROFILE +LOGIN + LOGOUT ----------------------------#
+    url(r'^logout/$','userprofile.views.logout_view',name='logout'),
+    url(r'^myprofile/$','userprofile.views.myprofile',name='myprofile'),
+    url(r'^first_time_user/$','userprofile.views.first_time_user',name='first_time_user'),
+    url(r'^find_people/$','userprofile.views.findpeople',name='find_people'),
+    url(r'^show_user/$','userprofile.views.show_user',name='show_user'),
+
+    #----------------USER PROFILE +LOGIN + LOGOUT ----------------------------#
+
+
+
+    #--------------------FOR TESTING------------------------------------------#
     url(r'^navbar/$', 'shroomme.views.navbar',name='navbar'),
     url(r'^test/$', 'shroomme.views.test',name='test'),
     url(r'^admin/', include(admin.site.urls)),
+    #----------------------------------FOR TESTING----------------------------#
 ]

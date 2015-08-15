@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+
+	<body>
+		{% include 'navbar.html' %}
+
+		  <div class="row">
+		    <div class="col-md-6">
+		    	<h1>Show User</h1>
+		    	<hr>
+		    	<div class="well">
+		    		<!-- IF USER IS NOT NONE-->
+
+		    		<!-- IF USER IS PRIVATE AND FRIENDS || USER IS NOT PRIVATE SHOW-->
+		    		first_name = {{profile.first_name}}</br>
+		    		middle_name = {{profile.middle_name}}</br>
+		    		last_name = {{profile.last_name}}</br>
+		    		nationality = {{profile.nationality}}</br>
+		    		university = {{profile.university}} </br>
+		    	</div>
+		    </div>
+		  </div>
+	</body>
+</html>
