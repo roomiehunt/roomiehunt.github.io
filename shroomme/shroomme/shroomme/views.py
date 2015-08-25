@@ -1,30 +1,49 @@
-from django.shortcuts import render,Http404,redirect
+from django.shortcuts import render,Http404,redirect,render_to_response,HttpResponseRedirect
 from .forms import NameForm,LoginForm,SignUpForm
 from django.contrib.auth import authenticate,logout,login
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from userprofile.models import Profile
+from django.db import IntegrityError
+import userprofile.views as userprofileviews
 
 def home(request):
+	if request.user.is_authenticated():
+		#return HttpResponseRedirect('/myprofile/') 
+		return redirect(userprofileviews.myprofile)
+
 	login_form = LoginForm()
 	signup_form = SignUpForm()
-	context = {}
+	message = "none"
+	context = {'login':login_form,'signup':signup_form,'message':message}    
+
 	if request.method == 'POST':
-		# create a form instance and populate it with data from the request:
 		login_form = LoginForm(request.POST)
 		signup_form = SignUpForm(request.POST)
-		# check whether it's valid: >>>>>>>>>>>> IF SIGN UP FORM IS VALID CREATE USER
-		if signup_form.is_valid():
+		#print request.POST
+		if 'signup' in request.POST and signup_form.is_valid(): #------------------------------------------------------IF SIGN UP FORM-----------------------#
 			username = signup_form.cleaned_data['username']
 			password = signup_form.cleaned_data['password']
-			email = signup_form.cleaned_data['email']
 			print "--------------------------------SIGN UP FORM-------------------------------------------"
 			print username
 			print password
-			print email
-			login_form = LoginForm()
-			signup_form = SignUpForm()
-			User.objects.create_user(username, email, password)
-		elif login_form.is_valid():
+#			login_form = LoginForm()
+#			signup_form = SignUpForm()
+			#TRY TO SIGN UP
+			try:
+				User.objects.create_user(username, username, password)
+				user = authenticate(username=username,password=password)
+				login(request,user)
+				if user is not None:
+					print "PASS"
+					print user
+				newprofile = Profile(user = user)
+				newprofile.save()
+				return redirect(userprofileviews.first_time_user)	
+			except IntegrityError as e:				#------------------------------WRONG ERROR-----------------------------------#
+				context = {'login':login_form,'signup':signup_form,'message':e.__cause__}    
+				return render_to_response("error.html", context)
+		elif 'login' in request.POST and login_form.is_valid(): #--------------------------------------IF LOGIN FORM-------------------------------$
 			username = login_form.cleaned_data['username']
 			password = login_form.cleaned_data['password']
 			print "--------------------------------LOGIN FORM-------------------------------------------"
@@ -36,7 +55,7 @@ def home(request):
 			if(user is not None):
 				if(user.is_active):
 					login(request,user)
-					return redirect(login_view)
+					return HttpResponseRedirect('/myprofile/') 
 				else:
 					print "user_not_active"
 
@@ -44,28 +63,21 @@ def home(request):
 			login_form = LoginForm()
 			signup_form = SignUpForm()
 
-	context = {'login':login_form,'signup':signup_form}    
 	return render(request,'index.html',context);
-			
+
 
 def logout_view(request):
 	logout(request)
 	return redirect(home)
 
+def modal_authenticate(request,this_page):
+	return render(request,this_page,{})		
 
 def navbar(request):
 	return render(request,'navbar\\navbar.html',{});
 
-def userprofile(request):
-	return render(request,'userprofile.html',{});
-
 def first_time_user(request):
 	return render(request,'first-time-user.html',{});
-
-@login_required(login_url='/')
-def login_view(request):
-	#context = {'username':username}
-	return render(request,'login.html',{});
 
 def test(request):
     if request.method == 'POST':

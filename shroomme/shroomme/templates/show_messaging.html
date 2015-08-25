@@ -1,0 +1,18 @@
+{% load staticfiles %}
+<html>
+	<body>
+		<link rel="stylesheet" href="{% static "myprofile.css" %}">
+		{% include 'navbar.html' %}	
+		<h1>Hi! {{ user.username }}</h1>
+		<h1> Your messaging </h1>
+		<hr>
+		<div class = "container">
+			<div>
+				Friends
+			</div>
+			
+
+
+		</div>
+	</body>
+</html>
