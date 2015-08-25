@@ -70,7 +70,9 @@ def logout_view(request):
 	logout(request)
 	return redirect(home)
 
-			
+def modal_authenticate(request,this_page):
+	return render(request,this_page,{})		
+
 def navbar(request):
 	return render(request,'navbar\\navbar.html',{});
 

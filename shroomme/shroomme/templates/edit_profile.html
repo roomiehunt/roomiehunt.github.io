@@ -10,13 +10,32 @@
 		{% include 'navbar.html' %}
 
 		  <div class="row">
-		    <div class="col-md-6">
-		    	<h1>--------------------------Your Profile----------------------</h1>
-		    	<hr/>
-				<div class="well">
-					{% crispy form %}
-		    	</div>
-		    </div>
-		  </div>
+		    	<div class="col-md-8">
+					<div class="container">
+				    	<h1>--------------------------Your Profile----------------------</h1>
+				    	<hr/>
+
+
+									    	
+							{% for fields,value in profile.items %}
+								{% if fields != 'id'%}
+										<li> {{fields}} = {{value}} 
+											<div class="pull-right"> <a>edit</a> </div>
+										</li> 
+										<hr>
+								{% endif %}
+							{% endfor %}
+									    	
+
+			    	</div>
+
+
+			    </div>
+<!-- 			    <div class="col-md-4">
+					<div class="well">
+						hey
+			    	</div>
+			    </div>
+ -->		  </div>
 	</body>
 </html>

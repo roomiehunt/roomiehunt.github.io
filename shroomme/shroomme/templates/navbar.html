@@ -26,13 +26,17 @@
 			</div>				
 			<ul class="nav navbar-nav navbar-right">
 				{% if user.is_authenticated %}
+			        <li class = "navbar-menu"><a href="../show_friends/"> Friends</a></li>
+					<li class = "navbar-menu"><a href="../notification/">notification</a></li>
+					<li class = "navbar-menu"><a href="../messaging/">messaging</a></li>				
 					<li class = "navbar-menu"><a href="../find_people/">Find People</a></li>
-			        <li class = "navbar-menu"><a href="../edit_profile/"> {{user.username}}</a></li>
+			        <li class = "navbar-menu"><a href="../edit_profile/"> Edit Profile</a></li>
+			        <li class = "navbar-menu"><a> {{user.username}}</a></li>
 			        <li class = "navbar-menu" id = "logout-button"><a href="../logout/">Log out</a></li>	
 		        {% else %}
 		        	<li class = "navbar-menu"><a href="/find_people/">Find People</a></li>
-			        <li class = "navbar-menu"><a data-toggle="modal" data-target="#log-in-modal">Log in</a></li>
-			        <li class = "navbar-menu"><a data-toggle="modal" data-target="#sign-up-modal">Sign up</a></li>
+			        <li class = "navbar-menu"><a href="" data-toggle="modal" data-target="#log-in-modal">Log in</a></li>
+			        <li class = "navbar-menu"><a href="" data-toggle="modal" data-target="#sign-up-modal">Sign up</a></li>
 			    {% endif %}
 <!-- 			        <li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -58,15 +62,27 @@
 		        <h4 class="modal-title">Log In</h4>
 		      </div>
 		      <div class="modal-body">
-		      	<div class ="container">
-					Login<br/>
-					<form action="" method="post">
+		      	<!-- <div class ="container"> -->
+					<form action="" method="post" class="form-horizontal">
 					    {% csrf_token %}
-					    Username:{{login.username}}<br/>
-					    Password:{{login.password}}<br/>
-					    <input type="submit" value="login-button" name = "login" />
+					    <div class="form-group">
+					    	<label for='id_username' class='col-sm-2 control-label'>Username</label>
+					    	<div class="col-sm-10">
+					    		{{login.username}}
+					    	</div>
+					    </div>
+
+					    <div class="form-group">
+					    	<label for='id_password' class='col-sm-2 control-label'>Password</label>
+					    	<div class="col-sm-10">
+					    		{{login.password}}
+					    	</div>
+					    </div>
+					    <div class="text-center">
+					    	<input type="submit" class="btn btn-primary" value="Login" name="login" />
+						</div>
 					</form>
-		      	</div>
+		      	<!-- </div> -->
 
 		      </div>
 		      <div class="modal-footer">

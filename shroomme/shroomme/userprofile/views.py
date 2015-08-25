@@ -1,25 +1,41 @@
 from django.shortcuts import render,Http404,redirect,render_to_response
 from django.contrib.auth import authenticate,logout,login
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
-from .forms import ProfileForm,SearchForm
-from .models import Profile
+from .forms import ProfileForm,SearchForm,EditForm
 from shroomme.forms import LoginForm,SignUpForm
+
+#-----------------------------------MODELS-------------------------#
+from django.contrib.auth.models import User
+from .models import Profile
 from django.db.models import Q
+from django.forms.models import model_to_dict
+from friends.models import Friends,getStatus,getFriendsObject
+from constants.constants import constants,gethome
+from notification.models import Notification
 
 #from shroomme.views import home
  
-
+#@login_required('')
 def myprofile(request):
 	print "login-request:"
 	print request
 	if request.user.is_authenticated():
-		result = Profile.objects.filter(user = request.user).values()
+		myuser = request.user
+		result = Profile.objects.filter(user = request.user).values() #SELECT ALL FROMM PROFILE WHERE USER = MYUSER
 		context = {"result":result}
 		return render(request,'myprofile.html',context)
 	else:
 #		from shroomme.views import home
+		return redirect(gethome())
+
+def edit_profile(request):
+	if request.user.is_authenticated():
+		my_profile = Profile.objects.filter(user=request.user).values()
+		edit = EditForm()
+		context = {"profile":my_profile[0],"edit":edit}
+		return render(request,'edit_profile.html',context)
+	else:
 		return redirect(gethome())
 
 def first_time_user(request):
@@ -43,7 +59,7 @@ def first_time_user(request):
 			else:
 				print "FIRST_TIME_USER FORM INVALID POSTED"	
 				print request.POST
-			return redirect(myprofile)
+			return redirect(gethome())
 		else:
 			myForm = ProfileForm()
 			context = {"form":myForm}
@@ -55,17 +71,17 @@ def logout_view(request):
 	logout(request)
 	return redirect(gethome())
 
-def findpeople(request):
+def find_people(request):
 	result = ()
 	login = LoginForm()
 	signup = SignUpForm()
 	if request.user.is_authenticated():
 		if request.method == 'GET':
 			print request.GET
-			if 'query' in request.GET:
+			if 'university' in request.GET:
 				searchbar = SearchForm(request.GET)
-				print "I am searching for " + str(request.GET['query'])
-				query_text = request.GET['query']
+				print "I am searching for " + str(request.GET['university'])
+				query_text = request.GET['university']
 				#------------TRY CRITERIONS FOR ANDS------------------# Q model object django
 				nationality = ""
 				criterion1 = Q(university=query_text)
@@ -95,12 +111,25 @@ def show_user(request):
 			profile_id = request.GET['profile_id']
 			print "profile_id " + profile_id
 			profile = Profile.objects.filter(id=profile_id)
-			context = {"profile":profile[0]}
+			friends_status = getStatus(request.user,profile[0].user)
+			friends_object = getFriendsObject(request.user,profile[0].user)
+			context = {"profile":profile[0],"friend_status":friends_status}
+			if friends_status == 'P':
+				friends_id = friends_object.friends_id
+				notification_object = Notification.objects.get(target_id=friends_id)
+				user1_uuid = notification_object.user1_uuid
+				user2_uuid = notification_object.user2_uuid
+				this_id = notification_object.notification_id
+				additional_context = {"target_id":friends_id,
+									  "user1_uuid":user1_uuid,
+									  "user2_uuid":user2_uuid,
+									  "this_id":this_id}
+				context.update(additional_context)
+			print "CONTEXT-------------------"
+			print "CONTEXT-------------------"
+			print context
 			return render(request,'show_user.html',context)
 	return redirect(gethome())
 
-def gethome():
-	from shroomme.views import home
-	return home
 
 

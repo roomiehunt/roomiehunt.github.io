@@ -7,10 +7,10 @@ class NameForm(forms.Form):
 
 class LoginForm(forms.Form):
     username = forms.CharField(
-        widget = forms.TextInput(attrs = {'placeholder': 'Email'}),
+        widget = forms.TextInput(attrs = {'placeholder': 'Email', 'class': 'form-control'}),
         required = True)
     password = forms.CharField(
-        widget = forms.PasswordInput(attrs = {'placeholder': 'password'}),
+        widget = forms.PasswordInput(attrs = {'placeholder': 'Password', 'class': 'form-control'}),
         required = True)
 
 

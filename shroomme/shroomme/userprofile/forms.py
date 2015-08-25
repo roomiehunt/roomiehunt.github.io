@@ -1,14 +1,17 @@
 from django.forms import ModelForm
 from django import forms
 from .models import Profile
+from constants.constants import constants
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, HTML
 from crispy_forms.bootstrap import FormActions
+from constants.constants import constants
+
 
 class ProfileForm(ModelForm):
 	class Meta:
 		model = Profile
-		fields = ['first_name', 'middle_name', 'last_name','nationality','gender']
+		fields = ['first_name', 'middle_name', 'last_name','nationality','gender','private']
 
 	def __init__(self, *args, **kwargs):
 		super(ProfileForm, self).__init__(*args, **kwargs)
@@ -27,8 +30,12 @@ class ProfileForm(ModelForm):
 	# last_name =  models.TextField(null=True,blank=True)
 	# nationality = models.TextField(null=True,blank=True)
 	# gender = models.TextField(choices=GENDER_CHOICES,default='U')
+class EditForm(forms.Form):
+	edit_first_name= forms.CharField(label='', max_length=1000,required=False)
 
 class SearchForm(forms.Form):
-	query= forms.CharField(label='', max_length=1000,required=False)
+	university = forms.CharField(label='', max_length=1000,required=False)
+	roomate_status = forms.ChoiceField(choices=constants.ROOMATE_STATUS)
+	roomate_number = forms.IntegerField(min_value = 0,max_value = 4,initial=0)
 
 
