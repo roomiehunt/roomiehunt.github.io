@@ -33,7 +33,6 @@ def show_friends(request):
 		context = {"result_list":result_list}
 	return render(request,"show_friends.html",context)
 
-
 @requires_csrf_token
 def add_friend(request):
 	if not request.user.is_authenticated():

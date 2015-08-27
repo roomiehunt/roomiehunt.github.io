@@ -22,7 +22,7 @@
 
 	<body>
 
-
+	<h1>{{ name }}</h1>
 	<div class = "container">
 		<div class ="jumbotron">
 			<h1>Hi!</h1>
@@ -52,7 +52,7 @@
 		      <div class="modal-body">
 		      	<div class ="container">
 					Login<br/>
-					<form action="/your-name/" method="post">
+					<form action="" method="post">
 					    {% csrf_token %}
 					    {{login}}
 					    <input type="submit" value="Submit" />

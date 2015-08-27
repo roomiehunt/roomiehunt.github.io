@@ -7,12 +7,67 @@
 		<h1> Your messaging </h1>
 		<hr>
 		<div class = "container">
-			<div>
-				Friends
+			<div class = "row">
+				<div class = "col-md-4 text-center">
+					Group Conversations
+					<hr>
+					Friends
+					<hr>
+					{% for elem in my_friends %}
+						<div class = "friends_elem" user1_uuid="{{my_uuid}}" user2_uuid="{{elem.id}}">
+							{{elem.first_name}}&nbsp{{elem.last_name}}
+						</div>
+						<br>
+					{% endfor %}
+				</div>
+				<div class = "col-md-8 text-center">
+					Messages
+					<hr>
+					<div id="messages" class = "row">
+
+
+
+					</div>
+				</div>
 			</div>
-			
-
-
 		</div>
+			<style>
+			.friends_elem{
+			 cursor: pointer; 
+			 cursor: hand; 
+			}
+			</style>
+
+			<script>
+			//ajax call to get that messages
+			$('.friends_elem').click(function (e){
+				console.log("friends_element clicked");
+				var uuid1 = $(this).attr("user1_uuid");
+				var uuid2 = $(this).attr("user2_uuid");
+
+				$.ajax({
+			        url: '/show_messages/',
+			        type: 'post',
+			        data:{
+			        	"user1_uuid" : uuid1,
+			        	"user2_uuid" : uuid2,
+			        	csrfmiddlewaretoken: '{{ csrf_token }}'},
+			        dataType: "json",
+			      	success: function(result)
+			        {
+			        	console.log("RESULT:")
+			        	console.log(result['message_list'])
+			        	for (elem in result['message_list']){
+			        		console.log(elem)
+				        	var messagenode = document.createTextNode("T")
+				        	document.getElementById("messages").appendChild(messagenode)
+			        	}
+			        	alert("I AM SUCCESSS")
+			        }  	
+
+				});
+
+			});
+			</script>
 	</body>
 </html>

@@ -38,6 +38,7 @@ urlpatterns = [
     #----------------AJAX CALLS ----------------------------#
     url(r'^add_friend/$','friends.views.add_friend',name='add_friend'),
     url(r'^change_friend_status/$','friends.views.change_friend_status',name='change_friend_status'),
+    url(r'^show_messages/$','messaging.views.show_messages',name='show_messages'),
 
     #------------------------NOTIFICATION------------------------------------#
     url(r'^notification/$','notification.views.show_notification',name='show_notification'),
@@ -49,7 +50,8 @@ urlpatterns = [
 
     #--------------------FOR TESTING------------------------------------------#
     url(r'^navbar/$', 'shroomme.views.navbar',name='navbar'),
-    url(r'^test/$', 'shroomme.views.test',name='test'),
+    url(r'^test/$', 'shroomme.views.test',name='test'),# 127.0.0.1:8000/test
     url(r'^admin/', include(admin.site.urls)),
     #----------------------------------FOR TESTING----------------------------#
 ]
+
