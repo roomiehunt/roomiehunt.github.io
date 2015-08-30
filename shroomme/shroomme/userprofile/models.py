@@ -22,15 +22,15 @@ class Profile(models.Model):
 	university = models.CharField(max_length=50,null=True,blank=True,default = "Unspecified")
 	gender = models.CharField(max_length=1,choices=constants.GENDER_CHOICES,default='U')
 	private = models.BooleanField(default = False)
-	roomate_status = models.CharField(max_length=1,choices=constants.ROOMATE_STATUS,default='U')
-	roomate_number = models.IntegerField(default=0)
-	
+#	roomate_status = models.CharField(max_length=1,choices=constants.ROOMATE_STATUS,default='U')
+#	roomate_number = models.IntegerField(default=0)
+
+#	new_message_count = models.IntegerField(default=0,min=0)
+#	new_notification_count = models.IntegerField(default=0,min=0)	
 #	profile_image = ImageField(upload_to=get_image_path, blank=True, null=True)
-
-    #profile_image = ImageField(upload_to=get_image_path, blank=True, null=True)
+#   profile_image = ImageField(upload_to=get_image_path, blank=True, null=True)
 #	middle_name = models.TextField(null=True,blank=True)
-
-# class ProfileNew(AbstractUser):
+#   class ProfileNew(AbstractUser):
 # 	uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 # 	user = models.OneToOneField(settings.AUTH_USER_MODEL,blank = False,null = False)	#user_id --> in dictionary
 # 	first_name = models.CharField(max_length=50,blank=False,null=False,default = "Unspecified")
@@ -42,3 +42,20 @@ class Profile(models.Model):
 # 	private = models.BooleanField(default = False)
 # 	roomate_status = models.CharField(max_length=1,choices=constants.ROOMATE_STATUS,default='U')
 # 	roomate_number = models.IntegerField(default=0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

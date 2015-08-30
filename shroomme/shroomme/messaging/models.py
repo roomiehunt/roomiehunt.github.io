@@ -32,9 +32,19 @@ def getMessages(user1_uuid,user2_uuid):
 	c2 = Q(user2_uuid=user2_uuid)
 	c3 = Q(user1_uuid=user2_uuid)
 	c4 = Q(user2_uuid=user1_uuid)
-
-	message_list = messages.objects.filter((c1&c2)|(c3&c4)).order_by('-timestamp')
+	message_list = messages.objects.filter((c1&c2)|(c3&c4)).order_by('timestamp')
 	return message_list
+
+def getUpdates(user1_uuid,user2_uid,counter):
+	temp = message_list(user1_uuid,user2_uuid)
+	target_size = len(temp) - counter
+	message_list = []
+
+	for a in range(0,target_size):
+		message_list.append(temp[a+counter])
+	return message_list
+
+
 
 def getRooms(user_uuid):
 	return rooms.objects.filter(user_uuid = user_uuid)

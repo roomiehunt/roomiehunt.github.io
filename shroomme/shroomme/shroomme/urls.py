@@ -35,17 +35,18 @@ urlpatterns = [
     url(r'^find_people/$','userprofile.views.find_people',name='find_people'),
     url(r'^show_user/$','userprofile.views.show_user',name='show_user'),
     url(r'^edit_profile/$','userprofile.views.edit_profile',name='edit_profile'),
-    #----------------AJAX CALLS ----------------------------#
-    url(r'^add_friend/$','friends.views.add_friend',name='add_friend'),
-    url(r'^change_friend_status/$','friends.views.change_friend_status',name='change_friend_status'),
-    url(r'^show_messages/$','messaging.views.show_messages',name='show_messages'),
 
     #------------------------NOTIFICATION------------------------------------#
     url(r'^notification/$','notification.views.show_notification',name='show_notification'),
     #--------------------------MESSAGING-------------------------------------#
     url(r'^messaging/$','messaging.views.show_messaging',name='show_messaging'),
-    #--------------------------SHOW FRIENDS-----------------------------------#
+    url(r'^show_messages/$','messaging.views.show_messages',name='show_messages'),  #---AJAX---#
+    url(r'^create_messages/$','messaging.views.create_messages',name='create_messages'), #---AJAX--#
+    
+    #--------------------------FRIENDS-----------------------------------#
     url(r'^show_friends/$','friends.views.show_friends',name='show_friends'),
+    url(r'^add_friend/$','friends.views.add_friend',name='add_friend'), #---AJAX--#
+    url(r'^change_friend_status/$','friends.views.change_friend_status',name='change_friend_status'), #---AJAX---#
 
 
     #--------------------FOR TESTING------------------------------------------#

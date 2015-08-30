@@ -1,8 +1,10 @@
 from django.shortcuts import render
-
+from django.http import HttpResponse,JsonResponse
 from .models import Notification
 from friends.models import Friends
 from django.db.models import Q
+from messaging.models import messages
+
 
 # Create your views here.
 def show_notification(request):
@@ -17,3 +19,6 @@ def show_notification(request):
 	context = {"notification_result":notification_result}
 	return render(request,"show_notification.html",context)
 
+
+def notification_count(request):
+	return render(request,"index.html",{})
