@@ -13,12 +13,14 @@
 					<hr>
 					Friends
 					<hr>
+					<div id="friend_list">
 					{% for elem in my_friends %}
 						<div class = "friends_elem" user1_uuid="{{my_uuid}}" user2_uuid="{{elem.id}}">
 							{{elem.first_name}}&nbsp{{elem.last_name}}
 						</div>
 						<br>
 					{% endfor %}
+					</div>
 				</div>
 				<div class = "col-md-8 text-center">
 					Messages
@@ -55,9 +57,6 @@
 			<script>
 			//GET MESSAGE COUNTERS
 			//REORDER LIST FRIENDS
-
-
-
 			//GLOBALS
 			var globalPoll;
 			var currentUser1uuid;
@@ -66,6 +65,7 @@
 			var currentUser2Name;			
 			var messageCounter = 0;
 			var parent = document.getElementById("messages"); 
+			var friend_list = []
 			//GLOBALS
 
 			function emptyChat(){
@@ -74,6 +74,7 @@
 				    myNode.removeChild(myNode.firstChild);
 				}				
 			}
+
 
 
 			function updateResult(result){
@@ -104,20 +105,23 @@
 					console.log("POLLING FOR" + user1_uuid + " AND " +user2_uuid);
 
 
-			/*				$.ajax({
-								success:function(result)
-								{
-									//stopEvent()
-									//pollUpdates();
-								}
-							});
-			*/			
-
-
-
-
-
-				} , 5000)
+					$.ajax({
+						url:'/update_messages/',
+						type:'post',
+						dataType:"json",
+						data:{
+							"user1_uuid": currentUser1uuid,
+							"user2_uuid": currentUser2uuid,
+							"messageCounter":messageCounter,
+							csrfmiddlewaretoken: '{{ csrf_token }}'
+							},
+						dataType:"json",
+						success:function(result)
+						{
+							updateResult(result);
+						}
+					});
+				} , 5000);
 			}
 
 
@@ -134,7 +138,7 @@
 
 				var formValue = document.getElementById("message_box");
 				$.ajax({
-					url:'/create_message/',
+					url:'/create_messages/',
 					type:'post',
 					dataType:"json",
 					data:{

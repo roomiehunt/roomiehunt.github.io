@@ -51,12 +51,23 @@ def create_messages(request):
 								  message =message)
 		message_object.save()
 		message_list = getUpdates(user1_uuid,user2_uuid,messageCounter)
-		message_list=serializers.serialize("json", message_list) 
+		message_list = serializers.serialize("json", message_list) 
 		context = {"message_list":message_list}
 		return JsonResponse(context)
 	else:
 		return render(request,"index.html",{})
 
+def update_messages(request):
+	if request.method == "POST" and request.is_ajax():
+		user1_uuid = request.POST['user1_uuid']
+		user2_uuid = request.POST['user2_uuid']		
+		messageCounter = int(request.POST['messageCounter'])
+		message_list = getUpdates(user1_uuid,user2_uuid,messageCounter)
+		message_list = serializers.serialize("json", message_list) 
+		context = {"message_list":message_list}
+		return JsonResponse(context)
+	else:
+		return render(request,"index.html",{})
 
 
 

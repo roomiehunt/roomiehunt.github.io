@@ -35,8 +35,8 @@ def getMessages(user1_uuid,user2_uuid):
 	message_list = messages.objects.filter((c1&c2)|(c3&c4)).order_by('timestamp')
 	return message_list
 
-def getUpdates(user1_uuid,user2_uid,counter):
-	temp = message_list(user1_uuid,user2_uuid)
+def getUpdates(user1_uuid,user2_uuid,counter):
+	temp = getMessages(user1_uuid,user2_uuid)
 	target_size = len(temp) - counter
 	message_list = []
 

@@ -42,6 +42,7 @@ urlpatterns = [
     url(r'^messaging/$','messaging.views.show_messaging',name='show_messaging'),
     url(r'^show_messages/$','messaging.views.show_messages',name='show_messages'),  #---AJAX---#
     url(r'^create_messages/$','messaging.views.create_messages',name='create_messages'), #---AJAX--#
+    url(r'^update_messages/$','messaging.views.update_messages',name='update_messages'), #---AJAX--#
     
     #--------------------------FRIENDS-----------------------------------#
     url(r'^show_friends/$','friends.views.show_friends',name='show_friends'),
