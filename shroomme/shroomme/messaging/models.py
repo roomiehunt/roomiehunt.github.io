@@ -14,8 +14,8 @@ class messages(models.Model):
 	read = models.BooleanField(default=False)
 	timestamp = models.DateTimeField(auto_now_add=True)
 	
+
 class rooms(models.Model):
-#	room_name = models.
 	user_uuid = models.UUIDField(blank = True) #change into array
 	room_uuid = models.UUIDField(blank = True,default=uuid.uuid4)
 	timestamp = models.DateTimeField(auto_now_add=True)

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from friends.models import Friends,getMyFriends
+from friends.models import Friends,getMyFriends,getMyFriendsMessaging
 from django.http import HttpResponse,JsonResponse
 from userprofile.models import Profile
 from .models import messages,getMessages,getRooms,getRoomMessages,getUpdates
@@ -15,7 +15,7 @@ from uuid import UUID
 
 # Create your views here.
 def show_messaging(request):
-	my_friends = getMyFriends(request)
+	my_friends = getMyFriendsMessaging(request)
 	my_uuid = Profile.objects.get(user=request.user).id
 	context = {"my_friends":my_friends,"my_uuid":my_uuid}
 	return render(request,"show_messaging.html",context)

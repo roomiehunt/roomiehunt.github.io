@@ -22,7 +22,7 @@ def myprofile(request):
 	print request
 	if request.user.is_authenticated():
 		myuser = request.user
-		result = Profile.objects.filter(user = request.user).values() #SELECT ALL FROMM PROFILE WHERE USER = MYUSER
+		result = Profile.objects.filter(user = request.user).values() #SELECT ALL FROM PROFILE WHERE USER = MYUSER
 		context = {"result":result}
 		return render(request,'myprofile.html',context)
 	else:
@@ -112,18 +112,22 @@ def show_user(request):
 			print "profile_id " + profile_id
 			profile = Profile.objects.filter(id=profile_id)
 			friends_status = getStatus(request.user,profile[0].user)
-			friends_object = getFriendsObject(request.user,profile[0].user)
 			context = {"profile":profile[0],"friend_status":friends_status}
 			if friends_status == 'P':
+				friends_object = getFriendsObject(request.user,profile[0].user)				
 				friends_id = friends_object.friends_id
 				notification_object = Notification.objects.get(target_id=friends_id)
 				user1_uuid = notification_object.user1_uuid
 				user2_uuid = notification_object.user2_uuid
+				my_uuid = Profile.objects.get(user=request.user).id
 				this_id = notification_object.notification_id
 				additional_context = {"target_id":friends_id,
+									  "my_uuid":my_uuid,
 									  "user1_uuid":user1_uuid,
 									  "user2_uuid":user2_uuid,
-									  "this_id":this_id}
+									  "this_id":this_id,
+									  "friends_object":friends_object
+									  }
 				context.update(additional_context)
 			print "CONTEXT-------------------"
 			print "CONTEXT-------------------"

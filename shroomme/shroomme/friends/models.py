@@ -53,8 +53,27 @@ def getFriendsObject(user1,user2):
 	c2 = Q(user2=user2)
 	c3 = Q(user1=user2)
 	c4 = Q(user2=user1)
-	friend_object = Friends.objects.get( ( (c1&c2)|(c3&c4)) )
-	return friend_object
+	friend_object = Friends.objects.filter( ( (c1&c2)|(c3&c4)) )
+	return friend_object[0]
+
+
+def getMyFriendsMessaging(request):
+	c1 = Q(user1=request.user)
+	c2 = Q(user2=request.user)
+	c3 = Q(status='F')
+	friends_list = Friends.objects.filter( (c1|c2) & c3 )
+	uuid_1 = friends_list.values_list('user1_uuid','status')
+	uuid_2 = friends_list.values_list('user2_uuid','status')
+	uuid_1zip = zip(*uuid_1)[0]
+	uuid_2zip = zip(*uuid_2)[0]
+	uuid_total = list(set(uuid_1zip + uuid_2zip))
+	result_list = []
+	if uuid_total is None:
+		result_list = []
+	else:
+		uuid_total.remove(Profile.objects.get(user=request.user).id)
+		result_list = Profile.objects.filter(id__in=uuid_total)
+	return result_list
 
 def getMyFriends(request):
 	c1 = Q(user1=request.user)

@@ -65,8 +65,10 @@
 			var currentUser2Name;			
 			var messageCounter = 0;
 			var parent = document.getElementById("messages"); 
-			var friend_list = []
+			//var friend_list = []
 			//GLOBALS
+
+
 
 			function emptyChat(){
 				var myNode = document.getElementById("messages");
@@ -74,8 +76,6 @@
 				    myNode.removeChild(myNode.firstChild);
 				}				
 			}
-
-
 
 			function updateResult(result){
 		        var json = jQuery.parseJSON(result['message_list'])
