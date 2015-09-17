@@ -32,10 +32,14 @@ class ProfileForm(ModelForm):
 	# gender = models.TextField(choices=GENDER_CHOICES,default='U')
 class EditForm(forms.Form):
 	edit_first_name= forms.CharField(label='', max_length=1000,required=False)
+	user_image = forms.FileField()
+
 
 class SearchForm(forms.Form):
 	university = forms.CharField(label='', max_length=1000,required=False)
 	roomate_status = forms.ChoiceField(choices=constants.ROOMATE_STATUS)
 	roomate_number = forms.IntegerField(min_value = 0,max_value = 4,initial=0)
+
+
 
 

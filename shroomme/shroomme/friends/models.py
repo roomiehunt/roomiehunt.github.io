@@ -20,6 +20,9 @@ class Friends(models.Model):
 	user1_last_received = models.DateTimeField(blank = True,auto_now_add=True)
 	user2_last_received =  models.DateTimeField(blank = True,auto_now_add=True)
 
+	def test(self):
+		return self.objects.all()
+
 
 def isFriends(user1,user2):
 	c1 = Q(user1=user1)

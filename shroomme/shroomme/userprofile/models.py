@@ -10,7 +10,7 @@ import uuid,os
 
 
 def get_image_path(instance, filename):
-    return os.path.join('photos', str(instance.id), filename)
+	return os.path.join('photos', str(instance.id), filename)
 
 class Profile(models.Model):
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -22,6 +22,8 @@ class Profile(models.Model):
 	university = models.CharField(max_length=50,null=True,blank=True,default = "Unspecified")
 	gender = models.CharField(max_length=1,choices=constants.GENDER_CHOICES,default='U')
 	private = models.BooleanField(default = False)
+	profile_image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
+	
 #	roomate_status = models.CharField(max_length=1,choices=constants.ROOMATE_STATUS,default='U')
 #	roomate_number = models.IntegerField(default=0)
 

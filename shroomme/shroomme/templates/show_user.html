@@ -82,16 +82,16 @@
 		    	({ 
 			        url: '/change_friend_status/',
 			        data: {"type":"accept",
-			        	   "target_id":{{target_id}},
-			        	   "this_id":{{this_id}},
-			        	   "user1_uuid":{{user1_uuid}},
-			        	   "user2_uuid":{{user2_uuid}},
+			        	   "target_id":'{{target_id}}',
+			        	   "this_id":'{{this_id}}',
+			        	   "user1_uuid":'{{user1_uuid}}',
+			        	   "user2_uuid":'{{user2_uuid}}',
 			        	   csrfmiddlewaretoken: '{{ csrf_token }}'},
 			        type: 'post',
 			        success: function()
 			        {
 			        	alert("ACCEPT_FRIEND_STATUS");
-						$('#'+this_id).hide('slow');																
+			        	location.reload(true);
 			        }
 			    });
 			});
@@ -103,16 +103,16 @@
 		    	({ 
 			        url: '/change_friend_status/',
 			        data: {"type":"ignore",
-			        		"target_id":{{target_id}},
-			        		"this_id":{{this_id}},
-			        		"user1_uuid":{{user1_uuid}},
-  			        	    "user2_uuid":{{user2_uuid}},
+			        		"target_id":'{{target_id}}',
+			        		"this_id":'{{this_id}}',
+			        		"user1_uuid":'{{user1_uuid}}',
+  			        	    "user2_uuid":'{{user2_uuid}}',
 			        		csrfmiddlewaretoken: '{{ csrf_token }}'},
 			        type: 'post',
 			        success: function()
 			        {
 			        	alert("IGNORE_FRIEND_STATUS");
-			        	location.reload();
+			        	location.reload(true);
 			        }
 			    });
 			});

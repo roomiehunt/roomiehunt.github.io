@@ -1,0 +1,52 @@
+{% load staticfiles %}
+<html>
+	<body>
+		<link rel="stylesheet" href="{% static "myprofile.css" %}">
+		{% include 'navbar.html' %}	
+		<h1>Hi! {{ user.username }}</h1>
+		<h1> Your messaging_2 </h1>
+		<hr>
+		<a href = "../create_message_2/"> Create New Message </a>
+		<div class = "container">
+			<div class = "row">
+				<div class = "col-md-4 text-center">
+					Inbox
+					<hr>
+					{%for elem in name_list%}
+						{% for names in elem%}
+							 {{names}} , 
+						{%endfor%}
+						<br>						
+					{% endfor %}
+				</div>
+				<div class = "col-md-8 text-center">
+					Messages
+					<hr>
+					<div id = "Message_Window">
+
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+			<style>
+			.friends_elem,#send_button {
+			 cursor: pointer; 
+			 cursor: hand; 
+			}
+			#message_util{
+				visibility: hidden;
+			}
+
+			</style>
+
+
+
+			<script>
+
+			</script>
+	</body>
+</html>

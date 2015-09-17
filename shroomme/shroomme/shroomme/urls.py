@@ -40,8 +40,14 @@ urlpatterns = [
     url(r'^notification/$','notification.views.show_notification',name='show_notification'),
     #--------------------------MESSAGING-------------------------------------#
     url(r'^messaging/$','messaging.views.show_messaging',name='show_messaging'),
+    url(r'^messaging_2/$','messaging.views.show_messaging_2',name='show_messaging_2'), 
+    url(r'^create_message_2/$','messaging.views.create_message_2',name='create_message_2'), 
+
+
     url(r'^show_messages/$','messaging.views.show_messages',name='show_messages'),  #---AJAX---#
     url(r'^create_messages/$','messaging.views.create_messages',name='create_messages'), #---AJAX--#
+    url(r'^create_thread/$','messaging.views.create_thread',name='create_thread'), #---AJAX--#
+
     url(r'^update_messages/$','messaging.views.update_messages',name='update_messages'), #---AJAX--#
     
     #--------------------------FRIENDS-----------------------------------#

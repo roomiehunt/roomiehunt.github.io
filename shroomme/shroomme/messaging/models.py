@@ -15,6 +15,8 @@ class messages(models.Model):
 	timestamp = models.DateTimeField(auto_now_add=True)
 	
 
+
+
 class rooms(models.Model):
 	user_uuid = models.UUIDField(blank = True) #change into array
 	room_uuid = models.UUIDField(blank = True,default=uuid.uuid4)
@@ -53,4 +55,19 @@ def getRoomMessages(room_uuid):
 	return message_room.filter(room_uuid = room_uuid).order_by('-timestamp')
 
 
+
+#--------------------EXPERIMENTAL---------------------------#
+
+class threads(models.Model):
+	user_uuid = models.UUIDField(blank = True) #change into array
+	thread_id = models.UUIDField(blank = True)
+#	timestamp = models.DateTimeField(auto_now_add=True,default =)
+
+	#user_list = models.arrayUUIDField()
+	
+class thread_messages(models.Model):
+	thread_id = models.UUIDField(blank = True)
+	user_uuid = models.UUIDField(blank=True,null = True)
+	message = models.CharField(max_length=50,blank=False,null=False,default = "Unspecified")
+	timestamp = models.DateTimeField(auto_now_add=True)
 

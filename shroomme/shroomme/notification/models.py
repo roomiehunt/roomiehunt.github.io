@@ -21,6 +21,7 @@ class Notification(models.Model):
 	notification_type = models.CharField(max_length=2,choices=constants.NOTIFICATION_TYPE,default="FR")
 	notification_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 	target_id = models.UUIDField(default=uuid.uuid4,blank = False) #--> conversation ID + friend_relation ID 
+	
 #	friends_id = models.UUIDField(default=uuid.uuid4)
 #	conversation = models.UUIDField(default=uuid.uuid4)
 
