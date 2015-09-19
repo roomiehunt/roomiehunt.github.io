@@ -1,0 +1,122 @@
+{% load staticfiles %}
+
+<html>
+	<head>
+	</head>
+
+	<body>
+		{% include 'navbar.html' %}
+
+		  <div class="row">
+		    <div class="col-md-6">
+		    	<h1>Show User</h1>
+		    	<hr>
+		    	<div class="well">
+		    		<!-- IF USER IS NOT NONE-->
+		    		{% if profile != None %}
+		    		<!-- IF USER IS PRIVATE AND FRIENDS || USER IS NOT PRIVATE SHOW-->
+			    		{% if profile.private == True %}
+				    		This User Is Private add as friend to see his profile <br>
+						{% else %}			    		
+							{% if profile.private == True %}
+				  				For logging:This user is Private and is friends with you
+				  			{% endif %}
+				    		first_name = {{profile.first_name}}</br>
+				    		middle_name = {{profile.middle_name}}</br>
+				    		last_name = {{profile.last_name}}</br>
+				    		nationality = {{profile.nationality}}</br>
+				    		university = {{profile.university}} </br>
+			    		{% endif %}
+
+			    		{% if my_uuid = user2_uuid %} <!-- receiver's/To perspective -->
+				    		{% if friend_status == 'F'%}
+				    			<div class = "btn btn-success">Friends</div>
+					    	{% elif friend_status == 'P'%}
+				    			<div class = "btn btn-success" id= "accept_friend">Accept</div>
+				    			<div class = "btn btn-primary" id= "ignore_friend">Ignore</div>
+					    	{% elif friend_status == 'B' %}
+					    		<div class = "btn btn-success">unblock</div> 
+					    	{% else %}
+					    		<div class = "btn btn-success" id="add_friend">add friend</div>
+					    	{% endif %}
+					    {% else %} <!-- sender's perspective -->
+				    		{% if friend_status == 'F'%}
+				    			<div class = "btn btn-success">Friends</div>
+					    	{% elif friend_status == 'P'%}
+				    			<div class = "btn btn-success">Pending</div>
+					    	{% elif friend_status == 'B' %}
+					    		<div class = "btn btn-success">unblock</div> 
+					    	{% else %}
+					    		<div class = "btn btn-success" id="add_friend">add friend</div>
+					    	{% endif %}
+					    {% endif %}
+			    	{% else %}
+			    		<h1> Invalid User </h1>
+			    	{% endif %}
+
+		    	</div>
+		    </div>
+		  </div>
+
+		  <script>
+			$('#add_friend').click(function (e){
+				e.preventDefault();
+				$.ajax
+		    	({ 
+			        url: '/add_friend/',
+			        data: {"username2":'{{profile.user}}',"user2":'{{ profile.id }}',csrfmiddlewaretoken: '{{ csrf_token }}'},
+			        type: 'post',
+			        success: function()
+			        {
+			        	location.reload(true);
+			        	alert("ADD_FRIEND_SUCCEED");
+			        }
+
+			    });
+			});
+			{% if this_id %}
+	 		$('#accept_friend').click(function (e){
+				console.log("ACCEPT_FRIEND_PRESSED");
+				e.preventDefault();
+				$.ajax
+		    	({ 
+			        url: '/change_friend_status/',
+			        data: {"type":"accept",
+			        	   "target_id":'{{target_id}}',
+			        	   "this_id":'{{this_id}}',
+			        	   "user1_uuid":'{{user1_uuid}}',
+			        	   "user2_uuid":'{{user2_uuid}}',
+			        	   csrfmiddlewaretoken: '{{ csrf_token }}'},
+			        type: 'post',
+			        success: function()
+			        {
+			        	alert("ACCEPT_FRIEND_STATUS");
+			        	location.reload(true);
+			        }
+			    });
+			});
+
+			$('#ignore_friend').click(function (e){
+				console.log("IGNORE_FRIEND_PRESSED");				
+				e.preventDefault();
+				$.ajax
+		    	({ 
+			        url: '/change_friend_status/',
+			        data: {"type":"ignore",
+			        		"target_id":'{{target_id}}',
+			        		"this_id":'{{this_id}}',
+			        		"user1_uuid":'{{user1_uuid}}',
+  			        	    "user2_uuid":'{{user2_uuid}}',
+			        		csrfmiddlewaretoken: '{{ csrf_token }}'},
+			        type: 'post',
+			        success: function()
+			        {
+			        	alert("IGNORE_FRIEND_STATUS");
+			        	location.reload(true);
+			        }
+			    });
+			});
+			{% endif %}
+		  </script>
+	</body>
+</html>
