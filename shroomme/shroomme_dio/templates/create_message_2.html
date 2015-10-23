@@ -14,9 +14,14 @@
 						
 
 				<hr>
+				subject:
+				<div id = "subject">	
+				<input type="text" name="subject" id = "subject">
+				<br>
 				message:
 				<div id = "message_util">
-					<input type="text" name="message_box" id = "message_box">
+<!-- 					<input type="text" name="message_box" id = "message_box"> -->		
+					<textarea name="message_box" id = "message_box"> </textarea>			
 					<div class = "btn" "btn-default" id = "send_button"/>
 						send
 					</div>
@@ -49,10 +54,12 @@
 			      		user-list : <div id = "user-list-modal"></div>
 			      		<hr> 
 			      		{% for elem in user_list %}
+			      			{% if elem.id != my_uuid %}
 			      			{{elem.first_name}}
 			      			{{elem.last_name}}
 					        <button type="button" class = "add_user_button" user_uuid = "{{elem.id}}" first_name = "{{elem.first_name}}" last_name = "{{elem.last_name}}">Add User</button>
 			      			<br>
+			      			{% endif %}
 			      		{% endfor %}
 			      </div>
 			      <div class="modal-footer">
@@ -100,8 +107,12 @@
 				});
 
 				$("#send_button").click(function (e){
-					console.log("send_message");
-					var formValue = document.getElementById("message_box");
+					if(user_names_array.length == 0){
+						alert("Please add user");
+						return true;
+					}
+
+					var formValue = document.getElementById("message_box").value;
 
 					$.ajax({
 						url:"/create_thread/",
@@ -109,7 +120,7 @@
 						data:						
 						{
 						"user_list":JSON.stringify(user_list_array),
-						"message":formValue.value,
+						"message":formValue,
 						csrfmiddlewaretoken: '{{ csrf_token }}'
 						},
 						complete:function(result)

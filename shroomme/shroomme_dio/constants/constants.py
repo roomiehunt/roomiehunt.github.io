@@ -6,7 +6,7 @@ class constants():
 	GENDER_CHOICES = (
 		('M','Male'),
 		('F','Female'),
-		('U','Unspecified'),
+		#('U','Unspecified'),
 	)
 	FRIEND_STATUS = (
 		('F','Friends'),
@@ -25,6 +25,15 @@ class constants():
 		('NM','New_Message'), #Messaging
 		('U','Unspecified'), #Unspecified
 	)
+	LEVEL = (
+		(0,"0"),
+		(1,"1"),
+		(2,"2"),
+		(3,"3"),
+		(4,"4"),
+		(5,"5"),
+	)
+
 
 def gethome():
 	from shroomme.views import home

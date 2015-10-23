@@ -24,22 +24,23 @@ class ProfileForm(ModelForm):
 			Submit('submit', 'Submit'),
 	))
 
-	# user = models.OneToOneField(settings.AUTH_USER_MODEL,primary_key = True,blank = False,null = False)
-	# first_name = models.TextField(null=True,blank=True)
-	# middle_name = models.TextField(null=True,blank=True)
-	# last_name =  models.TextField(null=True,blank=True)
-	# nationality = models.TextField(null=True,blank=True)
-	# gender = models.TextField(choices=GENDER_CHOICES,default='U')
-class EditForm(forms.Form):
-	edit_first_name= forms.CharField(label='', max_length=1000,required=False)
-	user_image = forms.FileField()
+class EditForm(ModelForm):
+	class Meta:
+		model = Profile
+		exclude = ['id','user','searchCriteria','userCriteria']
 
 
 class SearchForm(forms.Form):
 	university = forms.CharField(label='', max_length=1000,required=False)
 	roomate_status = forms.ChoiceField(choices=constants.ROOMATE_STATUS)
-	roomate_number = forms.IntegerField(min_value = 0,max_value = 4,initial=0)
+	#roomate_number = forms.IntegerField(min_value = 0,max_value = 4,initial=0)
+
+# class UploadProfileImage(forms.Form):
+# 	user_image = forms.ImageField(label = '')
 
 
-
+class UploadProfileImage(ModelForm):
+	class Meta:
+		model = Profile
+		fields = ['profile_image']	
 

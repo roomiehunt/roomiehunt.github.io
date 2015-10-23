@@ -16,8 +16,16 @@
 				    	<hr/>
 
 
-									    	
-							{% for fields,value in profile.items %}
+
+				    	<form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+							{{ edit | crispy }}
+					        <input class='btn btn-success' type="submit" value="Submit" />
+           				</form>
+						
+
+						<a class = 'btn btn-success' href ="../my_criteria"> Edit your own criteria </a>
+
+<!-- 							{% for fields,value in profile.items %}
 								{% if fields != 'id'%}
 										<li> {{fields}} = {{value}} 
 											<div class="pull-right"> <a>edit</a> </div>
@@ -25,7 +33,7 @@
 										<hr>
 								{% endif %}
 							{% endfor %}
-									    	
+ -->									    	
 
 			    	</div>
 

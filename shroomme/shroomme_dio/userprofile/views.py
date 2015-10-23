@@ -2,7 +2,7 @@ from django.shortcuts import render,Http404,redirect,render_to_response
 from django.contrib.auth import authenticate,logout,login
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
-from .forms import ProfileForm,SearchForm,EditForm
+from .forms import ProfileForm,SearchForm,EditForm,UploadProfileImage
 from shroomme.forms import LoginForm,SignUpForm
 
 #-----------------------------------MODELS-------------------------#
@@ -13,6 +13,8 @@ from django.forms.models import model_to_dict
 from friends.models import Friends,getStatus,getFriendsObject
 from constants.constants import constants,gethome
 from notification.models import Notification
+from roomate.forms import CriteriaForm
+import os
 
 #from shroomme.views import home
  
@@ -21,22 +23,25 @@ def myprofile(request):
 	print "login-request:"
 	print request
 	if request.user.is_authenticated():
-		myuser = request.user
-		result = Profile.objects.filter(user = request.user).values() #SELECT ALL FROM PROFILE WHERE USER = MYUSER
-		context = {"result":result}
+		UploadForm = UploadProfileImage(request.POST or None)
+		result = Profile.objects.filter(user = request.user) 
+		if request.method == 'POST':
+			print request.POST
+			print request.FILES
+			if request.FILES:
+				update_object = Profile.objects.select_for_update().filter(user=request.user)
+				print "SUCCESS"
+				file_name =  str(result[0].id) +".jpg"
+				print file_name
+				handle_uploaded_file(request.FILES['user_image'],file_name)
+				location = '/static/photos/' + file_name
+				update_object.update(profile_image = location)
+		context = {"result":result,"form":UploadForm}
 		return render(request,'myprofile.html',context)
 	else:
 #		from shroomme.views import home
 		return redirect(gethome())
 
-def edit_profile(request):
-	if request.user.is_authenticated():
-		my_profile = Profile.objects.filter(user=request.user).values()
-		edit = EditForm()
-		context = {"profile":my_profile[0],"edit":edit}
-		return render(request,'edit_profile.html',context)
-	else:
-		return redirect(gethome())
 
 def first_time_user(request):
 	print "first_time_user:" 
@@ -52,7 +57,6 @@ def first_time_user(request):
 			gender = myForm.data['gender']
 			myProfile = Profile.objects.select_for_update().filter(user=request.user)
 			myProfile.update(first_name=first_name,middle_name=middle_name,last_name=last_name)
-			#myProfile.update()
 			if myForm.is_valid():
 				print "FIRST_TIME_USER FORM VALID POSTED"
 				print request.POST
@@ -136,4 +140,36 @@ def show_user(request):
 	return redirect(gethome())
 
 
+def edit_profile(request):
+	if request.user.is_authenticated():
+		my_profile = Profile.objects.filter(user=request.user)
+		edit = EditForm(request.POST or None,request.FILES or None ,instance = my_profile[0])		
+		if edit.is_valid():
+			print "TITIT--------------------------------------------------"
+			instance = edit.save(commit=False)
+			#instance.user = request.user
+			instance.save()
+		context = {"profile":my_profile[0],"edit":edit}
+		return render(request,'edit_profile.html',context)
+	else:
+		return redirect(gethome())
 
+def my_criteria(request):
+	my_profile = Profile.objects.get(user= request.user)
+	form = CriteriaForm(request.POST or None,instance = my_profile.userCriteria)
+	if form.is_valid():
+		userCriteriaForm = form.save()
+		my_profile.userCriteria = userCriteriaForm
+		my_profile.save()
+	context = {"myprofile":my_profile,"form":form}
+	return render(request,'my_criteria.html',context)	
+
+
+
+
+
+def handle_uploaded_file(f,filename):
+	os_path = os.path.join(os.path.dirname(settings.BASE_DIR),"shroomme_dio","static","photos",filename)
+	with open(os_path, 'wb+') as destination:
+		for chunk in f.chunks():
+			destination.write(chunk)

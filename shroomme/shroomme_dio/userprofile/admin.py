@@ -6,7 +6,7 @@ from .models import Profile
 
 class ProfileAdmin(admin.ModelAdmin):
 	model = Profile
-	list_display = ('user', 'first_name','last_name','university','id','private')
+	list_display = ('user', 'first_name','last_name','university','id','private','profile_image')
 	def get_name(self, obj):
 		return obj.Profile.user
 	get_name.admin_order_field  = 'user'  #Allows column order sorting

@@ -1,0 +1,52 @@
+{% load staticfiles %}
+<html>
+	<body>
+		<link rel="stylesheet" href="{% static "myprofile.css" %}">
+		{% include 'navbar.html' %}	
+		<h1>Hi! {{ user.username }}</h1>
+		<h1> Show thread_messaging </h1>
+		<hr>
+		<div class = "well">
+			<a href = "../messaging_2/">back</a>
+			<hr>
+			{%for elem in result%}
+				{{elem.name}} {{elem.timestamp}}
+				<br>
+				say: {{elem.message}}
+				<br>
+			{% endfor %}
+		</div>
+		<textarea id = "message_box"></textarea>
+		<button id = "send_button">send</button>
+
+		<script>
+				$("#send_button").click(function (e){
+					alert("HI")
+					var formValue = document.getElementById("message_box").value;
+					if(formValue == ""){
+						alert("Please enter message");
+						return true;
+					}
+
+
+					$.ajax({
+						url:"/reply_thread/",
+						type:"post",
+						data:						
+						{
+						"thread_id":'{{thread_id}}',
+						"message":formValue,
+						csrfmiddlewaretoken: '{{ csrf_token }}'
+						},
+						complete:function(result)
+						{
+							window.location.replace("../messaging_2/");
+						}
+					});
+
+
+				});
+		</script>
+
+	</body>
+</html>

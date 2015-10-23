@@ -12,9 +12,9 @@
 				<div class = "col-md-4 text-center">
 					Inbox
 					<hr>
-					{%for elem in name_list%}
-						{% for names in elem%}
-							 {{names}} , 
+					{%for elem in result%}
+						{% for name in elem.names%}
+							 {{name}} , 
 						{%endfor%}
 						<br>						
 					{% endfor %}
@@ -23,7 +23,10 @@
 					Messages
 					<hr>
 					<div id = "Message_Window">
-
+					{%for elem in result%}
+						<a href = "../show_thread/?thread={{elem.thread_id}}"> {{elem.message}} </a>
+						<br>						
+					{% endfor %}						
 
 
 					</div>

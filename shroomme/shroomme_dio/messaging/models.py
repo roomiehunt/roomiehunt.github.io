@@ -61,10 +61,7 @@ def getRoomMessages(room_uuid):
 class threads(models.Model):
 	user_uuid = models.UUIDField(blank = True) #change into array
 	thread_id = models.UUIDField(blank = True)
-#	timestamp = models.DateTimeField(auto_now_add=True,default =)
 
-	#user_list = models.arrayUUIDField()
-	
 class thread_messages(models.Model):
 	thread_id = models.UUIDField(blank = True)
 	user_uuid = models.UUIDField(blank=True,null = True)

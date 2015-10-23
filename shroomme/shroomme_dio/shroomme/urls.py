@@ -39,6 +39,10 @@ urlpatterns = [
     url(r'^find_people/$','userprofile.views.find_people',name='find_people'),
     url(r'^show_user/$','userprofile.views.show_user',name='show_user'),
     url(r'^edit_profile/$','userprofile.views.edit_profile',name='edit_profile'),
+    url(r'^my_criteria/$','userprofile.views.my_criteria',name='my_criteria'), 
+
+
+
 
     #------------------------NOTIFICATION------------------------------------#
     url(r'^notification/$','notification.views.show_notification',name='show_notification'),
@@ -46,14 +50,20 @@ urlpatterns = [
     url(r'^messaging/$','messaging.views.show_messaging',name='show_messaging'),
     url(r'^messaging_2/$','messaging.views.show_messaging_2',name='show_messaging_2'), 
     url(r'^create_message_2/$','messaging.views.create_message_2',name='create_message_2'), 
-
+    url(r'^show_thread/$','messaging.views.show_thread',name='show_thread'), 
 
     url(r'^show_messages/$','messaging.views.show_messages',name='show_messages'),  #---AJAX---#
     url(r'^create_messages/$','messaging.views.create_messages',name='create_messages'), #---AJAX--#
     url(r'^create_thread/$','messaging.views.create_thread',name='create_thread'), #---AJAX--#
-
     url(r'^update_messages/$','messaging.views.update_messages',name='update_messages'), #---AJAX--#
-    
+    url(r'^reply_thread/$','messaging.views.reply_thread',name='reply_thread'), #---AJAX--#
+
+
+    #--------------------------ROOMATE------------------------------#
+    url(r'^roomate/$','roomate.views.criteria_view',name='criteria_view'), 
+    url(r'^match_result/$','roomate.views.match_result',name='match_result'), 
+
+
     #--------------------------FRIENDS-----------------------------------#
     url(r'^show_friends/$','friends.views.show_friends',name='show_friends'),
     url(r'^add_friend/$','friends.views.add_friend',name='add_friend'), #---AJAX--#
@@ -65,9 +75,8 @@ urlpatterns = [
     url(r'^test/$', 'shroomme.views.test',name='test'),# 127.0.0.1:8000/test
     url(r'^admin/', include(admin.site.urls)),
     #----------------------------------FOR TESTING----------------------------#
-
     url(r'^accounts/', include('registration.backends.default.urls')),
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
 
-
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += staticfiles_urlpatterns()

@@ -1,0 +1,28 @@
+{% load crispy_forms_tags %}
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+
+	<body>
+		{% include 'navbar.html' %}
+
+		  <div class="row">
+		    <div class="col-md-6">
+		    	<h1>Hi {{user.username}}!</h1>
+		    	<h1>These are your match making results </h1>
+		    	<hr/>
+				<div class="well">
+					{% for elem in result %}
+						<img src = "{{elem.profile_image.url}}"/>
+						First Name = {{elem.first_name}}
+						Last Name = {{elem.last_name}}
+						Profile Link = <a href = "../show_user/?profile_id={{elem.id}}"> Profile link </a>
+					{% endfor %}
+		    	</div>
+		    </div>
+		  </div>
+	</body>
+</html>

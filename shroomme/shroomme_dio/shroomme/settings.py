@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    #'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #------OUR APPS--------------#
@@ -51,6 +52,7 @@ INSTALLED_APPS = (
     'constants',
     'friends',
     'navbar',
+    'roomate',
     #-----3RD PARTY LIBRARY------#
     'crispy_forms',
     'registration',
@@ -123,8 +125,14 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_env", "static_root")
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_in_env", "media_root")
+
     
 STATICFILES_DIRS = (
+    os.path.join(BASE_DIR,"static"),
+    os.path.join(BASE_DIR,"static","photos"),
     os.path.join(BASE_DIR, "static_project", "our_static"),
     #os.path.join(BASE_DIR, "static_in_env"),
     #'/var/www/static/',
