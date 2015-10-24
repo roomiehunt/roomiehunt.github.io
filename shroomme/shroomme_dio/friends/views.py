@@ -45,22 +45,16 @@ def add_friend(request):
 		if "user2" in request.POST:
 			user2_id = request.POST["user2"] 
 			Profile2_object = Profile.objects.filter(id=user2_id)
-#			user2_key = Profile2_object[0][u'user_id']
-#			user2 = User.objects.filter(id=user2_key)[0] #user in the profile
 			user2 = Profile2_object[0].user
 			user1 = request.user #user who clicked add friend ==> userFrom
 
 			message = Profile2_object[0].first_name + " " + Profile2_object[0].last_name + " wants to be friends with you"
-
 			if checkFriendExisted(user1,user2) == True:
 				return redirect(gethome())
-
 			#-------------BETA-------------------------------------#
 			user2_uuid = Profile2_object[0].id
 			user1_uuid = Profile.objects.filter(user=user1)[0].id
 			#-------------BETA-------------------------------------#
-
-
 			friend_object = Friends(user1=user1,user2=user2,status = "P",user1_uuid=user1_uuid,user2_uuid=user2_uuid)
 			friend_object.save()
 			if(checkNotificationExisted(user1,user2,"F") == False):

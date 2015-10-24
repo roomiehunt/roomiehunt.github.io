@@ -26,13 +26,26 @@
 					<hr>
 					{% endif %}
 					<div class = "container">
+
+<!-- 					<ul class="list-group">
+					  <li class="list-group-item">First item </li>
+					  <li class="list-group-item">Second item</li>
+					  <li class="list-group-item">Third item</li>
+					</ul> -->
+
+					<ul class="list-group">
 						{% for elem in result %}
+							 <li class="list-group-item">
 							<div>
-								<a href="../show_user/?profile_id={{elem.id}}"> First name: {{elem.first_name}} Last Name : {{elem.last_name}} </a>
-								<br><br>
+								<img src = {{elem.profile_image.url}} height="42" width="42" />
+								<a href="../show_user/?profile_id={{elem.id}}"> First name: {{elem.first_name}} 
+								Last Name : {{elem.last_name}} </a>
 							</div>
+							</li>
 						{% endfor %}
 					</div>
+					</ul>
+
 				{% endif %}
 				{% if not user.is_authenticated %}
 					I AM NOT LOGIN
