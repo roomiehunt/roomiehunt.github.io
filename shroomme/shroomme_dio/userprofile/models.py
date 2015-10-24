@@ -16,6 +16,15 @@ def upload_location(instance, filename):
 def get_image_path(instance, filename):
 	return os.path.join('static', 'photos')
 
+def emptyCriteria():
+	return Criteria(
+
+
+
+
+		)
+
+
 class Profile(models.Model):
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 	user = models.OneToOneField(settings.AUTH_USER_MODEL,blank = False,null = False)	#user_id --> in dictionary
@@ -28,7 +37,7 @@ class Profile(models.Model):
 	private = models.BooleanField(default = False)
 	profile_image = models.ImageField(upload_to=upload_location,default = "76de327c-16ed-492b-ae9e-8ff6ca36af65/apple.jpg")
 	searchCriteria = models.ForeignKey(Criteria,blank = True,null = True,related_name="criteria+")
-	userCriteria = models.ForeignKey(Criteria,blank = True,null = True)
+	myCriteria = models.ForeignKey(Criteria,blank = True ,null = True)
 
 #	move_in_date = models.
 #	duration = models.

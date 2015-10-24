@@ -7,7 +7,6 @@
 		<h1> This is your profile </h1>
 		<hr>
 		<div class = "well">
-			{% for myprofile in result %}<br>
 
 			{{myprofile.profile_image.url}}	<br>		
 			<img src = " {{myprofile.profile_image.url}} "/><br>
@@ -19,7 +18,6 @@
 				gender = {{myprofile.gender}}<br>
 				nationality = {{myprofile.nationality}}<br>
 				university = {{myprofile.university}}<br>
-			{% endfor %}
 		</div>
 <!-- 		<form action="" method="post">
 			{{form}}	

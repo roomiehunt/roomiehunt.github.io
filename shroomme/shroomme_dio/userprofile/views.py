@@ -24,32 +24,28 @@ def myprofile(request):
 	print request
 	if request.user.is_authenticated():
 		UploadForm = UploadProfileImage(request.POST or None)
-		result = Profile.objects.filter(user = request.user) 
+		this_user = Profile.objects.get(user = request.user) 
 		if request.method == 'POST':
 			print request.POST
 			print request.FILES
 			if request.FILES:
 				update_object = Profile.objects.select_for_update().filter(user=request.user)
 				print "SUCCESS"
-				file_name =  str(result[0].id) +".jpg"
+				file_name =  str(this_user.id) +".jpg"
 				print file_name
 				handle_uploaded_file(request.FILES['user_image'],file_name)
 				location = '/static/photos/' + file_name
 				update_object.update(profile_image = location)
-		context = {"result":result,"form":UploadForm}
+		context = {"myprofile":this_user,"form":UploadForm}
 		return render(request,'myprofile.html',context)
 	else:
-#		from shroomme.views import home
 		return redirect(gethome())
 
 
 def first_time_user(request):
-	print "first_time_user:" 
-	print request
 	if request.user.is_authenticated():
-		#if not first time redirect(myprofile)!!!
-		if 'submit' in request.POST and request.method == 'POST':
-			myForm = ProfileForm(request.POST)
+		myForm = ProfileForm(request.POST or None)
+		if request.method == "POST" and myForm.is_valid():
 			first_name = myForm.data['first_name']
 			middle_name = myForm.data['middle_name']
 			last_name = myForm.data['last_name']
@@ -57,15 +53,8 @@ def first_time_user(request):
 			gender = myForm.data['gender']
 			myProfile = Profile.objects.select_for_update().filter(user=request.user)
 			myProfile.update(first_name=first_name,middle_name=middle_name,last_name=last_name)
-			if myForm.is_valid():
-				print "FIRST_TIME_USER FORM VALID POSTED"
-				print request.POST
-			else:
-				print "FIRST_TIME_USER FORM INVALID POSTED"	
-				print request.POST
 			return redirect(gethome())
 		else:
-			myForm = ProfileForm()
 			context = {"form":myForm}
 			return render(request,'first_time_user.html',context)
 	else:
@@ -103,12 +92,12 @@ def find_people(request):
 			context = {'searchbar':searchbar,"result":result,"request":request}
 			return render(request,'find_people.html',context)
 	else:
-#		return redirect(gethome())
 		searchbar = SearchForm()
 		context = {'searchbar':searchbar,"result":result,"request":request,"login":login,"signup":signup}
 		return render(request,'find_people.html',context)
 
 
+#This function is used to show the information of another user
 def show_user(request):
 	if request.user.is_authenticated():
 		if request.method == 'GET':
@@ -117,6 +106,8 @@ def show_user(request):
 			profile = Profile.objects.filter(id=profile_id)
 			friends_status = getStatus(request.user,profile[0].user)
 			context = {"profile":profile[0],"friend_status":friends_status}
+			#--------------------IF PENDING GIVE THE USER THE OPTION TO ACCEPT THE FRIEND REQUEST AND DO AJAX
+			#--------------------TO UPDATE THE DATABASE
 			if friends_status == 'P':
 				friends_object = getFriendsObject(request.user,profile[0].user)				
 				friends_id = friends_object.friends_id
@@ -134,7 +125,6 @@ def show_user(request):
 									  }
 				context.update(additional_context)
 			print "CONTEXT-------------------"
-			print "CONTEXT-------------------"
 			print context
 			return render(request,'show_user.html',context)
 	return redirect(gethome())
@@ -145,9 +135,8 @@ def edit_profile(request):
 		my_profile = Profile.objects.filter(user=request.user)
 		edit = EditForm(request.POST or None,request.FILES or None ,instance = my_profile[0])		
 		if edit.is_valid():
-			print "TITIT--------------------------------------------------"
+			#print "EDIT PROFILE--------------------------------------------"
 			instance = edit.save(commit=False)
-			#instance.user = request.user
 			instance.save()
 		context = {"profile":my_profile[0],"edit":edit}
 		return render(request,'edit_profile.html',context)
@@ -156,10 +145,10 @@ def edit_profile(request):
 
 def my_criteria(request):
 	my_profile = Profile.objects.get(user= request.user)
-	form = CriteriaForm(request.POST or None,instance = my_profile.userCriteria)
+	form = CriteriaForm(request.POST or None,instance = my_profile.myCriteria)
 	if form.is_valid():
-		userCriteriaForm = form.save()
-		my_profile.userCriteria = userCriteriaForm
+		myCriteriaForm = form.save()
+		my_profile.myCriteria = myCriteriaForm
 		my_profile.save()
 	context = {"myprofile":my_profile,"form":form}
 	return render(request,'my_criteria.html',context)	

@@ -9,6 +9,16 @@ import uuid,os
 #----------------user1 = user from---------------------#
 #----------------user2 = user to-----------------------#
 
+class NotificationManager(models.Manager):
+
+	def createFriendNotification(self):
+		print "createFriend";
+
+	def createRoomateNotification(self):
+		print "createRoomate";
+
+
+
 # Create your models here.
 class Notification(models.Model):
 	user1 = models.ForeignKey(settings.AUTH_USER_MODEL,blank = False,null = False)

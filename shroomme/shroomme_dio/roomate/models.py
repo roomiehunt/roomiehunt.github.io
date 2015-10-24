@@ -6,6 +6,14 @@ import uuid,os
 
 # Create your models here.
 
+class RoomateManager(models.Manager):
+	def getMyRoomates(self,uuid):
+		return self.all()	
+
+
+
+
+
 class Criteria(models.Model):
 	user_uuid = models.UUIDField(default=uuid.uuid4, editable=False)
 	#---CHAR FIELD-----_#
@@ -27,40 +35,11 @@ class Criteria(models.Model):
 	budget = models.IntegerField(default = 0)
 
 
+class Roomate(models.Model):
+	user1_uuid = models.UUIDField(default=uuid.uuid4)
+	user2_uuid = models.UUIDField(default=uuid.uuid4)
+	status = models.CharField(max_length=1,choices=constants.FRIEND_STATUS,default='U')
+	manager = RoomateManager()
 
 
-#class Roomate(models.Model):
 
-
-
-# Gender* (men/women/either)
-
-# Age
-
-# Nationality (any by default unless user have preferences)
-
-# Major
-
-# Smoker/ non-smoker (checkbox)*
-
-# Hobby/interest
-
-# Pet/ no-pet* (checkbox)
-
-# Relationship status* (dropdown menu, only single/ ok with any)
-
-# Cleanliness* (in scale, clean to messy)
-
-# Sleeping habits* (in scale, early to late/no sleep)
-
-# Drinking* (in scale, never to drink regularly)
-
-# Noisiness* (in scale)
-
-# Guests coming* (in scale, never to all the time)
-
-# Overnight guests? (Y/N)
-
-# Cooking* (in scale, never to regularly)
-
-# Budget (in range?? not sure if we need one)
