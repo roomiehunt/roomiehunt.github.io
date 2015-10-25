@@ -33,15 +33,15 @@
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav navbar-right ">
 				{% if user.is_authenticated %}
-          <li class = "navbar-menu"><a href="../roomate/">roomate</a></li>
-			        <li class = "navbar-menu"><a href="../show_friends/"> Friends</a></li>
-					<li class = "navbar-menu"><a href="../notification/">notification</a></li>
-<!-- 					<li class = "navbar-menu"><a href="../messaging/">messaging</a></li>-->
- 					<li class = "navbar-menu"><a href="../messaging_2/">messaging_2</a></li>								
-					<li class = "navbar-menu"><a href="../find_people/">Find People</a></li>
-			        <li class = "navbar-menu"><a href="../edit_profile/"> Edit Profile</a></li>
-			        <li class = "navbar-menu"><a href="../myprofile/"> {{user.username}}</a></li>
-			        <li class = "navbar-menu" id = "logout-button"><a href="../logout/">Log out</a></li>	
+          <li class = "navbar-menu"><a href="http://{{ request.get_host }}/roomate">roomate</a></li>
+			        <li class = "navbar-menu"><a href="http://{{ request.get_host }}/show_friends/"> Friends</a></li>
+					<li class = "navbar-menu"><a href="http://{{ request.get_host }}/notification/">notification</a></li>
+<!-- 					<li class = "navbar-menu"><a href="http://{{ request.get_host }}/messaging/">messaging</a></li>-->
+ 					<li class = "navbar-menu"><a href="http://{{ request.get_host }}/messaging_2/">messaging_2</a></li>								
+					<li class = "navbar-menu"><a href="http://{{ request.get_host }}/find_people/">Find People</a></li>
+			        <li class = "navbar-menu"><a href="http://{{ request.get_host }}/edit_profile/"> Edit Profile</a></li>
+			        <li class = "navbar-menu"><a href="http://{{ request.get_host }}/myprofile/"> {{user.username}}</a></li>
+			        <li class = "navbar-menu" id = "logout-button"><a href="http://{{ request.get_host }}/logout/">Log out</a></li>	
 		        {% else %}
 		        	<li class = "navbar-menu"><a href="/find_people/">Find People</a></li>
 		        	<li class = "navbar-menu"><a href="{% url 'auth_login' %}">Log in</a></li>
