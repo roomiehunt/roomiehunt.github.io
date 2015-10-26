@@ -62,6 +62,8 @@ urlpatterns = [
     #--------------------------ROOMATE------------------------------#
     url(r'^roomate/$','roomate.views.criteria_view',name='criteria_view'), 
     url(r'^match_result/$','roomate.views.match_result',name='match_result'), 
+    url(r'^add_roomate/$','roomate.views.add_roomate',name='add_roomate'), #---AJAX--#
+    url(r'^change_roomate_status/$',"roomate.views.add_roomate",name='change_roomate_status'), #---AJAX---#
 
 
     #--------------------------FRIENDS-----------------------------------#

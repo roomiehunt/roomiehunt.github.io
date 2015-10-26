@@ -27,6 +27,8 @@
 				    		nationality = {{profile.nationality}}</br>
 				    		university = {{profile.university}} </br>
 				    		criteria = {{profile.searchCriteria.noisiness}} </br>
+
+							<div class = "btn btn-success" id="add_roomate">add roomate</div>				    		
 			    		{% endif %}
 
 			    		{% if my_uuid = user2_uuid %} <!-- receiver's/To perspective -->
@@ -75,6 +77,26 @@
 
 			    });
 			});
+
+			$('#add_roomate').click(function (e){
+				alert("HEY");
+				e.preventDefault();
+				$.ajax
+		    	({ 
+			        url: '/add_roomate/',
+			        data: {"user2_uuid":'{{ profile.id }}',csrfmiddlewaretoken: '{{ csrf_token }}'},
+			        type: 'post',
+			        success: function()
+			        {
+			        	location.reload(true);
+			        	alert("ADD_ROOMATE_SUCCEED");
+			        }
+
+			    });
+			});
+
+
+
 			{% if this_id %}
 	 		$('#accept_friend').click(function (e){
 				console.log("ACCEPT_FRIEND_PRESSED");
@@ -117,6 +139,10 @@
 			        }
 			    });
 			});
+
+
+
+
 			{% endif %}
 		  </script>
 	</body>
