@@ -27,9 +27,11 @@
 				    		nationality = {{profile.nationality}}</br>
 				    		university = {{profile.university}} </br>
 				    		criteria = {{profile.searchCriteria.noisiness}} </br>
-
-							<div class = "btn btn-success" id="add_roomate">add roomate</div>				    		
 			    		{% endif %}
+
+							<div class = "btn btn-success" id="add_roomate">show interest</div>				    		
+
+
 
 			    		{% if my_uuid = user2_uuid %} <!-- receiver's/To perspective -->
 				    		{% if friend_status == 'F'%}
@@ -62,6 +64,28 @@
 		  </div>
 
 		  <script>
+			$('#add_friend').click(function (e){
+				e.preventDefault();
+				$.ajax
+		    	({ 
+			        url: '/add_friend/',
+			        data: {"username2":'{{profile.user}}',"user2":'{{ profile.id }}',csrfmiddlewaretoken: '{{ csrf_token }}'},
+			        type: 'post',
+			        success: function()
+			        {
+			        	location.reload(true);
+			        	alert("ADD_FRIEND_SUCCEED");
+			        }
+
+			    });
+			});
+		  	
+
+
+
+
+
+		  	{% comment %}
 			$('#add_friend').click(function (e){
 				e.preventDefault();
 				$.ajax
@@ -140,10 +164,8 @@
 			    });
 			});
 
-
-
-
 			{% endif %}
+			{% endcomment %}
 		  </script>
 	</body>
 </html>

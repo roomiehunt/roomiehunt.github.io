@@ -63,13 +63,14 @@ urlpatterns = [
     url(r'^roomate/$','roomate.views.criteria_view',name='criteria_view'), 
     url(r'^match_result/$','roomate.views.match_result',name='match_result'), 
     url(r'^add_roomate/$','roomate.views.add_roomate',name='add_roomate'), #---AJAX--#
-    url(r'^change_roomate_status/$',"roomate.views.add_roomate",name='change_roomate_status'), #---AJAX---#
+    url(r'^change_roomate_status/$',"roomate.views.change_roomate_status",name='change_roomate_status'), #---AJAX---#
 
 
     #--------------------------FRIENDS-----------------------------------#
     url(r'^show_friends/$','friends.views.show_friends',name='show_friends'),
     url(r'^add_friend/$','friends.views.add_friend',name='add_friend'), #---AJAX--#
     url(r'^change_friend_status/$','friends.views.change_friend_status',name='change_friend_status'), #---AJAX---#
+    url(r'^show_interest/$','friends.views.show_interest',name='show_interest'), #---AJAX---#
 
 
     #--------------------FOR TESTING------------------------------------------#
