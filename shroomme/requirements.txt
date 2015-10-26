@@ -3,11 +3,13 @@ Pillow==2.9.0
 PyJWT==1.4.0
 django-crispy-forms==1.5.2
 django-registration-redux==1.2
+django-sortedm2m==1.0.2
 mongoengine==0.8.0
 oauthlib==1.0.3
 pymongo==3.0.3
 python-openid==2.2.5
 python-social-auth==0.2.12
+pytz==2015.6
 requests==2.7.0
 requests-oauthlib==0.5.0
 six==1.9.0

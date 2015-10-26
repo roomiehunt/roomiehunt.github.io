@@ -1,0 +1,141 @@
+{% load staticfiles %}
+<html>
+	<body>
+		<link rel="stylesheet" href="{% static "myprofile.css" %}">
+		{% include 'navbar.html' %}	
+		<h1>Hi! {{ user.username }}</h1>
+		<h1> Create message </h1>
+		<hr>
+		<div class = "container">
+			<div class = "row">
+
+				Users: <a href="" data-toggle="modal" data-target="#add-user-modal">Add_User</a>
+				<div id = "my_list"></div>
+						
+
+				<hr>
+				subject:
+				<div id = "subject">	
+				<input type="text" name="subject" id = "subject">
+				<br>
+				message:
+				<div id = "message_util">
+<!-- 					<input type="text" name="message_box" id = "message_box"> -->		
+					<textarea name="message_box" id = "message_box"> </textarea>			
+					<div class = "btn" "btn-default" id = "send_button"/>
+						send
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+			<style>
+			.friends_elem,#send_button {
+			 cursor: pointer; 
+			 cursor: hand; 
+			}
+			#message_util{
+/*				visibility: hidden;
+*/			}
+
+			</style>
+
+			<div id="add-user-modal" class="modal fade" role="dialog">
+			  <div class="modal-dialog">
+			    <!-- Modal content-->
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Add</h4>
+			      </div>
+			      <div class="modal-body">
+			      		user-list : <div id = "user-list-modal"></div>
+			      		<hr> 
+			      		{% for elem in user_list %}
+			      			{% if elem.id != my_uuid %}
+			      			{{elem.first_name}}
+			      			{{elem.last_name}}
+					        <button type="button" class = "add_user_button" user_uuid = "{{elem.id}}" first_name = "{{elem.first_name}}" last_name = "{{elem.last_name}}">Add User</button>
+			      			<br>
+			      			{% endif %}
+			      		{% endfor %}
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+
+			  </div>
+			</div>
+
+			<script>
+				user_list_array = [];
+				user_names_array = [];
+				function reDrawUserList(){
+
+
+				}
+
+				function emptyUserListModal(){
+
+				}				
+
+				$(".add_user_button").click(function (e){
+					console.log("hello");
+					var user_uuid = $(this).attr("user_uuid");
+					var user_list = document.getElementById("user-list-modal");
+					var my_list = document.getElementById("my_list");
+					console.log(user_list);
+
+					console.log(my_list);
+					if(!(user_list_array.indexOf(user_uuid) > -1)){
+						user_list_array.push(user_uuid);
+						var user_first_name = $(this).attr("first_name");
+						var user_last_name = $(this).attr("last_name");
+						var full_name = user_first_name + " " + user_last_name;
+					    var textNode = document.createTextNode(user_first_name + " " + user_last_name + "|");
+					    var textNode2 = document.createTextNode(user_first_name + " " + user_last_name + "|");2
+					    my_list.appendChild(textNode2);
+					    user_list.appendChild(textNode);
+					    user_names_array.push(full_name);
+					}
+					else{
+						alert("user is already included");
+					}
+				});
+
+				$("#send_button").click(function (e){
+					if(user_names_array.length == 0){
+						alert("Please add user");
+						return true;
+					}
+
+					var formValue = document.getElementById("message_box").value;
+
+					$.ajax({
+						url:"/create_thread/",
+						type:"post",
+						data:						
+						{
+						"user_list":JSON.stringify(user_list_array),
+						"message":formValue,
+						csrfmiddlewaretoken: '{{ csrf_token }}'
+						},
+						complete:function(result)
+						{
+							window.location.replace("../messaging_2/");
+						}
+					});
+
+
+				});
+
+
+
+
+
+			</script>
+	</body>
+</html>
