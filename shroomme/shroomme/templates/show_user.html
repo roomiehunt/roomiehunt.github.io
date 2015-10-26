@@ -58,22 +58,25 @@
 		  </div>
 
 		  <script>
-			$('#add_friend').click(function (e){
+
+
+				$('#add_roomate').click(function (e){
+				alert("HEY");
 				e.preventDefault();
 				$.ajax
 		    	({ 
-			        url: '/add_friend/',
-			        data: {"username2":'{{profile.user}}',"user2":'{{ profile.id }}',csrfmiddlewaretoken: '{{ csrf_token }}'},
+			        url: '/add_roomate/',
+			        data: {"user2_uuid":'{{ profile.id }}',csrfmiddlewaretoken: '{{ csrf_token }}'},
 			        type: 'post',
 			        success: function()
 			        {
 			        	location.reload(true);
-			        	alert("ADD_FRIEND_SUCCEED");
+			        	alert("ADD_ROOMATE_SUCCEED");
 			        }
 
 			    });
-			});
-		  	
+			});	  
+
 
 
 
@@ -96,22 +99,7 @@
 			    });
 			});
 
-			$('#add_roomate').click(function (e){
-				alert("HEY");
-				e.preventDefault();
-				$.ajax
-		    	({ 
-			        url: '/add_roomate/',
-			        data: {"user2_uuid":'{{ profile.id }}',csrfmiddlewaretoken: '{{ csrf_token }}'},
-			        type: 'post',
-			        success: function()
-			        {
-			        	location.reload(true);
-			        	alert("ADD_ROOMATE_SUCCEED");
-			        }
 
-			    });
-			});
 
 
 

@@ -75,7 +75,8 @@ class Roomate(models.Model):
 	user2_uuid = models.UUIDField(default=uuid.uuid4,blank = True,null = True)
 	status = models.CharField(max_length=1,choices=constants.ROOMATE_STATUS_II,default='U')
 	created = models.DateTimeField(auto_now_add=True,blank = True,null = True)
-	roomate_id = models.UUIDField(primary_key=True, default=uuid.uuid4)#, editable=False)
+	roomate_id = models.UUIDField(primary_key = True, default=uuid.uuid4)#, editable=False)
+#	id = models.IntegerField(primary_key = True,default = 0)
 	manager = RoomateManager()
 
 
