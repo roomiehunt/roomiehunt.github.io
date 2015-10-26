@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from userprofile.models import Profile
 from django.db import IntegrityError
 import userprofile.views as userprofileviews
+from django.contrib.sites.shortcuts import get_current_site
 
 def home(request):
     if request.user.is_authenticated():
