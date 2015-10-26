@@ -119,6 +119,7 @@ def add_roomate(request):
 		user2_profile = Profile.objects.get(id=user2_uuid)
 		user2 = user2_profile.user
 		roomate_object = Roomate(user1=user1,user2=user2,status = "P",user1_uuid=user1_uuid,user2_uuid=user2_uuid)
+		roomate_object.save()
 		message = user1_profile.first_name + " " + user1_profile.last_name + " wants to be roomates with you"
 		notification_object = Notification(
 											user1=user1,
@@ -129,7 +130,6 @@ def add_roomate(request):
 											target_id=roomate_object.roomate_id,
 											user1_uuid=user1_uuid,
 											user2_uuid=user2_uuid)
-		roomate_object.save()
 		notification_object.save()					
 		print user2_uuid;
 		return render(request,'error.html',context)

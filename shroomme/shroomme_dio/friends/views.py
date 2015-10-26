@@ -119,6 +119,32 @@ def change_friend_status(request):
 			print "BLOCK--------------------AJAX------------------"
 	return redirect(gethome())
 
+@requires_csrf_token
+def show_interest(request):
+	if request.method == "POST" and request.is_ajax():
+		context = {}
+		user1 = request.user
+		user1_profile = Profile.objects.get(user=user1)		
+		user1_uuid = user1_profile.id
+		user2_uuid = request.POST['user2_uuid']
+		user2_profile = Profile.objects.get(id=user2_uuid)
+		user2 = user2_profile.user
+		friend_object = Friends(user1=user1,user2=user2,status = "P",user1_uuid=user1_uuid,user2_uuid=user2_uuid)
+		message = user1_profile.first_name + " " + user1_profile.last_name + "shows interest with you"
+		friend_object.save()
+		notification_object = Notification(
+											user1=user1,
+											user2=user2,
+											message=message,
+											read=False,
+											notification_type="I",
+											target_id=friend_object.roomate_id,
+											user1_uuid=user1_uuid,
+											user2_uuid=user2_uuid,
+										  )
+		notification_object.save()							
+		return render(request,"error.html",{})
+	return render(request,"error.html",{})
 
 def checkFriendExisted(user1,user2):
 	c1 = Q(user1=user1)
@@ -133,8 +159,6 @@ def checkFriendExisted(user1,user2):
 		return True
 	else:
 		return False
-
-
 
 def checkNotificationExisted(user1,user2,notification_type):
 	criterion1 = Q(user1=user1)
