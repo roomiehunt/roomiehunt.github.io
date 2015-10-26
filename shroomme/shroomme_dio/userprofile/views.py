@@ -103,13 +103,13 @@ def show_user(request):
 		if request.method == 'GET':
 			profile_id = request.GET['profile_id']
 			print "profile_id " + profile_id
-			profile = Profile.objects.filter(id=profile_id)
-			friends_status = getStatus(request.user,profile[0].user)
-			context = {"profile":profile[0],"friend_status":friends_status}
+			profile = Profile.objects.get(id=profile_id)
+			friends_status = getStatus(request.user,profile.user)
+			context = {"profile":profile,"friend_status":friends_status}
 			#--------------------IF PENDING GIVE THE USER THE OPTION TO ACCEPT THE FRIEND REQUEST AND DO AJAX
 			#--------------------TO UPDATE THE DATABASE
 			if friends_status == 'P':
-				friends_object = getFriendsObject(request.user,profile[0].user)				
+				friends_object = getFriendsObject(request.user,profile.user)				
 				friends_id = friends_object.friends_id
 				notification_object = Notification.objects.get(target_id=friends_id)
 				user1_uuid = notification_object.user1_uuid

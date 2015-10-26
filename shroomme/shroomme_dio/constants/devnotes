@@ -24,13 +24,13 @@ Friends user1_uuid user2_uuid join
 
 
 
-
-
-
-
-
 CACHING
 ------------------------------------
 Memcache
 Reddis
 
+
+remove friends -> 
+remove privacy -> 
+show interest -> notification
+roomate ->

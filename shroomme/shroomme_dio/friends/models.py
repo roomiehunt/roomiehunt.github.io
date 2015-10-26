@@ -30,7 +30,6 @@ def isFriends(user1,user2):
 	c3 = Q(user1=user2)
 	c4 = Q(user2=user1)
 	friend_object = Friends.objects.filter( ( (c1&c2)|(c3&c4)) )
-#	friend_object = Friends.objects.filter( ( c1&c2 ) )
 	if friend_object is None:
 		return False
 	status = friend_object[0].status

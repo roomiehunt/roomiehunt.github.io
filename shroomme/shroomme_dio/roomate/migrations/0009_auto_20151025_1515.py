@@ -8,18 +8,17 @@ import uuid
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('roomate', '0007_roomate'),
+        ('roomate', '0008_auto_20151025_1514'),
     ]
 
     operations = [
-        migrations.AlterField(
+        migrations.RemoveField(
             model_name='roomate',
-            name='user1_uuid',
-            field=models.UUIDField(default=uuid.uuid4),
+            name='id',
         ),
-        migrations.AlterField(
+        migrations.AddField(
             model_name='roomate',
-            name='user2_uuid',
-            field=models.UUIDField(default=uuid.uuid4),
+            name='roomate_id',
+            field=models.UUIDField(default=uuid.uuid4, serialize=False, primary_key=True),
         ),
     ]

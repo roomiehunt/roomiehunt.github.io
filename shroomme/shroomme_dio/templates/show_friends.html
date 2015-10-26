@@ -6,15 +6,19 @@
 		<h1>Hi! {{ user.username }}</h1>
 		<h1> Your Friends </h1>
 		<hr>
-		<div class = "container">
+		
+		<div class = "jumbotron">
+				<ul class = "list-group">
 			{% for elem in result_list %}
-				First_name = {{elem.first_name}}
-				<br>
-				Last_name = {{elem.last_name}}
-				<br>
-				Profile_link = <a href = "../show_user/?profile_id={{elem.id}}"> Profile link </a>
-				<hr>
+				<li class = "item-list-group">
+					<img src = "{{elem.profile_image.url}}" width = "42" height = "42"/>
+					First_name = {{elem.first_name}}
+					Last_name = {{elem.last_name}}
+					Profile_link = <a href = "../show_user/?profile_id={{elem.id}}"> Profile link </a>
+					<hr>
+				</li>
 			{% endfor %}
+			</ul>
 		</div>
 	</body>
 </html>

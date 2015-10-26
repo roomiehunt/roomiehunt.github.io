@@ -28,7 +28,6 @@ def show_friends(request):
 		print uuid_total		
 		print Profile.objects.get(user=request.user).id
 		uuid_total.remove(Profile.objects.get(user=request.user).id)
-		print "TITIT---------------------------------"
 		result_list = Profile.objects.filter(id__in=uuid_total)
 		context = {"result_list":result_list}
 	return render(request,"show_friends.html",context)

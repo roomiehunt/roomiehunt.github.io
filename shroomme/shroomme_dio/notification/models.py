@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
 from constants.constants import constants
+from userprofile.models import Profile
 import uuid,os
 
 
@@ -14,7 +15,11 @@ class NotificationManager(models.Manager):
 	def createFriendNotification(self):
 		print "createFriend";
 
-	def createRoomateNotification(self):
+	def createRoomateNotification(self,uuid1,uuid2):
+		this_user = Profile.objects.get(user = request.user)
+		other_user = Profile.objects.get(id = uuid2)
+		notification_object = Notification()
+		notification_object.save() 
 		print "createRoomate";
 
 

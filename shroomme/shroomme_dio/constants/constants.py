@@ -22,6 +22,14 @@ class constants():
 	)
 
 
+	ROOMATE_STATUS_II = (
+		('R','Roomates'),
+		('P','Pending'),
+		('B','Blocked'),
+		('N','Not Roomates'),
+	)
+
+
 
 	ROOMATE_STATUS = (
 		('Looking for roomates','Looking for roomates'),
