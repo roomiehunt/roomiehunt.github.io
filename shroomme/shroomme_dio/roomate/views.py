@@ -99,7 +99,7 @@ def match_result(request):
 			break
 	#------------------------------------------------------------------
 	#------------------------------------------------------------------
-	print Roomate.manager.getMyRoomates(this_user.id)
+	#print Roomate.manager.getMyRoomates(this_user.id)
 
 	context = {"result":result}
 	return render(request,'match_result.html',context)

@@ -15,46 +15,40 @@
 		    		<!-- IF USER IS NOT NONE-->
 		    		{% if profile != None %}
 		    		<!-- IF USER IS PRIVATE AND FRIENDS || USER IS NOT PRIVATE SHOW-->
-			    		{% if profile.private == True %}
-				    		This User Is Private add as friend to see his profile <br>
-						{% else %}			    		
-							{% if profile.private == True %}
-				  				For logging:This user is Private and is friends with you
-				  			{% endif %}
+		    				<img src = "{{profile.profile_image.url}}" height = "42" width = "42"/>
 				    		first_name = {{profile.first_name}}</br>
 				    		middle_name = {{profile.middle_name}}</br>
 				    		last_name = {{profile.last_name}}</br>
 				    		nationality = {{profile.nationality}}</br>
 				    		university = {{profile.university}} </br>
 				    		criteria = {{profile.searchCriteria.noisiness}} </br>
-			    		{% endif %}
-
 							<div class = "btn btn-success" id="add_roomate">show interest</div>				    		
 
 
-
-			    		{% if my_uuid = user2_uuid %} <!-- receiver's/To perspective -->
-				    		{% if friend_status == 'F'%}
-				    			<div class = "btn btn-success">Friends</div>
-					    	{% elif friend_status == 'P'%}
-				    			<div class = "btn btn-success" id= "accept_friend">Accept</div>
-				    			<div class = "btn btn-primary" id= "ignore_friend">Ignore</div>
-					    	{% elif friend_status == 'B' %}
-					    		<div class = "btn btn-success">unblock</div> 
-					    	{% else %}
-					    		<div class = "btn btn-success" id="add_friend">add friend</div>
-					    	{% endif %}
-					    {% else %} <!-- sender's perspective -->
-				    		{% if friend_status == 'F'%}
-				    			<div class = "btn btn-success">Friends</div>
-					    	{% elif friend_status == 'P'%}
-				    			<div class = "btn btn-success">Pending</div>
-					    	{% elif friend_status == 'B' %}
-					    		<div class = "btn btn-success">unblock</div> 
-					    	{% else %}
-					    		<div class = "btn btn-success" id="add_friend">add friend</div>
-					    	{% endif %}
-					    {% endif %}
+									{% comment %}
+						    		{% if my_uuid = user2_uuid %} <!-- receiver's/To perspective -->
+							    		{% if friend_status == 'F'%}
+							    			<div class = "btn btn-success">Friends</div>
+								    	{% elif friend_status == 'P'%}
+							    			<div class = "btn btn-success" id= "accept_friend">Accept</div>
+							    			<div class = "btn btn-primary" id= "ignore_friend">Ignore</div>
+								    	{% elif friend_status == 'B' %}
+								    		<div class = "btn btn-success">unblock</div> 
+								    	{% else %}
+								    		<div class = "btn btn-success" id="add_friend">add friend</div>
+								    	{% endif %}
+								    {% else %} <!-- sender's perspective -->
+							    		{% if friend_status == 'F'%}
+							    			<div class = "btn btn-success">Friends</div>
+								    	{% elif friend_status == 'P'%}
+							    			<div class = "btn btn-success">Pending</div>
+								    	{% elif friend_status == 'B' %}
+								    		<div class = "btn btn-success">unblock</div> 
+								    	{% else %}
+								    		<div class = "btn btn-success" id="add_friend">add friend</div>
+								    	{% endif %}
+								    {% endif %}
+								    {% endcomment %}
 			    	{% else %}
 			    		<h1> Invalid User </h1>
 			    	{% endif %}
