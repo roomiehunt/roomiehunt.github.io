@@ -1,0 +1,5 @@
+#!/Users/dio/project/roomiehunt/roomiehunt.github.io/shroomme/mac_env/bin/python
+from django.core import management
+
+if __name__ == "__main__":
+    management.execute_from_command_line()

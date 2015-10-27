@@ -1,7 +1,7 @@
 {% load i18n %}
 {% trans "Activate account at" %} {{ site.name }}:
 
-Hello there this is from custom template!
+Hello there!
 
 Click the link below to activate your account.
 
