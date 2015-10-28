@@ -22,7 +22,22 @@
 				    		nationality = {{profile.nationality}}</br>
 				    		university = {{profile.university}} </br>
 				    		criteria = {{profile.searchCriteria.noisiness}} </br>
-							<div class = "btn btn-success" id="add_roomate">show interest</div>				    		
+
+				    		{% if interest == "mutual"%}
+								<div class = "btn btn-primary">mutual interest can do roomate request now</div>				    
+								<div class = "btn btn-success" id="roomate_request">roomate request</div>
+							{% elif interest == "interested"%}
+								<div class = "btn btn-primary">he/her has shown interest do you like to show interest back?</div>
+								<div class = "btn btn-success" id="show_interest">show interest</div>				    		
+							{% elif interest == "none"%}																
+								<div class = "btn btn-success" id="show_interest">show interest</div>				    		
+							{% elif interest == "pending"%}
+								<div class = "btn btn-primary">interest is shown waiting for his/her response</div>				    
+							{% endif %}
+
+
+
+
 
 
 									{% comment %}
@@ -60,94 +75,108 @@
 		  <script>
 
 
-				$('#add_roomate').click(function (e){
+				$('#show_interest').click(function (e){
 				alert("HEY");
 				e.preventDefault();
 				$.ajax
 		    	({ 
-			        url: '/add_roomate/',
-			        data: {"user2_uuid":'{{ profile.id }}',csrfmiddlewaretoken: '{{ csrf_token }}'},
+			        url: '/show_interest/',
+			        data: {"user2_uuid":'{{ profile.id }}',csrfmiddlewaretoken: '{{ csrf_token }}',notification_delete :"no"},
 			        type: 'post',
 			        success: function()
 			        {
 			        	location.reload(true);
-			        	alert("ADD_ROOMATE_SUCCEED");
+			        	alert("SHOW_INTEREST_SUCCEED");
 			        }
 
 			    });
-			});	  
+				});	  
+
+
+				$('#roomate_request').click(function (e){
+					alert("roomate_request");
+					e.preventDefault();
+					$.ajax
+					({
+				        url: '/roomate_request/',
+				        data: {"user2_uuid":'{{ profile.id }}',csrfmiddlewaretoken: '{{ csrf_token }}'},
+				        type: 'post',
+				        success: function()
+				        {
+				        	location.reload(true); //refresh page after ajax
+				        	alert("ROOMATE_REQUEST_SUCCEED");
+				        }
+
+					});
+				});
 
 
 
 
 
 
-		  	{% comment %}
-			$('#add_friend').click(function (e){
-				e.preventDefault();
-				$.ajax
-		    	({ 
-			        url: '/add_friend/',
-			        data: {"username2":'{{profile.user}}',"user2":'{{ profile.id }}',csrfmiddlewaretoken: '{{ csrf_token }}'},
-			        type: 'post',
-			        success: function()
-			        {
-			        	location.reload(true);
-			        	alert("ADD_FRIEND_SUCCEED");
-			        }
+				  	{% comment %}
+					$('#add_friend').click(function (e){
+						e.preventDefault();
+						$.ajax
+				    	({ 
+					        url: '/add_friend/',
+					        data: {"username2":'{{profile.user}}',"user2":'{{ profile.id }}',csrfmiddlewaretoken: '{{ csrf_token }}'},
+					        type: 'post',
+					        success: function()
+					        {
+					        	location.reload(true);
+					        	alert("ADD_FRIEND_SUCCEED");
+					        }
 
-			    });
-			});
+					    });
+					});
 
+					{% if this_id %}
+			 		$('#accept_friend').click(function (e){
+						console.log("ACCEPT_FRIEND_PRESSED");
+						e.preventDefault();
+						$.ajax
+				    	({ 
+					        url: '/change_friend_status/',
+					        data: {"type":"accept",
+					        	   "target_id":'{{target_id}}',
+					        	   "this_id":'{{this_id}}',
+					        	   "user1_uuid":'{{user1_uuid}}',
+					        	   "user2_uuid":'{{user2_uuid}}',
+					        	   csrfmiddlewaretoken: '{{ csrf_token }}'},
+					        type: 'post',
+					        success: function()
+					        {
+					        	alert("ACCEPT_FRIEND_STATUS");
+					        	location.reload(true);
+					        }
+					    });
+					});
 
+					$('#ignore_friend').click(function (e){
+						console.log("IGNORE_FRIEND_PRESSED");				
+						e.preventDefault();
+						$.ajax
+				    	({ 
+					        url: '/change_friend_status/',
+					        data: {"type":"ignore",
+					        		"target_id":'{{target_id}}',
+					        		"this_id":'{{this_id}}',
+					        		"user1_uuid":'{{user1_uuid}}',
+		  			        	    "user2_uuid":'{{user2_uuid}}',
+					        		csrfmiddlewaretoken: '{{ csrf_token }}'},
+					        type: 'post',
+					        success: function()
+					        {
+					        	alert("IGNORE_FRIEND_STATUS");
+					        	location.reload(true);
+					        }
+					    });
+					});
 
-
-
-			{% if this_id %}
-	 		$('#accept_friend').click(function (e){
-				console.log("ACCEPT_FRIEND_PRESSED");
-				e.preventDefault();
-				$.ajax
-		    	({ 
-			        url: '/change_friend_status/',
-			        data: {"type":"accept",
-			        	   "target_id":'{{target_id}}',
-			        	   "this_id":'{{this_id}}',
-			        	   "user1_uuid":'{{user1_uuid}}',
-			        	   "user2_uuid":'{{user2_uuid}}',
-			        	   csrfmiddlewaretoken: '{{ csrf_token }}'},
-			        type: 'post',
-			        success: function()
-			        {
-			        	alert("ACCEPT_FRIEND_STATUS");
-			        	location.reload(true);
-			        }
-			    });
-			});
-
-			$('#ignore_friend').click(function (e){
-				console.log("IGNORE_FRIEND_PRESSED");				
-				e.preventDefault();
-				$.ajax
-		    	({ 
-			        url: '/change_friend_status/',
-			        data: {"type":"ignore",
-			        		"target_id":'{{target_id}}',
-			        		"this_id":'{{this_id}}',
-			        		"user1_uuid":'{{user1_uuid}}',
-  			        	    "user2_uuid":'{{user2_uuid}}',
-			        		csrfmiddlewaretoken: '{{ csrf_token }}'},
-			        type: 'post',
-			        success: function()
-			        {
-			        	alert("IGNORE_FRIEND_STATUS");
-			        	location.reload(true);
-			        }
-			    });
-			});
-
-			{% endif %}
-			{% endcomment %}
+					{% endif %}
+					{% endcomment %}
 		  </script>
 	</body>
 </html>

@@ -120,7 +120,7 @@ def change_friend_status(request):
 	return redirect(gethome())
 
 @requires_csrf_token
-def show_interest(request):
+def add_friend(request):
 	if request.method == "POST" and request.is_ajax():
 		context = {}
 		user1 = request.user

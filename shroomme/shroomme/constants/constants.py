@@ -40,10 +40,10 @@ class constants():
 	NOTIFICATION_TYPE = (
 		('FR','Friend_Request'), #Friend request
 		('FA','Friend_Accept'), #Friend request
-		('RM','Roomate_Request'),#Roomate request accepted
+		('RR','Roomate_Request'),#Roomate request accepted
 		('RA','Roomate_Accept'),#roomate request accepted
 		('NM','New_Message'), #Messaging
-		('I','Interest shown'), #show interest
+		('SI','Show_Interest'), #show interest
 		('U','Unspecified'), #Unspecified
 	)
 

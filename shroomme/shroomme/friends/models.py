@@ -7,6 +7,24 @@ from userprofile.models import Profile
 import uuid
 
 # Create your models here.
+
+
+class friends_manager(models.Manager):
+	#--USED TO FRIENDS OBJECT FROM user1 = from user2 = to
+	def get_object_from(self,user1_uuid,user2_uuid):
+		c1 = Q(user1_uuid=user1_uuid)
+		c2 = Q(user2_uuid=user2_uuid)
+		temp = self.filter((c1&c2))
+		if len(temp) == 0:
+			return None
+		elif temp is None:
+			return None
+		else:
+			return temp[0]
+
+
+
+
 class Friends(models.Model):
 	user1 = models.ForeignKey(settings.AUTH_USER_MODEL,blank = False,null = False)
 	user2 = models.ForeignKey(settings.AUTH_USER_MODEL,blank = False,null = False,related_name="friends+")
@@ -19,6 +37,7 @@ class Friends(models.Model):
 	user2_messages_count = models.IntegerField(default = 0)
 	user1_last_received = models.DateTimeField(blank = True,auto_now_add=True)
 	user2_last_received =  models.DateTimeField(blank = True,auto_now_add=True)
+	manager = friends_manager()
 
 	def test(self):
 		return self.objects.all()
