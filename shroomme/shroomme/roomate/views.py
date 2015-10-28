@@ -3,6 +3,7 @@ from userprofile.models import Profile
 from .forms import CriteriaForm
 from .models import Criteria,Roomate
 from notification.models import Notification
+from friends.models import Friends
 
 def criteria_view(request):
 	currentUser = Profile.objects.get(user=request.user)
@@ -106,8 +107,45 @@ def match_result(request):
 
 
 #---ajax----#
-def add_roomate(request):
-	print "ADD_ROOMATE"
+def show_interest(request):
+	if request.method == "POST" and request.is_ajax():
+		print "AJAX------------------------------------SHOW INTEREST"
+		context = {}
+		#----GET VARIABLES---#
+		user1 = request.user
+		user1_profile = Profile.objects.get(user=user1)		
+		user1_uuid = user1_profile.id
+		user2_uuid = request.POST['user2_uuid']
+		user2_profile = Profile.objects.get(id=user2_uuid)
+		user2 = user2_profile.user
+		#----INTERESTS ARE DIRECTED GRAPHS----#
+		friends_object = Friends(user1=user1,user2=user2,status = "I",user1_uuid=user1_uuid,user2_uuid=user2_uuid)
+		friends_object.save()
+		message = user1_profile.first_name + " " + user1_profile.last_name + " shown interest on you"
+		notification_object = Notification(
+											user1=user1,
+											user2=user2,
+											message=message,
+											read=False,
+											notification_type="SI",
+											target_id=friends_object.friends_id,
+											user1_uuid=user1_uuid,
+											user2_uuid=user2_uuid
+											)
+		notification_object.save()					
+		print user2_uuid;
+		notification_delete = request.POST['notification_delete']
+		if notification_delete == "ok":
+			notification_id = request.POST['notification_id']
+			notification_object_delete = Notification.objects.get(notification_id=notification_id)
+			notification_object_delete.delete()	
+
+		return render(request,'error.html',context)
+	return render(request,'error.html',{})
+
+#---ajax----#
+def roomate_request(request):
+	print "AJAX---------------------------------------ROOMATE REQUEST"
 
 	if request.method == "POST" and request.is_ajax():
 		print "AJAX----ADD_ROOMATE"
@@ -126,18 +164,15 @@ def add_roomate(request):
 											user2=user2,
 											message=message,
 											read=False,
-											notification_type="FR",
+											notification_type="RR",
 											target_id=roomate_object.roomate_id,
 											user1_uuid=user1_uuid,
-											user2_uuid=user2_uuid)
+											user2_uuid=user2_uuid
+											)
 		notification_object.save()					
 		print user2_uuid;
 		return render(request,'error.html',context)
-
-
 	return render(request,'error.html',{})
-
-
 
 
 #------ajax----#

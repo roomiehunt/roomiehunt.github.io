@@ -92,8 +92,12 @@ def show_thread(request):
 	context = {"result":result,"thread_id":thread_id}
 	return render(request,"show_thread.html",context)
 
-
 #---------------------------------AJAX MESSAGES-------------------------------#
+#---------------------------------AJAX MESSAGES-------------------------------#
+#---------------------------------AJAX MESSAGES-------------------------------#
+#---------------------------------AJAX MESSAGES-------------------------------#
+
+#----AJAX-------#
 def show_messages(request):
 	print "AJAX CALL MESSAGES.SHOW_MESSAGES"
 	if request.method == "POST" and request.is_ajax():
@@ -113,6 +117,8 @@ def show_messages(request):
 		context = {"name":"failure"}
 		return HttpResponse(json.dumps(context), content_type="application/json");
 
+
+#----AJAX-------#
 def create_messages(request):
 	if request.method == "POST" and request.is_ajax():
 		user1_uuid = request.POST['user1_uuid']
@@ -130,6 +136,7 @@ def create_messages(request):
 	else:
 		return render(request,"index.html",{})
 
+#----AJAX-------#
 def update_messages(request):
 	if request.method == "POST" and request.is_ajax():
 		user1_uuid = request.POST['user1_uuid']
@@ -142,6 +149,7 @@ def update_messages(request):
 	else:
 		return render(request,"index.html",{})
 
+#----AJAX-------#
 def create_thread(request):
 	if request.method == "POST" and request.is_ajax():
 		print request.POST
@@ -176,6 +184,7 @@ def create_thread(request):
 	else:
 		return render(request,"index.html",{})
 
+#----AJAX-------#
 def reply_thread(request):
 	if request.method == "POST" and request.is_ajax():
 		sender_id = Profile.objects.get(user=request.user).id

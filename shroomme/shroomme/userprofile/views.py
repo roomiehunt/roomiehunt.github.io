@@ -102,30 +102,42 @@ def show_user(request):
 	if request.user.is_authenticated():
 		if request.method == 'GET':
 			profile_id = request.GET['profile_id']
-			print "profile_id " + profile_id
-			profile = Profile.objects.get(id=profile_id)
-			friends_status = getStatus(request.user,profile.user)
-			context = {"profile":profile,"friend_status":friends_status}
-			#--------------------IF PENDING GIVE THE USER THE OPTION TO ACCEPT THE FRIEND REQUEST AND DO AJAX
-			#--------------------TO UPDATE THE DATABASE
-			if friends_status == 'P':
-				friends_object = getFriendsObject(request.user,profile.user)				
-				friends_id = friends_object.friends_id
-				notification_object = Notification.objects.get(target_id=friends_id)
-				user1_uuid = notification_object.user1_uuid
-				user2_uuid = notification_object.user2_uuid
-				my_uuid = Profile.objects.get(user=request.user).id
-				this_id = notification_object.notification_id
-				additional_context = {"target_id":friends_id,
-									  "my_uuid":my_uuid,
-									  "user1_uuid":user1_uuid,
-									  "user2_uuid":user2_uuid,
-									  "this_id":this_id,
-									  "friends_object":friends_object
-									  }
-				context.update(additional_context)
-			print "CONTEXT-------------------"
-			print context
+			target_profile = Profile.objects.get(id=profile_id) #---> GET TARGET PROFILE
+			context = {"profile":target_profile,"interest":"none"}			
+#			friends_status = getStatus(request.user,profile.user) #--OLD CODE
+			my_user = request.user
+			my_profile = Profile.objects.get(user=my_user)
+			user1_uuid = my_profile.id
+			user2_uuid = target_profile.id 
+			friends_object12 = Friends.manager.get_object_from(user1_uuid,user2_uuid)
+			friends_object21 = Friends.manager.get_object_from(user2_uuid,user1_uuid)
+			if friends_object12 is not None:
+				if friends_object21 is not None:
+					if friends_object12.status == "I" and friends_object21.status =="I":
+						context.update( {"interest":"mutual"} )
+				else:
+					if friends_object12.status == "I":
+						context.update({"interest":"pending"})
+			else:
+				if friends_object21 is not None:
+					if friends_object21.status == "I":
+						context.update({"interest":"interested"})
+			# if friends_status == 'P':
+			# 	friends_object = getFriendsObject(request.user,profile.user)				
+			# 	friends_id = friends_object.friends_id
+			# 	notification_object = Notification.objects.get(target_id=friends_id)
+			# 	user1_uuid = notification_object.user1_uuid
+			# 	user2_uuid = notification_object.user2_uuid
+			# 	my_uuid = Profile.objects.get(user=request.user).id
+			# 	this_id = notification_object.notification_id
+			# 	additional_context = {"target_id":friends_id,
+			# 						  "my_uuid":my_uuid,
+			# 						  "user1_uuid":user1_uuid,
+			# 						  "user2_uuid":user2_uuid,
+			# 						  "this_id":this_id,
+			# 						  "friends_object":friends_object
+			# 						  }
+			# 	context.update(additional_context)
 			return render(request,'show_user.html',context)
 	return redirect(gethome())
 
