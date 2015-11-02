@@ -8,21 +8,56 @@
 		<div class = "well">
 			{% for elem in notification_result %}
 				<div id = '{{elem.notification_id}}'>
+					<!-- SHOW INTEREST NOTIFICATION -->
 					{% if elem.notification_type == 'SI'%}
-					<h1>This is Show Interest notification</h1>
-					<br>
-					User : {{elem.user1}}
-					Message : {{elem.message}}			
-				    <div class = "btn btn-success show_interest" target = '{{elem.target_id}}' this = '{{elem.notification_id}}' user1_uuid='{{elem.user1_uuid}}' user2_uuid='{{elem.user2_uuid}}'> 
-				    	Show interest back
-				    </div>
+						<h1>This is Show Interest notification</h1>
+						<br>
+						User : {{elem.user1}}
+						Message : {{elem.message}}			
+					    <div class = "btn btn-success show_interest" target = '{{elem.target_id}}' this = '{{elem.notification_id}}' user1_uuid='{{elem.user1_uuid}}' user2_uuid='{{elem.user2_uuid}}'> 
+					    	Show interest back
+					    </div>
+					    <div class = "btn btn-danger ignore" target = '{{elem.target_id}}' this = '{{elem.notification_id}}' user1_uuid='{{elem.user1_uuid}}' user2_uuid='{{elem.user2_uuid}}'>
+					    	Ignore
+					    </div>
+					    <br>
+						<a href="../show_user/?profile_id={{elem.user1_uuid}}">see profile </a>
+					<!-- ROOMATE REQUEST NOTIFICATION-->
+					{%elif elem.notification_type == 'RR' %}
+						<h1>This is Roomate Request notification</h1>
+						<br>
+						User : {{elem.user1}}
+						Message : {{elem.message}}			
+					    <div class = "btn btn-success accept_roomate" target = '{{elem.target_id}}' this = '{{elem.notification_id}}' user1_uuid='{{elem.user1_uuid}}' user2_uuid='{{elem.user2_uuid}}'> 
+					    	Accept Roomate request notifiction
+					    </div>
+					    <div class = "btn btn-danger ignore" target = '{{elem.target_id}}' this = '{{elem.notification_id}}' user1_uuid='{{elem.user1_uuid}}' user2_uuid='{{elem.user2_uuid}}'>
+					    	Ignore
+					    </div>
+					    <br>
+						<a href="../show_user/?profile_id={{elem.user1_uuid}}">see profile </a>
+					<!-- ROOMATE ACCEPTED NOTIFICATION--> 
+					{%elif elem.notification_type == 'RA' %}
+						<h1>This is roomate accepted notification</h1>
+						From : {{elem.user1}}
+						Message : {{elem.message}}
+					    <div class = "btn btn-success ignore" target = '{{elem.target_id}}' this = '{{elem.notification_id}}' user1_uuid='{{elem.user1_uuid}}' user2_uuid='{{elem.user2_uuid}}'>
+					    	Ok
+					    </div>
+					    <br>
 
-				    <div class = "btn btn-danger ignore" target = '{{elem.target_id}}' this = '{{elem.notification_id}}' user1_uuid='{{elem.user1_uuid}}' user2_uuid='{{elem.user2_uuid}}'>
-				    	Ignore
-				    </div>
-				    <br>
-					<a href="../show_user/?profile_id={{elem.user1_uuid}}">see profile </a>
+
 					{% endif %}
+
+
+
+
+
+				</div>
+			{% endfor %}
+	
+
+
 														{% comment %}
 														<!-- **************** FRIEND REQUEST NOTIFICATION ****************-->
 														{% if elem.notification_type == 'FR'%}
@@ -33,7 +68,6 @@
 													    <div class = "btn btn-success" id="accept_friend" target = '{{elem.target_id}}' this = '{{elem.notification_id}}' user1_uuid='{{elem.user1_uuid}}' user2_uuid='{{elem.user2_uuid}}'> 
 													    	Accept Friend 
 													    </div>
-
 													    <div class = "btn btn-danger" id="ignore_friend" target = '{{elem.target_id}}' this = '{{elem.notification_id}}' user1_uuid='{{elem.user1_uuid}}' user2_uuid='{{elem.user2_uuid}}'>
 													    	Ignore Friend Request 
 													    </div>
@@ -47,10 +81,9 @@
 														<div class = "btn btn-success" id = "ok_notification" this_id='{{elem.notification_id}}'>
 															ok
 														</div>
+
 														{% endif %}
 														{% endcomment %}						
-					</div>
-			{% endfor %}
 		</div>
 
 		<script>
@@ -67,12 +100,34 @@
 			        type: 'post',
 			        success: function()
 			        {
-			        	alert("SHOW_INTEREST");
+			        	alert("SHOW INTEREST BACK");
 						$('#'+this_id).hide('slow');																
 			        }
 
 			    });
 			});	  
+
+			$('.accept_roomate').click(function (e){
+				alert("ACCEPT ROOMATE");
+				var this_id = $(this).attr("this");  //NOTIFICATION ID
+				var user1_uuid = $(this).attr("user1_uuid")
+				var roomate_id = $(this).attr("target")
+				console.log("WASDD")
+				console.log(roomate_id)
+				e.preventDefault();
+				$.ajax
+		    	({ 
+			        url: '/roomate_request/',
+			        data: {"user2_uuid": user1_uuid,csrfmiddlewaretoken: '{{ csrf_token }}',notification_delete : "ok",notification_id : this_id,"roomate_id":roomate_id},
+			        type: 'post',
+			        success: function()
+			        {
+			        	alert("ACCEPT ROOMATE REQUEST");
+						$('#'+this_id).hide('slow');																
+			        }
+
+			    });
+			});
 
 
 			$('.ignore').click(function (e){
@@ -88,9 +143,7 @@
 			        	alert("delete_notification_success");
 						$('#'+this_id).hide('slow');
 			        }
-
 			    });				
-
 		    });
 				  
 

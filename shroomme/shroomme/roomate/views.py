@@ -105,6 +105,14 @@ def match_result(request):
 	context = {"result":result}
 	return render(request,'match_result.html',context)
 
+#---------------------------------------------AJAX---------------------------------------#
+#---------------------------------------------AJAX---------------------------------------#
+#---------------------------------------------AJAX---------------------------------------#
+#---------------------------------------------AJAX---------------------------------------#
+#---------------------------------------------AJAX---------------------------------------#
+#---------------------------------------------AJAX---------------------------------------#
+#---------------------------------------------AJAX---------------------------------------#
+
 
 #---ajax----#
 def show_interest(request):
@@ -143,8 +151,82 @@ def show_interest(request):
 		return render(request,'error.html',context)
 	return render(request,'error.html',{})
 
-#---ajax----#
+
+
+#--------ajax----------#
 def roomate_request(request):
+	if request.method == "POST" and request.is_ajax():
+		print Friends
+		print Friends.objects
+		print Roomate		
+		lists = Roomate.objects.all()		
+		print "AJAX------------------------------------SHOW INTEREST"
+		context = {}
+		#----GET VARIABLES---#
+		user1 = request.user
+		user1_profile = Profile.objects.get(user=user1)		
+		user1_uuid = user1_profile.id
+		user2_uuid = request.POST['user2_uuid']
+		user2_profile = Profile.objects.get(id=user2_uuid)
+		user2 = user2_profile.user
+		roomate_id = request.POST['roomate_id']
+		#----ROOMATE BOUNDED WAY PENDING----#		
+		if roomate_id == "none":
+			roomate_object = Roomate(user1=user1,user2=user2,status = "P",user1_uuid=user1_uuid,user2_uuid=user2_uuid)
+			roomate_object.save()
+			message = user1_profile.first_name + " " + user1_profile.last_name + " has requested to be your roomate"
+			notification_object = Notification(
+												user1=user1,
+												user2=user2,
+												message=message,
+												read=False,
+												notification_type="RR",
+												target_id=roomate_object.roomate_id,
+												user1_uuid=user1_uuid,
+												user2_uuid=user2_uuid
+												)
+			notification_object.save()					
+			print user2_uuid;
+			notification_delete = request.POST['notification_delete']
+			if notification_delete == "ok":
+				notification_id = request.POST['notification_id']
+				notification_object_delete = Notification.objects.get(notification_id=notification_id)
+				notification_object_delete.delete()	
+		else:
+			roomate_object = Roomate.objects.get(roomate_id=roomate_id)
+			roomate_object.status = "R"
+			roomate_object.save()
+			message = user1_profile.first_name + " " + user1_profile.last_name + " has accepted your roomate request"
+			notification_object = Notification(
+												user1=user1,
+												user2=user2,
+												message=message,
+												read=False,
+												notification_type="RA",
+												target_id=roomate_object.roomate_id,
+												user1_uuid=user1_uuid,
+												user2_uuid=user2_uuid
+												)
+			notification_object.save()					
+			notification_delete = request.POST['notification_delete']
+			if notification_delete == "ok":
+				notification_id = request.POST['notification_id']
+				notification_object_delete = Notification.objects.get(notification_id=notification_id)
+				notification_object_delete.delete()	
+
+
+		return render(request,'error.html',context)
+	return render(request,'error.html',{})
+
+
+
+
+
+#-------------------------------DEPRECEATED------------------------------------#
+#-------------------------------DEPRECEATED------------------------------------#
+#-------------------------------DEPRECEATED------------------------------------#
+#---ajax----#
+def add_roomate(request):
 	print "AJAX---------------------------------------ROOMATE REQUEST"
 
 	if request.method == "POST" and request.is_ajax():

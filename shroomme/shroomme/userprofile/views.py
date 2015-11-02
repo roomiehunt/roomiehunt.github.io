@@ -14,6 +14,7 @@ from friends.models import Friends,getStatus,getFriendsObject
 from constants.constants import constants,gethome
 from notification.models import Notification
 from roomate.forms import CriteriaForm
+from roomate.models import Roomate
 import os
 
 #from shroomme.views import home
@@ -109,12 +110,13 @@ def show_user(request):
 			my_profile = Profile.objects.get(user=my_user)
 			user1_uuid = my_profile.id
 			user2_uuid = target_profile.id 
+			#------------------------------FRIENDS CODE----------------------------------------#
 			friends_object12 = Friends.manager.get_object_from(user1_uuid,user2_uuid)
 			friends_object21 = Friends.manager.get_object_from(user2_uuid,user1_uuid)
 			if friends_object12 is not None:
 				if friends_object21 is not None:
 					if friends_object12.status == "I" and friends_object21.status =="I":
-						context.update( {"interest":"mutual"} )
+						context.update( {"interest":"mutual","roomate_id":"none"} )
 				else:
 					if friends_object12.status == "I":
 						context.update({"interest":"pending"})
@@ -122,6 +124,22 @@ def show_user(request):
 				if friends_object21 is not None:
 					if friends_object21.status == "I":
 						context.update({"interest":"interested"})
+			#------------------------------FRIENDS CODE----------------------------------------#
+			#------------------------------ROOMATE CODE----------------------------------------#
+			roomate_object = Roomate.manager.get_object_from(user1_uuid,user2_uuid)
+			print roomate_object			
+			if roomate_object is not None:
+				roomate_status = roomate_object.status
+				if roomate_status == 'P': #--PENDING
+					if user1_uuid == roomate_object.user1_uuid:
+						context.update({"interest":"roomate_waiting","roomate_id":"none"})	
+					else:
+						context.update({"interest":"roomate_pending","roomate_id":roomate_object.roomate_id})
+				elif roomate_status == 'R': #--ROOMATES
+					context.update({"interest":"roomates"})
+
+
+			#------------------------------ROOMATE CODE----------------------------------------#
 			# if friends_status == 'P':
 			# 	friends_object = getFriendsObject(request.user,profile.user)				
 			# 	friends_id = friends_object.friends_id
@@ -138,6 +156,7 @@ def show_user(request):
 			# 						  "friends_object":friends_object
 			# 						  }
 			# 	context.update(additional_context)
+			print context
 			return render(request,'show_user.html',context)
 	return redirect(gethome())
 
