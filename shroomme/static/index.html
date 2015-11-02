@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:fb="http://ogp.me/ns/fb#"
+      lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>ShroomMe</title>
+    <link rel="icon" type="image/png" href="build/img/favicon.png">
+
+    <!-- Facebook cache -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="ShroomMe is a web-based application for people to find roommates and apartments.">
+    <meta name="author" content="ShroomMe">
+    <meta property="og:image" content="build/img/preview.png" />
+
+    <!-- Font Awesome -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="build/bootstrap-3.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="build/css/jquery.fullPage.css" rel="stylesheet" type='text/css'>
+    <link href="build/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="build/css/design.css" rel="stylesheet" type="text/css">
+
+
+    
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<!-- <div class="nav-bar center">
+	<div class="nav-header">
+		ShroomMe <img src="build/img/logo/shroomme.png"/>
+	</div>
+</div> -->
+<body class="index">
+<div class="navbar navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html"><img src="build/img/logo/shroomme.png"/> ShroomMe </a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+            </ul>
+            <ul class="nav navbar-login">
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="fullpage">
+	<div class="section section-one" id="section-one">
+        <div class="background">
+            <video autoplay muted loop class="video">
+                <source src="build/video/bg.webm" type="video/webm">
+            </video>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="header">
+                        <h3>Say hello to your <span class="hello-introduction"></span></h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12">
+                            <input type="text" class="search-bar" placeholder="e.g. Illinios, Chicago, Men, 20 years old"></input>
+                        </div>
+                    </div>
+                    <div class="btn btn-shroomme btn-md btn-round">
+                        Search
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="scrollDown" onclick="test()">
+            <span class="glyphicon glyphicon-arrow-down icon"></span>
+        </div> -->
+    </div>
+	<div class="section section-two"> 
+		<div class="slide">
+			<span class="fa fa-user"></span>
+            <span class="fa fa-long-arrow-right"></span>
+            <span class="fa fa-user"></span><br>
+            <span class="text">Need a roommate to share an apartment?</span><br>
+            <div class="btn btn-shroomme btn-md btn-round">
+                Find roommate!
+            </div>
+		</div>
+		<div class="slide">
+			<span class="fa fa-user"></span>
+            <span class="fa fa-user"></span>
+            <span class="fa fa-long-arrow-right"></span>
+            <span class="fa fa-building-o"></span><br>
+            <span class="text">Got a roommate already? Now find your ideal apartment!</span><br>
+            <div class="btn btn-shroomme btn-md btn-round">
+                Find apartment!
+            </div>
+		</div>
+	</div>
+	<div class="section section-three">
+        <div class="container">
+            <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
+                <h1> Why <span class="color-shroomme">Shroomme?</span> </h1>
+                <ul>
+                    <li> <div class="icon"><span class="fa fa-hourglass"></span></div> Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                    <li> <div class="icon"><span class="fa fa-users"></span></div>Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                    <li> <div class="icon"><span class="fa fa-home"></span></div>Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                </ul>
+            </div>
+            <div class="hidden-xs col-sm-4 col-md-6 col-lg-6">
+                <img class="over-width" src="build/img/stock/mac.png" />
+            </div>
+        </div>
+    </div>
+	<div class="section footer"> 
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                    <h3>Pages</h3>
+                    <ul>
+                        <li><a href="#">About</a>
+                        <li><a href="#">Sign Up</a>
+                        <li><a href="#">Log In</a>
+                        <li><a href="#">Team</a>
+                        <li><a href="#">Terms and Privacy</a>
+                        <li><a href="#">Contact Us</a>
+                    </ul>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                    <h3>Business</h3>
+                    <ul>
+                        <li><a href="#">Partner</a>
+                        <li><a href="#">Home</a>
+                        <li><a href="#">Home</a>
+                        <li><a href="#">Home</a>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="copyright text-center">
+                        &copy Copyright 2015 RoommateHunt Inc.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<body>
+
+<!-- jQuery Version 1.11.3 -->
+<script src="build/js/jquery-1.11.3.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="build/bootstrap-3.3.5/dist/js/bootstrap.min.js"></script>
+
+<!-- Fullpage JavaScript -->
+<script type="text/javascript" src="build/js/jquery.fullPage.js"></script>
+
+<!-- Typed JavaScript -->
+<script type="text/javascript" src="build/js/typed.js"></script>
+
+<!-- Slideout JavaScript -->
+<script type="text/javascript" src="build/js/slideout.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script>
+
+$(document).ready(function() {
+
+    $(".hello-introduction").typed({
+        strings: ["new friends", "ideal roommate", "new apartment", "future girlfriend", "new besties"],
+        typeSpeed: 50, 
+        loop: true,
+    });
+
+    $('#fullpage').fullpage({
+    	//Navigation
+        menu: false,
+        lockAnchors: true,
+        // anchors:['introduction', 'products', 'additional', 'team', 'footer'],
+        navigation: false,
+        navigationPosition: 'right',
+       	autoScrolling: false,
+        showActiveTooltip: true,
+        slidesNavigation: true,
+        slidesNavPosition: 'bottom',
+        loopHorizontal: false,
+        fixedElements: '.nav-bar',
+
+        sectionsColor : ['#E8E8E8', '#E0E0E0', '#E8E8E8', '#444'],
+
+        afterLoad: function(anchorLink, index){
+            var loadedSection = $(this);
+
+            if (index == 1){
+            	// $('.nav-header').html("<img src='build/img/logo/shroomme.png' class='logo'/> ShroomMe");
+			}
+
+			if (index != 1) {
+				// $('.nav-header').html("<img src='build/img/logo/shroomme.png' class='logo'/>");
+			}
+			
+        },
+
+        onLeave: function(index, nextIndex, direction){
+            var leavingSection = $(this);
+
+			if (index == 4 && direction =='down'){
+				$('.nav-bar').addClass("nav-bar-invert-color");
+			}
+
+			if (index == 5) {
+				$('.nav-bar').removeClass("nav-bar-invert-color");
+			}
+        }
+    });
+});
+</script>
+
+</body>
+</html>
