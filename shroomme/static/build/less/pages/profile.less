@@ -1,0 +1,43 @@
+.profile {
+
+	.menu-wrapper-left {
+		background-color: @shroomme;
+		background-image: url("../img/cover.jpg");
+		background-size: cover;
+		color: @white;
+		box-shadow: 1px 0 5px #888;
+
+		.profile-picture {
+			width: @profile-size;
+			padding-top: 50px;
+			padding-bottom: 50px;
+			
+			.profile-picture-image {
+				width: 100%;
+				border: 3px solid @white;
+				outline: 3px solid @shroomme;
+			}
+		}
+	}
+	.menu-wrapper-right {
+		background-color: @gray-light;
+	}
+}
+
+@media screen and (max-width: @screen-xs) {
+	.profile {
+		.menu-wrapper-left {
+			text-align: center;
+			.profile-picture {
+				left: 0;
+				width: 100%;
+				padding: 0;
+
+				.profile-picture-image {
+					border: none;
+					outline: none;
+				}
+			}
+		}
+	}
+}
