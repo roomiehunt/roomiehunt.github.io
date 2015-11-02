@@ -38,6 +38,7 @@ class Friends(models.Model):
 	user1_last_received = models.DateTimeField(blank = True,auto_now_add=True)
 	user2_last_received =  models.DateTimeField(blank = True,auto_now_add=True)
 	manager = friends_manager()
+	objects = models.Manager()
 
 	def test(self):
 		return self.objects.all()

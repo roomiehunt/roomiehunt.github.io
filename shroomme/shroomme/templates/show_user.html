@@ -31,8 +31,22 @@
 								<div class = "btn btn-success" id="show_interest">show interest</div>				    		
 							{% elif interest == "none"%}																
 								<div class = "btn btn-success" id="show_interest">show interest</div>				    		
-							{% elif interest == "pending"%}
+							{% elif interest == "pending"%}								
 								<div class = "btn btn-primary">interest is shown waiting for his/her response</div>				    
+
+
+							{% elif interest == "roomate_pending"%}
+								<div class = "btn btn-primary">mutual interest can do roomate request now</div>
+								<div class = "btn btn-primary" id = "roomate_request">you have been asked to become roomates by him accept?</div>			    
+							{% elif interest == "roomate_waiting"%}
+								<div class = "btn btn-primary">mutual interest can do roomate request now</div>
+								<div class = "btn btn-primary">waiting for him to response</div>				    
+							{% elif interest == "roomates"%}
+								<div class = "btn btn-primary">mutual interest can do roomate request now</div>
+								<div class = "btn btn-primary">you and him/her roomates right now</div>				    
+
+
+
 							{% endif %}
 
 
@@ -76,12 +90,11 @@
 
 
 				$('#show_interest').click(function (e){
-				alert("HEY");
 				e.preventDefault();
 				$.ajax
 		    	({ 
 			        url: '/show_interest/',
-			        data: {"user2_uuid":'{{ profile.id }}',csrfmiddlewaretoken: '{{ csrf_token }}',notification_delete :"no"},
+			        data: {user2_uuid:'{{ profile.id }}',csrfmiddlewaretoken: '{{ csrf_token }}',notification_delete :"no"},
 			        type: 'post',
 			        success: function()
 			        {
@@ -93,13 +106,17 @@
 				});	  
 
 
+
+
+
+
 				$('#roomate_request').click(function (e){
 					alert("roomate_request");
 					e.preventDefault();
 					$.ajax
 					({
 				        url: '/roomate_request/',
-				        data: {"user2_uuid":'{{ profile.id }}',csrfmiddlewaretoken: '{{ csrf_token }}'},
+				        data: {user2_uuid:'{{ profile.id }}',csrfmiddlewaretoken: '{{ csrf_token }}',roomate_id:'{{roomate_id}}',notification_delete:'no'},
 				        type: 'post',
 				        success: function()
 				        {

@@ -9,41 +9,21 @@ from django.db.models import Q
 # Create your models here.
 
 class RoomateManager(models.Manager):
-	def getMyRoomates(self,uuid):
-		return self.all()	
-	def getRoomatesFor(self,uuid):
-		return self.all()	
-	def makePendingStatus(self,user1,user2):
-		return self.all()	
-	def getStatus(self,user1,user2):
-		c1 = Q(user1=user1)
-		c2 = Q(user2=user2)
-		c3 = Q(user1=user2)
-		c4 = Q(user2=user1)
-		roomate_object = self.filter( ( (c1&c2)|(c3&c4)) )
-		if not roomate_object:
-			return "N"
-		status = roomate_object[0].status
-		return status
-	def getRoomates(self,user1):
-		from userprofile.models import Profile		
-		c1 = Q(user1= user1)
-		c2 = Q(user2= user1)
-		c3 = Q(status='R')
-		roomate_list = self.filter( (c1|c2) & c3 )
-		uuid1 = roomate_list.values_list('user1_uuid','status')
-		print uuid1
-		uuid2 = roomate_list.values_list('user2_uuid','status')
-		uuid1zip = zip(*uuid1)[0]
-		uuid2zip = zip(*uuid2)[0]
-		uuidtotal = list(set(uuid1zip + uuid2zip))
-		result_list = []
-		if uuid_total is None:
-			result_list = []
+	#--USED TO ROOMATE OBJECT FROM user1 = from user2 = to
+	def get_object_from(self,user1_uuid,user2_uuid):
+		c1 = Q(user1_uuid=user1_uuid)
+		c2 = Q(user2_uuid=user2_uuid)
+		c3 = Q(user1_uuid=user2_uuid)
+		c4 = Q(user2_uuid=user1_uuid)
+
+		temp = self.filter((c1&c2)|(c3&c4))
+		if len(temp) == 0:
+			return None
+		elif temp is None:
+			return None
 		else:
-			uuid_total.remove(uuid1)
-			result_list = Profile.objects.filter(id__in=uuid_total)
-		return result_list
+			return temp[0]
+
 
 
 
@@ -77,6 +57,7 @@ class Roomate(models.Model):
 	created = models.DateTimeField(auto_now_add=True,blank = True,null = True)
 	roomate_id = models.UUIDField(primary_key = True, default=uuid.uuid4)#, editable=False)
 #	id = models.IntegerField(primary_key = True,default = 0)
+	objects = models.Manager()
 	manager = RoomateManager()
 
 
