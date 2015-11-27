@@ -39,59 +39,6 @@ class Profile(models.Model):
 	searchCriteria = models.ForeignKey(Criteria,blank = True,null = True,related_name="criteria+")
 	myCriteria = models.ForeignKey(Criteria,blank = True ,null = True)
 
-#	move_in_date = models.
-#	duration = models.
-#class ProfileCriteria(models.Model):
-# Profile picture (top left)
-# First name*
-
-# Last name*
-
-# Username
-
-# University/School/College* (dropdown with suggestion/auto search)
-
-# Email*
-
-# Status* (looking for a roommate/ looking for a roommate and a place)
-
-# Move in date*
-
-# Gender* (dropdown)
-
-# Age
-
-# Nationality* 
-
-# Major
-
-# Smoker/ non-smoker (checkbox)*
-
-# Hobby/interest: list of sports/sport team, music/bands, 
-
-# Pet/ no-pet* (checkbox)
-
-# Relationship status*
-
-# Cleanliness* (in scale, clean to messy)
-
-# Sleeping habits* (in scale, early to really late/no sleep)
-
-# Drinking* (in scale, never to drink regularly)
-
-# Noisiness* (in scale)
-
-# Guests coming* (in scale, never to all the time)
-
-# Overnight guests? (Y/N)
-
-# Cooking* (in scale, never to regularly)
-
-# Budget (in range?? not sure if we need one)
-
-
-
-
 
 
 

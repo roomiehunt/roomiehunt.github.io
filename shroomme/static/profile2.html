@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:fb="http://ogp.me/ns/fb#"
+      lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>ShroomMe</title>
+    <link rel="icon" type="image/png" href="build/img/favicon.png">
+
+    <!-- Facebook cache -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="ShroomMe is a web-based application for people to find roommates and apartments.">
+    <meta name="author" content="ShroomMe">
+    <meta property="og:image" content="build/img/preview.png" />
+
+    <!-- Bootstrap Core CSS -->
+    <link href="build/bootstrap-3.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="build/css/jquery.fullPage.css" rel="stylesheet" type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+    <link href="build/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="build/css/rangeslider.css" rel="stylesheet" type="text/css">
+    <link href="build/css/design.css" rel="stylesheet" type="text/css">
+    
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+</head>
+<body class="profile">
+<main>
+    <section class="wrapper-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <img src="build/img/logo/logo-temporary.png" class="logo">
+                    <div class="search-wrapper">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2">
+                        <span class="input-group-addon" id="sizing-addon2"><span class="fa fa-search"></span></span>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-lg-offset-1 col-lg-8">
+                    <div class="row">
+                        <div class="col-lg-offset-4 col-lg-4">
+                            <img class="profile-photo" src="build/img/profile.jpg">
+                            <div class="icon-wrapper">
+                                <span class="fa fa-envelope-o fa-1"></span>
+                                <span class="fa fa-bell-o fa-2"></span>
+                                <span class="fa fa-user-plus fa-3"></span>
+                                <span class="fa fa-map-marker fa-4"></span>
+                                <span class="fa fa-cog fa-5"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-4">
+                    <div class="menu-wrapper text-right">Home Logout</div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="container">
+            <div class="col-lg-3">
+                <div class="stats-wrapper text-center">
+                    Billy's Statistic
+                    <div class="stats-tag">
+                        Cleanliness
+                        <input type="range" min="1" max="7" value="4">
+                        <span class="pull-left">Clean</span>
+                        <span class="pull-right">Messy</span>
+                        <span class="clearfix"></span>
+                    </div>
+                    <div class="stats-tag">
+                        Work Schedule
+                        <input type="range" min="1" max="7" value="4">
+                        <span class="pull-left">Office</span>
+                        <span class="pull-right">Home</span>
+                        <span class="clearfix"></span>
+                    </div>
+                    <div class="stats-tag">
+                        Sleep Schedule
+                        <input type="range" min="1" max="7" value="4">
+                        <span class="pull-left">Early</span>
+                        <span class="pull-right">No Sleep</span>
+                        <span class="clearfix"></span>
+                    </div>
+                    <div class="stats-tag">
+                        Drinking
+                        <input type="range" min="1" max="7" value="4">
+                        <span class="pull-left">Never</span>
+                        <span class="pull-right">Heavy</span>
+                        <span class="clearfix"></span>
+                    </div>
+                    <div class="stats-tag">
+                        Privacy
+                        <input type="range" min="1" max="7" value="4">
+                        <span class="pull-left">Best friend</span>
+                        <span class="pull-right">Just Splitting the rent</span>
+                        <span class="clearfix"></span>
+                    </div>
+                    <div class="stats-tag">
+                        Guest
+                        <input type="range" min="1" max="7" value="4">
+                        <span class="pull-left">Never</span>
+                        <span class="pull-right">All the time</span>
+                        <span class="clearfix"></span>
+                    </div>
+                    <div class="stats-tag">
+                        Eating Habits
+                        <input type="range" min="1" max="7" value="4">
+                        <span class="pull-left">Eat Out</span>
+                        <span class="pull-right">Iron Chef</span>
+                        <span class="clearfix"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-offset-1 col-lg-8">
+                <div class="about-wrapper">
+                    <div class="text-center">
+                        About.
+                        <div id="about" class="info"> Lorem ipsum dolor sit amet, novum nostrum per ad, no cibo vidit gloriatur mea. Pri dicam latine no, decore aperiam per ex. No maiorum elaboraret reprimique qui. Eu officiis abhorreant ullamcorper sit. Eum cu idque exerci consulatu, sea ei novum meliore, te sea ullum nostro reprehendunt. </div>
+                        Gender.
+                        <div id="about" class="info"> Male </div>
+                        School.
+                        <div id="about" class="info"> UC Berkeley </div>
+                        Location.
+                        <div id="about" class="info"> Emeryville, California </div>
+                        Hometown.
+                        <div id="about" class="info"> Jakarta </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+</footer>
+<!-- jQuery Version 1.11.3 -->
+<script src="build/js/jquery-1.11.3.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="build/bootstrap-3.3.5/dist/js/bootstrap.min.js"></script>
+
+<!-- Fullpage JavaScript -->
+<script type="text/javascript" src="build/js/jquery.fullPage.js"></script>
+
+<!-- Slideout JavaScript -->
+<script type="text/javascript" src="build/js/rangeslider.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('input[type="range"]').rangeslider();
+});
+</script>
+</body>
+</html>
