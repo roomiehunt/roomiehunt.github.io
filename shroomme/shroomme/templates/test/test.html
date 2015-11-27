@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html>
 
@@ -14,8 +16,15 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-	<link rel="stylesheet" href="index.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
+	<link href="{% static 'css/test.css' %}" rel="stylesheet">
+
+
+
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
 
 
 	</head>
@@ -26,8 +35,7 @@
 	<div class = "container">
 		<div class ="jumbotron">
 			<h1>Hi!</h1>
-			Faka you and get off my website<br>
-			Faka you and get off my website<br>		
+			CSS TEST ON HOW TO WORK CSS
 			<button class="btn btn-primary" data-target="#myModal">Login</button>
 
 			<form action="" method="post">
@@ -39,10 +47,17 @@
 
 		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
 
+  <input id="tags">
 
+<!-- MODAL-->
+<!-- MODAL-->
+<!-- MODAL-->
+<!-- MODAL-->
+<!-- MODAL-->
+<!-- MODAL-->
+<!-- MODAL-->
 		<div id="myModal" class="modal fade" role="dialog">
 		  <div class="modal-dialog">
-
 		    <!-- Modal content-->
 		    <div class="modal-content">
 		      <div class="modal-header">
@@ -68,9 +83,10 @@
 		  </div>
 		</div>
 
-
 		</div>
 	</div>
+
+
 
 
 

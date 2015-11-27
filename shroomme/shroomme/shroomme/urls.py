@@ -31,6 +31,8 @@ urlpatterns = [
     #---------------NON - AUTHENTICATED URLS ---------------------------------#
     #---------------HOME+ABOUT US + CONTACT US--------------------------------#
     url(r'^$', 'shroomme.views.home',name='shroomme_home'),
+    url(r'^index/$', 'shroomme.views.home',name='shroomme_home'),
+
 
     #----------------USER PROFILE +LOGIN + LOGOUT ----------------------------#
     url(r'^logout/$','userprofile.views.logout_view',name='logout'),

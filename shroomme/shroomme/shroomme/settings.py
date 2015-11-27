@@ -133,6 +133,8 @@ MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_in_env", "media_roo
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR,"static"),
     os.path.join(BASE_DIR,"static","photos"),
+    os.path.join(BASE_DIR,"templates"),
+
     os.path.join(BASE_DIR, "static_project", "our_static"),
     #os.path.join(BASE_DIR, "static_in_env"),
     #'/var/www/static/',

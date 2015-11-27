@@ -1,3 +1,10 @@
+STATIC_LOCATION:
+inside the shroomme project folder under
+shroomme/templates/build	{BASED ON SETTINGS.py}
+to use css or javascript in the template make sure that there is {% load staticfiles %} on top of the html page
+and make sure that the src is wrapped in sttatic keyword for example src = " {% static build/my.css%}"
+
+
 MODELS: 
 -------------------> NEED TO DO INDEXING FOR FASTER QUERIES
 -------------------> USE Q OBJECT FOR COMPLEX QUERIES LOOK AT FRIENDS
@@ -34,3 +41,49 @@ remove friends ->
 remove privacy -> 
 show interest -> notification
 roomate ->
+
+
+TUTORIAL
+--------------------------
+https://github.com/celery/celery/tree/3.1/examples/django/
+http://engineering.hackerearth.com/2013/06/05/scheduling-emails-with-celery-in-django/
+
+
+
+DATAS
+-----------------------------
+
+class Criteria(models.Model):
+	user_uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+	#---CHAR FIELD-----_#
+	major = models.CharField(max_length=50,null=True,blank=True,default = "Unspecified")
+	hobby = models.CharField(max_length=50,null=True,blank=True,default = "Unspecified")
+	#-----CHOICES---------#
+	smoke = models.CharField(max_length=50,null=True,blank=True,default = "Unspecified")
+	pet = models.CharField(max_length=50,null=True,blank=True,default = "Unspecified")
+	relationship_status = models.CharField(max_length=50,null=True,blank=True,default = "Unspecified")
+	gender = models.CharField(max_length=1,choices=constants.GENDER_CHOICES,default='U')
+	nationality = models.CharField(max_length=50,null=True,blank=True,default = "Unspecified")
+	#------SCALE----------#
+	cleanliness = models.IntegerField(choices= constants.LEVEL,default = 0)	
+	sleeping_habit = models.IntegerField(choices= constants.LEVEL,default = 0)
+	drinking = models.IntegerField(choices= constants.LEVEL,default = 0)
+	noisiness = models.IntegerField(choices= constants.LEVEL,default = 0)
+	overnight_guests = models.IntegerField(choices= constants.LEVEL,default = 0)
+	cooking = models.IntegerField(choices= constants.LEVEL,default = 0)
+	budget = models.IntegerField(default = 0)
+
+class Profile(models.Model):
+	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+	user = models.OneToOneField(settings.AUTH_USER_MODEL,blank = False,null = False)	#user_id --> in dictionary
+	first_name = models.CharField(max_length=50,blank=False,null=False,default = "Unspecified")
+	middle_name = models.CharField(max_length=50,null=True,blank=True,default = "Unspecified")
+	last_name = models.CharField(max_length=50,null=True,blank=True,default = "Unspecified")
+	nationality = models.CharField(max_length=50,null=True,blank=True,default = "Unspecified")
+	university = models.CharField(max_length=50,null=True,blank=True,default = "Unspecified")
+	gender = models.CharField(max_length=1,choices=constants.GENDER_CHOICES,default='M')
+	private = models.BooleanField(default = False)
+	profile_image = models.ImageField(upload_to=upload_location,default = "76de327c-16ed-492b-ae9e-8ff6ca36af65/apple.jpg")
+	searchCriteria = models.ForeignKey(Criteria,blank = True,null = True,related_name="criteria+")
+	myCriteria = models.ForeignKey(Criteria,blank = True ,null = True)
+

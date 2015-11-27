@@ -1,0 +1,38 @@
+body {
+	font-family: 'Source Sans Pro', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+a, a:hover, a:focus {
+	color: inherit;	
+}
+ul {
+	list-style: none;
+	padding-left: 0;
+}
+.noPadding {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+.section {
+	text-align: center;
+}
+.color-shroomme {
+	color: @shroomme;
+}
+.full-width {
+	width: 100%;
+}
+.over-width {
+	width: 150%;
+}
+
+// import
+@import "variables.less";
+@import "atom.less";
+@import "molecule.less";
+
+// pages
+@import "pages/index.less";
+@import "pages/profile.less";
+@import "pages/signup-login.less";
