@@ -44,9 +44,16 @@ roomate ->
 
 
 TUTORIAL
---------------------------
+-------------------------------
 https://github.com/celery/celery/tree/3.1/examples/django/
 http://engineering.hackerearth.com/2013/06/05/scheduling-emails-with-celery-in-django/
+
+
+LIBRARY TO LOOK AT
+-----------------------------------
+http://alvarotrigo.com/fullPage/
+http://jackonthe.net/css3animateit/
+
 
 
 

@@ -38,9 +38,10 @@ def myprofile(request):
 				location = '/static/photos/' + file_name
 				update_object.update(profile_image = location)
 		context = {"myprofile":this_user,"form":UploadForm}
-		return render(request,'myprofile.html',context)
+		return render(request,'profile.html',context)
 	else:
-		return redirect(gethome())
+		return render(request,'profile.html',{})	
+#		return redirect(gethome())
 
 
 def first_time_user(request):

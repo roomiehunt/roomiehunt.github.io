@@ -1,4 +1,21 @@
 /*
+    /*
+
+        1.major
+        2.hobby
+        3.smoking
+        4.pet
+        5.relationship_status
+        6.gender
+        7.nationality
+        8.cleanliness
+        9.sleeping_habit
+        10.drinking
+        11.noisiness
+        12.overnight_guests
+        13.cooking
+    */
+
 jQuery Redirect v1.0.1
 Copyright (c) 2013-2015 Miguel Galante
 Copyright (c) 2011-2013 Nemanja Avramovic, www.avramovic.info
