@@ -351,7 +351,7 @@ form .input-right {
 .search-bar {
   padding: 15px 25px;
   width: 100%;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.9);
   border: none;
 }
 .search-bar:hover,
@@ -547,7 +547,11 @@ body.index .section-three ul > li .icon {
 }
 body.index .section-three ul > li .icon .fa {
   font-size: 24px;
+  color: #ff7600;
   padding: 0 2px 0 4px;
+}
+body.index .section-three ul > li:nth-child(2) .icon .fa {
+  padding: 0 0 0 2px;
 }
 .profile .menu-wrapper-left {
   background-color: #ff7600;
@@ -582,6 +586,100 @@ body.index .section-three ul > li .icon .fa {
     border: none;
     outline: none;
   }
+}
+/* Profile 2 */
+.profile .wrapper-top {
+  position: relative;
+  z-index: 1;
+  background-image: url("../img/background-city.jpg");
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 300px;
+  border-bottom: 5px solid #ff7600;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.profile .wrapper-top .logo {
+  position: relative;
+  top: 10px;
+  width: 50px;
+}
+.profile .wrapper-top .search-wrapper {
+  position: relative;
+  top: 200px;
+}
+.profile .wrapper-top .profile-photo {
+  position: relative;
+  top: 120px;
+  width: 100%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  border: 5px solid #ff7600;
+  padding: 5px;
+  background-color: #ffffff;
+}
+.profile .wrapper-top .icon-wrapper {
+  letter-spacing: 11px;
+}
+.profile .wrapper-top .icon-wrapper .fa {
+  cursor: pointer;
+  font-size: 26px;
+  position: relative;
+}
+.profile .wrapper-top .icon-wrapper .fa:hover {
+  color: #ff7600;
+}
+.profile .wrapper-top .icon-wrapper .fa-1 {
+  left: 0;
+  top: 100px;
+}
+.profile .wrapper-top .icon-wrapper .fa-2 {
+  top: 120px;
+}
+.profile .wrapper-top .icon-wrapper .fa-3 {
+  top: 140px;
+}
+.profile .wrapper-top .icon-wrapper .fa-4 {
+  top: 120px;
+}
+.profile .wrapper-top .icon-wrapper .fa-5 {
+  right: 0;
+  top: 100px;
+}
+.profile .wrapper-top .menu-wrapper {
+  text-shadow: 1px 1px 5px #333333;
+  color: #ffffff;
+}
+.profile .content {
+  color: #333333;
+}
+.profile .content .stats-wrapper {
+  position: relative;
+  top: 30px;
+  font-size: 20px;
+}
+.profile .content .stats-wrapper .stats-tag {
+  padding-top: 20px;
+  font-size: 14px;
+  color: #888888;
+}
+.profile .content .stats-wrapper .stats-tag .pull-left,
+.profile .content .stats-wrapper .stats-tag .pull-right {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.profile .content .about-wrapper {
+  position: relative;
+  top: 150px;
+  font-size: 18px;
+  color: #333333;
+}
+.profile .content .about-wrapper .info {
+  font-size: 12px;
+  color: #888888;
+  padding-bottom: 12px;
 }
 .signup {
   position: absolute;
