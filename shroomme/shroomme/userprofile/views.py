@@ -94,9 +94,21 @@ def find_people(request):
 			context = {'searchbar':searchbar,"result":result,"request":request}
 			return render(request,'find_people.html',context)
 	else:
-		searchbar = SearchForm()
-		context = {'searchbar':searchbar,"result":result,"request":request,"login":login,"signup":signup}
-		return render(request,'find_people.html',context)
+		if request.method == 'GET':
+			print request.GET
+			if len(request.GET) == 0:
+				return render(request,'find_people.html',{})
+			else:
+				keys = []
+				values = []
+				for key in request.GET.iterkeys():
+					keys.append(key)
+					values.append(request.GET[key])
+				print "HELLO"
+				university = Q(university=values[0])								
+				result = Profile.objects.filter(university)
+				context = {"result":result}
+				return render(request,'find_people.html',context)
 
 
 #This function is used to show the information of another user
