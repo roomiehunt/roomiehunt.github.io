@@ -32,6 +32,7 @@ urlpatterns = [
     #---------------HOME+ABOUT US + CONTACT US--------------------------------#
     url(r'^$', 'shroomme.views.home',name='shroomme_home'),
     url(r'^index/$', 'shroomme.views.home',name='shroomme_home'),
+    url(r'^new_user/$', 'shroomme.views.new_user',name='new_user'),
 
 
     #----------------USER PROFILE +LOGIN + LOGOUT ----------------------------#

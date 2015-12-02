@@ -1,5 +1,5 @@
 {% load crispy_forms_tags %}
-
+{% load staticfiles %}
 
 <!DOCTYPE html>
 <html>
@@ -12,12 +12,16 @@
 		<!--search container-->
 		<div class = "search-container">
 			<!--3 SEARCHES BOX -->
-
 			<div class = "left-search">
 			  <input id ="search-bar" type="text" placeholder = "search: university">
 			</div>
 			<div class = "middle-search">
-			  <input id ="dropdown-bar" type="text" placeholder = "search: university">
+<!-- 			  <select id ="dropdown-bar" type="text" placeholder = "search: university">-->		
+				<select id ="dropdown-bar">
+					<option> -------------------- </option>
+					<option> looking for roomates </option>
+					<option> looking for roomates and place </option>
+				</select>	
 			</div>
 			<div class = "right-search">
 			  <div id = "search-btn" class = "btn btn-shroomme btn-md btn-round">
@@ -32,7 +36,7 @@
 				  	Add-Filters
 				  </div>
 			</div>
-			<div id = "filter">
+			<div id = "filter-list">
 			</div>
 		</div>	
 		<hr>
@@ -41,17 +45,18 @@
 			<div id = "search-result">
 				<div class = "container">
 					<div class="row">
+						{% for elem in result %}
 						<div class = "col-md-3">
 							<div class = "result-elem"> 
 								<div class = "image">
-									<img class = "round-image" src= "http://dreamatico.com/data_images/apple/apple-7.jpg">
+									<img class = "round-image" src= {{elem.profile_image.url}}>
 								</div>
 								<div class = "profile_info">
 									<div class = "name">
-										John Doe
+										{{elem.first_name}} {{elem.last_name}}
 									</div>
 									<div class = "university">
-										University Of Illinois
+										{{elem.university}}
 									</div>
 									<div class = "status">
 										Looking for roomate and place
@@ -59,80 +64,7 @@
 								</div>
 							</div>
 						</div>
-						<div class = "col-md-3">
-							<div class = "result-elem"> 
-								<div class = "image">
-									<img class = "round-image" src= "http://dreamatico.com/data_images/apple/apple-7.jpg">
-								</div>
-								<div class = "profile_info">
-									<div class = "name">
-										John Doe
-									</div>
-									<div class = "university">
-										University Of Illinois
-									</div>
-									<div class = "status">
-										Looking for roomate and place
-									</div>									
-								</div>
-							</div>
-						</div>
-												<div class = "col-md-3">
-							<div class = "result-elem"> 
-								<div class = "image">
-									<img class = "round-image" src= "http://dreamatico.com/data_images/apple/apple-7.jpg">
-								</div>
-								<div class = "profile_info">
-									<div class = "name">
-										John Doe
-									</div>
-									<div class = "university">
-										University Of Illinois
-									</div>
-									<div class = "status">
-										Looking for roomate and place
-									</div>									
-								</div>
-							</div>
-						</div>
-												<div class = "col-md-3">
-							<div class = "result-elem"> 
-								<div class = "image">
-									<img class = "round-image" src= "http://dreamatico.com/data_images/apple/apple-7.jpg">
-								</div>
-								<div class = "profile_info">
-									<div class = "name">
-										John Doe
-									</div>
-									<div class = "university">
-										University Of Illinois
-									</div>
-									<div class = "status">
-										Looking for roomate and place
-									</div>									
-								</div>
-							</div>
-						</div>
-												<div class = "col-md-3">
-							<div class = "result-elem"> 
-								<div class = "image">
-									<img class = "round-image" src= "http://dreamatico.com/data_images/apple/apple-7.jpg">
-								</div>
-								<div class = "profile_info">
-									<div class = "name">
-										John Doe
-									</div>
-									<div class = "university">
-										University Of Illinois
-									</div>
-									<div class = "status">
-										Looking for roomate and place
-									</div>									
-								</div>
-							</div>
-						</div>
-
-
+						{% endfor %}						
 					</div>
 				</div>			
 			</div>
@@ -237,54 +169,74 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Refine Search</h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body row">
+      			<div class = "filter" data-mine = "major">
+						major 
+						<input id ="major" type="text" placeholder = "Major"> 
+						<img input-tag = "major" class = "plus" src = "{% static "build/img/plus.png" %} ">
+				</div>
+				<div class = "filter" data-mine = "major">
+					hobby <input id ="hobby" type="text" placeholder = "Hobby">
+						<img input-tag = "hobby" class = "plus" src = "{% static "build/img/plus.png" %} ">
+				</div> 
+				<div class = "filter" data-mine = "major">
+					smoking <input id ="smoking" type="text" placeholder = "">
+						<img input-tag = "smoking" class = "plus" src = "{% static "build/img/plus.png" %} ">
 
-      		<div class = "filter" data-mine = "major">      		
-			major 
-			</div>
-			<div class = "filter" data-mine = "major">
-			hobby 
-			</div>
-			<div class = "filter" data-mine = "major">
-			smoke 
-			</div>
-			<div class = "filter" data-mine = "major">
-			pet yes no
-			</div>
-			<!--
-			<div class = "filter" data-mine = "major">
-			relationship_status 
-			</div>
-			<div class = "filter" data-mine = "major">
-			gender
-			</div>
-			<div class = "filter" data-mine = "major">
-			nationality 
-			</div>
-			<div class = "filter" data-mine = "major">
-			cleanliness 
-			</div>
-			<div class = "filter" data-mine = "major">
-			sleeping_habit 
-			</div>
-			<div class = "filter" data-mine = "major">
-			drinking 
-			</div>
-			<div class = "filter" data-mine = "major">
-			noisiness 
-			</div>
-			<div class = "filter" data-mine = "major">
-			overnight_guests 
-			</div>
-			<div class = "filter" data-mine = "major">
-			cooking 
-			</div>
-		-->
-              
-      </div>
+				</div>
+ 				<div class = "filter" data-mine = "major">
+					pet <input id ="pet" type="text" placeholder = "">
+						<img input-tag = "pet" class = "plus" src = "{% static "build/img/plus.png" %} ">
+
+				</div>
+				<div class = "filter" data-mine = "major">
+					relationship_status <input id ="relationship_status" type="text" placeholder = "">
+					<img input-tag = "relationship_status" class = "plus" src = "{% static "build/img/plus.png" %} ">
+
+				</div>
+				<div class = "filter" data-mine = "major">
+					gender <input id ="gender" type="text" placeholder = "">
+					<img input-tag = "gender" class = "plus" src = "{% static "build/img/plus.png" %} ">
+
+
+				</div>
+				<div class = "filter">
+					nationality <input id ="nationality" type="text" placeholder = "">
+				<img input-tag = "nationality" class = "plus" src = "{% static "build/img/plus.png" %} ">					
+				</div>
+				<div class = "filter">
+					cleanliness <input id ="cleanliness" type="number" placeholder = "0">
+				<img input-tag = "cleanliness" class = "plus" src = "{% static "build/img/plus.png" %} ">					
+				</div>
+				<div class = "filter">
+					sleeping_habit <input id ="sleeping_habit" type="number" placeholder = "0">
+				<img input-tag = "sleeping_habit" class = "plus" src = "{% static "build/img/plus.png" %} ">
+
+
+				</div>
+				<div class = "filter">
+					drinking <input id ="drinking" type="number" placeholder = "0">
+				<img input-tag = "drinking" class = "plus" src = "{% static "build/img/plus.png" %} ">
+
+				</div>
+				<div class = "filter">
+					noisiness <input id ="noisiness" type="number" placeholder = "0">
+					<img input-tag = "noisiness" class = "plus" src = "{% static "build/img/plus.png" %} ">
+				</div>
+				<div class = "filter" data-mine = "major">
+					overnight_guests <input id ="overnight_guests" type="number" placeholder = "0">
+				<img input-tag = "overnight_guess" class = "plus" src = "{% static "build/img/plus.png" %} ">
+
+				</div>
+				<div class = "filter" data-mine = "major">
+					cooking <input id ="cooking" type="number" placeholder = "0">
+				<img input-tag = "cooking" class = "plus" src = "{% static "build/img/plus.png" %} ">
+
+				</div>
+	</div>          
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" id="add-filters">Add Filters</button>
       </div>
     </div>
   </div>
@@ -293,23 +245,103 @@
 
 <!-- MODAL STYLE-->
 <style>
-	
-
+	.plus {
+		margin-bottom : 5px;
+		cursor: pointer;
+	}
 </style>
 
 
 <script>
+	/*
+
+		1.major
+		2.hobby
+		3.smoking
+		4.pet
+		5.relationship_status
+		6.gender
+		7.nationality
+		8.cleanliness
+		9.sleeping_habit
+		10.drinking
+		11.noisiness
+		12.overnight_guests
+		13.cooking
+	*/
+
+
+
+	var filter_tags = ['major','hobby','smoking','pet','relationship_status','gender','nationality','cleanliness','sleeping_habit','drinking','noisiness','overnight_guests','cooking']
+	var integer_tags = [
+	'cleanliness','sleeping_habit','drinking','noisiness','overnight_guests','cooking'
+	]
+	var filters = []
+	var values = []
 	$("#search-btn").click(function(e){
-		var filters = {}
-		console.log(filters)
-
-
-
-
-
+		redirect();
+	});
+	$(document).keypress(function(e) {
+	    if(e.which == 13) {
+			redirect();
+	    }
 	});
 
 
+
+	$('.plus').click(function(e){
+		var tag = "#" + $(this).attr('input-tag');
+		var temp_value = $(tag).val();
+		if (temp_value){
+			filters.push(tag);
+			values.push(temp_value);
+			alert(temp_value)
+		}
+
+
+	})
+
+
+	function redirect(){
+		var university = $('#search-bar').val()
+		var url = '/find_people/?university=' + university
+    	window.location = url;
+//		$('#hello').load(url +  '#hello');
+	}
+
+	function checkFilter(tag,value){
+		
+	}
+
+
+	function redrawFilters(){
+		$('#filter-list').empty();
+		for (var elem in filters){
+			var temp = filters[elem] + ":"+ values[elem];
+			temp = "<p>" + temp + "</p>";
+			$( "#filter-list" ).append(temp);
+		}
+		
+	}
+
+
+
+/*	$("#add-filters").click(function(e){
+
+		for (var elem in filter_tags) {
+			var temp = '';
+			var target = '#' + filter_tags[elem];
+			temp = $(target).val() ;
+			if (temp){
+				filters.push(filter_tags[elem])				
+				values.push(temp)
+			}
+		}
+
+		redrawFilters();
+
+		$('#myModal').modal('toggle');
+	});*/
 </script>
 
 

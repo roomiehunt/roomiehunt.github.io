@@ -1,0 +1,281 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		{% include 'navbar.html' %}				
+	</head>
+
+<body>
+	<div id="fullpage">
+		<div class="section">
+		    <div class="slide"> 
+		    	<div class = "first-slide" meta-name = "----------------------------FIRST-PAGE--------------------------------------------------------------------------">
+			    	<div class = "grid slide-content">
+				    	<div class = "row">
+					    	<div class = "col-md-6">
+						    		 <h2> Personal Information </h2>
+						    </div>
+						</div>
+						<hr>
+						<div class = "row one-line">
+						    <div class = "col-md-2 input-tag" >
+							    First Name
+							</div>	
+							<div class = "col-md-3">
+							    	<input id ="first_name" type="text" class = "input-bar">
+							</div>
+
+
+						</div>
+						<div class = "row one-line">
+						    <div class = "col-md-2 input-tag" >
+							    Last Name
+							</div>	
+							<div class = "col-md-3">
+							    	<input id ="first_name" type="text">
+							</div>
+						</div>
+						<div class = "row one-line">
+						    <div class = "col-md-2 input-tag" >
+							    Date of birth
+							</div>	
+							<div class = "col-md-3">
+							    	<input id ="first_name" type="text">
+							</div>
+						</div>
+						<div class = "row one-line" >
+						    <div class = "col-md-2 input-tag" >
+							    Gender
+							</div>	
+							<div class = "col-md-3">
+							    	<input id ="first_name" type="text">
+							</div>
+						</div>
+						<div class = "row one-line">
+						    <div class = "col-md-2 input-tag" >
+							    Nationality
+							</div>	
+							<div class = "col-md-3">
+							    	<input id ="first_name" class = "upload-button" type="text">
+							</div>
+						</div>
+						<div class = "profile-image">
+							<img src = "htta" class = "round-image"/>
+						</div>
+						<div class = "progress-bar-wrapper">
+							<div class="progress">
+							  <div class="progress-bar" role="progressbar" aria-valuenow="33"
+							  aria-valuemin="0" aria-valuemax="100" style="width:33%">
+							    <span class="sr-only">KONTOl</span>
+							  </div>
+							</div>
+						</div>
+					</div>
+				</div>
+		    </div>
+		    <div class="slide">  
+		    	<div class = "second-slide" meta-name = "----------------------------second-PAGE--------------------------------------------------------------------------">
+		    		<div class = "grid slide-content">
+				    	<div class = "row">
+					    	<div class = "col-md-6">
+						    		 <h2> Personal Information </h2>
+						    </div>
+						</div>
+						<hr>
+						<div class = "row one-line">
+						    <div class = "col-md-2 input-tag" >
+							    First Name
+							</div>	
+							<div class = "col-md-3">
+							    	<input id ="first_name" type="text" class = "input-bar">
+							</div>
+						</div>
+						<div class = "row one-line">
+						    <div class = "col-md-2 input-tag" >
+							    Last Name
+							</div>	
+							<div class = "col-md-3">
+							    	<input id ="first_name" type="text">
+							</div>
+						</div>
+						<div class = "row one-line">
+						    <div class = "col-md-2 input-tag" >
+							    Date of birth
+							</div>	
+							<div class = "col-md-3">
+							    	<input id ="first_name" type="text">
+							</div>
+						</div>
+						<div class = "row one-line" >
+						    <div class = "col-md-2 input-tag" >
+							    Gender
+							</div>	
+							<div class = "col-md-3">
+							    	<input id ="first_name" type="text">
+							</div>
+						</div>
+						<div class = "row one-line">
+						    <div class = "col-md-2 input-tag" >
+							    Nationality
+							</div>	
+							<div class = "col-md-3">
+							    	<input id ="first_name" class = "upload-button" type="text">
+							</div>
+						</div>
+						<div class = "profile-image">
+							<img src = "htta" class = "round-image"/>
+						</div>
+						<div class = "progress-bar-wrapper">
+							<div class="progress">
+							  <div class="progress-bar" role="progressbar" aria-valuenow="66"
+							  aria-valuemin="0" aria-valuemax="100" style="width:66%">
+							    <span class="sr-only">KONTOl</span>
+							  </div>
+							</div>
+						</div>
+					</div>
+		    	</div>
+		    </div>
+		    <div class="slide"> Slide 3 </div>
+		    <div class="slide"> Slide 4 </div>
+		</div>
+	</div>
+</div>
+
+<script src="{% static 'build/js/jquery-1.11.3.js' %}"></script>
+<script type="text/javascript" src="{% static "build/js/jquery.fullPage.js"%}"></script>
+
+<script>
+$(document).ready(function() {
+    $('#fullpage').fullpage({
+        //Navigation
+        menu: '#menu',
+        lockAnchors: false,
+        anchors:['firstPage', 'secondPage'],
+        navigation: false,
+        navigationPosition: 'right',
+        navigationTooltips: ['firstSlide', 'secondSlide'],
+        showActiveTooltip: false,
+
+        //Scrolling
+        css3: true,
+        scrollingSpeed: 700,
+        autoScrolling: true,
+        fitToSection: true,
+        fitToSectionDelay: 1000,
+        scrollBar: false,
+        easing: 'easeInOutCubic',
+        easingcss3: 'ease',
+        loopBottom: false,
+        loopTop: false,
+        loopHorizontal: false,
+        continuousVertical: false,
+        normalScrollElements: '#element1, .element2',
+        scrollOverflow: false,
+        touchSensitivity: 15,
+        normalScrollElementTouchThreshold: 5,
+
+        //Accessibility
+        keyboardScrolling: true,
+        animateAnchor: true,
+        recordHistory: true,
+
+        //Design
+        verticalCentered: true,
+        resize : false,
+        sectionsColor : ['#ccc', '#ccc'],
+        paddingTop: '3em',
+        paddingBottom: '10px',
+        fixedElements: '.nav-bar',
+        responsiveWidth: 0,
+        responsiveHeight: 0,
+
+        //Custom selectors
+        sectionSelector: '.section',
+        slideSelector: '.slide',
+
+        //events
+        onLeave: function(index, nextIndex, direction){},
+        afterLoad: function(anchorLink, index){},
+        afterRender: function(){},
+        afterResize: function(){},
+        afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){},
+        onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){}
+    });
+});</script>
+
+<style>
+	.slide-content{
+		margin-top: 3%;
+		margin-bottom: 90%;
+		text-align: left;
+	}
+	.slide-title{
+		margin-left : 10%;
+
+	}
+	.slide-fields{
+		margin-left: 10%;
+	}
+	.grid{
+		background-color: #fff;
+		width : 80%;
+		height : 700px;
+		margin-left : auto;
+		margin-right : auto;
+		position: relative;		
+	}
+	.one-line{
+		margin-bottom: 10px;
+	}
+	.input-tag{
+		padding-top: 3px;
+		height: 25px;
+	}
+	.input-bar{
+		height: 25px;
+	}
+
+	.profile-image{
+	    position:absolute;
+		right : 5%;		
+		top: 15%;
+
+	}
+	.upload-button{
+		float : left;
+
+	}
+	.progress-bar-wrapper{
+		position: absolute;
+		margin-left: 15%;
+		bottom: 0;
+		width : 60%;
+
+	}
+
+
+	.round-image {
+		width: 150px;
+		height: 150px;
+		border-radius: 150px;
+		-webkit-border-radius: 150px;
+		-moz-border-radius: 150px;
+		background: url(URL) no-repeat;
+		box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+		-webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+		-moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+		margin-bottom: 10px;
+		margin-left:25px;
+	}
+
+
+
+
+</style>
+
+</body>
+
+
+</html>
