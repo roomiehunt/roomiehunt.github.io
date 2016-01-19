@@ -57,6 +57,8 @@ class constants():
 	)
 
 
+
+
 def gethome():
 	from shroomme.views import home
 	return home

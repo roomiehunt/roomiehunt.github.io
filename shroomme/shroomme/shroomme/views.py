@@ -79,10 +79,6 @@ def navbar(request):
 def first_time_user(request):
     return render(request,'first-time-user.html',{});
 
-def new_user(request):
-    return render(request,'new_user.html',{});
-
-
 def test(request):
     print request
     if request.method == 'POST':

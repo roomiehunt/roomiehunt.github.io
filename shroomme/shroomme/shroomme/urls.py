@@ -32,7 +32,7 @@ urlpatterns = [
     #---------------HOME+ABOUT US + CONTACT US--------------------------------#
     url(r'^$', 'shroomme.views.home',name='shroomme_home'),
     url(r'^index/$', 'shroomme.views.home',name='shroomme_home'),
-    url(r'^new_user/$', 'shroomme.views.new_user',name='new_user'),
+    url(r'^new_user/$', 'userprofile.views.new_user',name='new_user'),
 
 
     #----------------USER PROFILE +LOGIN + LOGOUT ----------------------------#
@@ -43,7 +43,7 @@ urlpatterns = [
     url(r'^show_user/$','userprofile.views.show_user',name='show_user'),
     url(r'^edit_profile/$','userprofile.views.edit_profile',name='edit_profile'),
     url(r'^my_criteria/$','userprofile.views.my_criteria',name='my_criteria'), 
-
+    url(r'^search_name/$','userprofile.views.search_name',name='search_name'), 
 
 
 
@@ -55,7 +55,6 @@ urlpatterns = [
     url(r'^messaging_2/$','messaging.views.show_messaging_2',name='show_messaging_2'), 
     url(r'^create_message_2/$','messaging.views.create_message_2',name='create_message_2'), 
     url(r'^show_thread/$','messaging.views.show_thread',name='show_thread'), 
-
     url(r'^show_messages/$','messaging.views.show_messages',name='show_messages'),  #---AJAX---#
     url(r'^create_messages/$','messaging.views.create_messages',name='create_messages'), #---AJAX--#
     url(r'^create_thread/$','messaging.views.create_thread',name='create_thread'), #---AJAX--#
@@ -74,7 +73,7 @@ urlpatterns = [
     url(r'^show_friends/$','friends.views.show_friends',name='show_friends'),
     url(r'^add_friend/$','friends.views.add_friend',name='add_friend'), #---AJAX--#
     url(r'^change_friend_status/$','friends.views.change_friend_status',name='change_friend_status'), #---AJAX---#
-#    url(r'^show_interest/$','friends.views.show_interest',name='show_interest'), #---AJAX---#
+#   url(r'^show_interest/$','friends.views.show_interest',name='show_interest'), #---AJAX---#
 
 
     #--------------------FOR TESTING------------------------------------------#

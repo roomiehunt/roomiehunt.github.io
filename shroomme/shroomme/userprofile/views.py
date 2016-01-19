@@ -2,10 +2,12 @@ from django.shortcuts import render,Http404,redirect,render_to_response
 from django.contrib.auth import authenticate,logout,login
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
-from .forms import ProfileForm,SearchForm,EditForm,UploadProfileImage
+from .forms import ProfileForm,SearchForm,EditForm,UploadProfileImage,NewUserForm
 from shroomme.forms import LoginForm,SignUpForm
+from django.http import JsonResponse
 
 #-----------------------------------MODELS-------------------------#
+import pprint 
 from django.contrib.auth.models import User
 from .models import Profile
 from django.db.models import Q
@@ -62,6 +64,21 @@ def first_time_user(request):
 	else:
 		return render(request,'error_login.html',{})
 
+def new_user(request):
+	form = NewUserForm()
+	my_Criteria_form = CriteriaForm()
+	search_criteria_form = CriteriaForm()
+	slider_attributes = ["cleanliness","sleeping_habit","drinking","noisiness","overnight_guests","cooking"]
+
+#	slider_attributes = [("cleanliness","messy","clean"),("sleeping_habit","morning","night")]
+
+	checkbox_attributes = ["smoke","pet"]
+
+	context = {"my_Criteria_form":my_Criteria_form,"search_criteria_form":search_criteria_form,"form":form}
+	context.update({"slider_attributes":slider_attributes})
+	return render(request,'new_user.html',context)
+
+
 def logout_view(request):
 	logout(request)
 	return redirect(gethome())
@@ -101,13 +118,54 @@ def find_people(request):
 			else:
 				keys = []
 				values = []
+				q_objects = []
+				positive_main_value_attributes =  ["cleanliness"]
+				negative_main_value_attributes =  ["sleeping_habit","drinking","noisiness","overnight_guests","cooking","budget"]
+				main_string_attributes = ["smoke","pet","gender"]
+				plus_point_attributes = ["major","hobby"]
+				positive_dict = {}
+				negative_dict = {}
+				string_dict = {}
+				my_key =0
+				my_value = 0
+				nationality_dict = {}
+				#--Q MODEL PROCESSING
 				for key in request.GET.iterkeys():
-					keys.append(key)
-					values.append(request.GET[key])
-				print "HELLO"
-				university = Q(university=values[0])								
-				result = Profile.objects.filter(university)
-				context = {"result":result}
+					my_key = key.lower()
+					my_value = request.GET[key]
+					if my_key == "nationality":
+						nationality_dict = {my_key:my_value}
+						temp_Q = Q(**nationality_dict)
+					elif my_key in positive_main_value_attributes:
+						tag = "myCriteria__" + my_key + "__gte"
+						integer_value = int(my_value)
+						my_q = Q(**{tag:integer_value})
+						q_objects.append(my_q)
+					elif my_key in negative_main_value_attributes:
+						tag = "myCriteria__" + my_key + "__lte"
+						integer_value = int(my_value)
+						my_q = Q(**{tag:integer_value})
+						q_objects.append(my_q)
+					elif (my_key in main_string_attributes) or (my_key in plus_point_attributes):
+						tag = "myCriteria__" + my_key 
+						my_q = Q(**{tag:my_value})
+						q_objects.append(my_q)
+				query_text = request.GET["university"]
+				query_split = query_text.split(" ")
+				q_univ = Q(university__startswith = query_text)
+				q_first_name = Q(first_name__startswith = query_text)
+				q_last_name = Q(last_name__startswith = query_text)
+				q_starts_with = ( q_univ | q_first_name | q_last_name )				
+				if len(query_split) == 2:
+					q_first_name_2 = Q(first_name__startswith = query_split[0])
+					q_last_name_2 = Q(last_name__startswith = query_split[1])
+					q_starts_with = ( q_univ | q_first_name | q_last_name | q_first_name_2 | q_last_name_2)				
+				q_nationality = Q(**nationality_dict)
+				q_final = Q(myCriteria__cleanliness__gte = 0)
+				for elem in q_objects:
+					q_final = q_final & elem
+				final_result = Profile.objects.filter(q_starts_with,q_nationality,q_final)				
+				context = {"result":final_result}
 				return render(request,'find_people.html',context)
 
 
@@ -174,6 +232,8 @@ def show_user(request):
 	return redirect(gethome())
 
 
+
+
 def edit_profile(request):
 	if request.user.is_authenticated():
 		my_profile = Profile.objects.filter(user=request.user)
@@ -197,12 +257,29 @@ def my_criteria(request):
 	context = {"myprofile":my_profile,"form":form}
 	return render(request,'my_criteria.html',context)	
 
-
-
-
-
 def handle_uploaded_file(f,filename):
 	os_path = os.path.join(os.path.dirname(settings.BASE_DIR),"shroomme_dio","static","photos",filename)
 	with open(os_path, 'wb+') as destination:
 		for chunk in f.chunks():
 			destination.write(chunk)
+
+
+#-------------AJAX------------------------#
+#-------------AJAX------------------------#
+#-------------AJAX------------------------#
+#-------------AJAX------------------------#
+#-------------AJAX------------------------#
+#-------------AJAX------------------------#
+#-------------AJAX------------------------#
+def search_name(request):
+	if request.is_ajax() and request.method == "POST":
+		query = request.POST['query']
+		q1 = Q(first_name__startswith=query)
+		q2 = Q(last_name__startswith=query)
+		result = Profile.objects.filter( (q1 or q2) )[:5]
+		json_list = []
+		for elem in result.iterator():
+			json_list.append(elem.first_name + " " + elem.last_name)
+		return JsonResponse(json_list,safe=False)
+	else:
+		return render(request,'../test/',{})			

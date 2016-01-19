@@ -24,6 +24,15 @@ class ProfileForm(ModelForm):
 			Submit('submit', 'Submit'),
 	))
 
+
+
+class NewUserForm(ModelForm):
+	class Meta:
+		model = Profile
+		exclude = ['id','user','searchCriteria','userCriteria']
+
+
+
 class EditForm(ModelForm):
 	class Meta:
 		model = Profile

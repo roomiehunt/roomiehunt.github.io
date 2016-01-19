@@ -101,93 +101,20 @@
                 </div>
             </div>
         </div>
+        <!-- <div class="scrollDown" onclick="test()">
+            <span class="glyphicon glyphicon-arrow-down icon"></span>
+        </div> -->
     </div>
-    <!-- LANDING PAGE SECTION 2-->
-    <!-- LANDING PAGE SECTION 2-->
-    <!-- LANDING PAGE SECTION 2-->
-    <!-- LANDING PAGE SECTION 2-->
 	<div class="section section-two"> 
         <div class="container">
-            <div class = "title-2">
-                <div class = "header-2">
-                    Why <span class = "header-shroome-2" >ShrooMme? </span>
-                </div>
 
-                <div class = "intro-2">
-                    Shroome is good
-                    Shroome is good
-                    Shroome is good
-                    Shroome is good
-                    Shroome is good
-                </div>
-            </div>
-            <div class ="row">
-                <div class="col-md-6">
-                    <div class = "img-container-2">
-                        <img class = "round-image-2" src="{% static 'build/images/apple.jpg'%}" /> 
-                    </div>
-                </div>
-                <div class = "col-md-6">
-                    <div class = "content-title-2">
-                        Safe Introductions
-                    </div>
-                    <div class = "content-fill-2">
-                        All contacts can be done through our platform
-                        All contacts can be done through our platform
-                        All contacts can be done through our platform
-                        All contacts can be done through our platform
-                    </div>
-                </div>
-            </div>
         </div>
-        <hr>
 	</div>
-    <!-- LANDING PAGE SECTION 3-->
-    <!-- LANDING PAGE SECTION 3-->
-    <!-- LANDING PAGE SECTION 3-->
-    <!-- LANDING PAGE SECTION 3-->
-
 	<div class="section section-three">
         <div class="container">
-            <div class = "row">
-                <div class = "col-md-6">
-                    <div class = "content-title-3">
-
-                    </div>
-                    <div class = "content-fill-3">
-
-                    </div>
-                </div>
-                <div class = "col-md-6">
-                        <img class = "round-image-2" src="{% static 'build/images/apple.jpg'%}" /> 
-                </div>
-            </div>
-        </div>
-        <hr>
-    </div>
-    <!-- LANDING PAGE SECTION 4-->
-    <!-- LANDING PAGE SECTION 4-->
-    <!-- LANDING PAGE SECTION 4-->
-    <!-- LANDING PAGE SECTION 4-->
-
-    <div class="section section-four">
-        <div class="container">
-            <div class = "row">
-                <div class = "col-md-6">
-                        <img class = "round-image-2" src="{% static 'build/images/apple.jpg'%}" /> 
-                </div>
-                <div class = "col-md-6">            
-                    <div class = "content-title-4">
-
-                    </div>
-                    <div class = "content-fill-4">
-
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
-
 	<div class="section footer"> 
         <div class="container">
             <div class="row">
@@ -271,7 +198,7 @@ $(document).ready(function() {
         loopHorizontal: false,
         fixedElements: '.nav-bar',
 
-        sectionsColor : ['#E8E8E8', '#ffffff', '#ffffff', '#ffffff','#444'],
+        sectionsColor : ['#E8E8E8', '#E0E0E0', '#E8E8E8', '#444'],
 
         afterLoad: function(anchorLink, index){
             var loadedSection = $(this);
@@ -351,7 +278,6 @@ $('#search-btn').click(function(e){
 </script>
 <style>
     #search-bar{
-
     }
     .search-bar{
         width:500px;
@@ -360,58 +286,6 @@ $('#search-btn').click(function(e){
     input#search-bar.typeahead.tt-input{
         background-color: white;
     }
-
-    /*-------------------SECTION 2------------------*/
-    /*-------------------SECTION 2------------------*/
-    /*-------------------SECTION 2------------------*/
-    .title-2{        
-        text-align: left;
-    }
-    .header-2{
-        font-family: "Helvetica Neue";
-    }
-    .header-shroome-2{
-        color: orange;        
-        font-family: "Helvetica Neue";        
-    }
-    .intro-2{
-        font-family: "Helvetica Neue";
-        text-align: left;
-
-    }
-    .content-fill-2{
-        text-align: left;
-
-    }
-
-    .content-title-2{
-        text-align: left;
-    }
-    .round-image-2 {
-        margin-top:70px;
-        width: 300px;
-        height: 300px;
-        border-radius: 150px;
-        -webkit-border-radius: 150px;
-        -moz-border-radius: 150px;
-        background: url(URL) no-repeat;
-        border : 1px solid black;
-/*        box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-        -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-        -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-*/        margin-bottom: 10px;
-        margin-left:25px;
-    }
-
-    /*-------------------SECTION 3------------------*/
-    /*-------------------SECTION 3------------------*/
-    /*-------------------SECTION 3------------------*/
-
-
-    /*-------------------SECTION 4------------------*/
-    /*-------------------SECTION 4------------------*/
-    /*-------------------SECTION 4------------------*/
-
 
 
 </style>
