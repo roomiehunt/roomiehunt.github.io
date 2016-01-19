@@ -5,18 +5,21 @@
 <html>
 	<head>
 		{% include 'navbar.html' %}				
+	    <link href= "{% static 'build/css/typeahead.css'%}" rel="stylesheet"  type="text/css">
+	  
+
 	</head>
 
 <body>
 	<div class = "content">
+			
 		<!--search container-->
 		<div class = "search-container">
 			<!--3 SEARCHES BOX -->
 			<div class = "left-search">
-			  <input id ="search-bar" type="text" placeholder = "search: university">
+			  <input id ="search-bar" class = "typeahead" type="text" placeholder = "search: university">
 			</div>
 			<div class = "middle-search">
-<!-- 			  <select id ="dropdown-bar" type="text" placeholder = "search: university">-->		
 				<select id ="dropdown-bar">
 					<option> -------------------- </option>
 					<option> looking for roomates </option>
@@ -32,11 +35,11 @@
 			<!-- Filters -->
 			<div id = "filter-title">
 				Filters:
-				  <div id = "search-btn" class = "btn btn-shroomme btn-md btn-round" data-toggle="modal" data-target="#myModal">
+				<div id = "filter-list">
+				</div>
+				  <div id = "filter-btn" class = "btn btn-shroomme btn-md btn-round" data-toggle="modal" data-target="#myModal">
 				  	Add-Filters
 				  </div>
-			</div>
-			<div id = "filter-list">
 			</div>
 		</div>	
 		<hr>
@@ -88,17 +91,21 @@
 		/*------------------Search Containers------*/
 		/*---3 search bars below the navbar---------*/
 		/*------------------Search Containers-------*/
-		.search-container{
-		}
 
 		.left-search{
 			display : inline-block;
+			bottom: 5px;
 		}
-		#search-bar{
+/*		#search-bar{
 			height : 25px;
 			width: 400px;
 			margin-right : 20px;
 		}
+*/	
+		#search-bar{
+			bottom:5px;
+		}	
+
 		.middle-search{
 			display : inline-block;
 			margin-right : 20px;
@@ -112,8 +119,37 @@
 		}
 
 
-		/*--Filters*/
+		/*-- FILTERS --*/
 		#filter-title{
+			display:inline-block;
+		}
+		#filter-list{
+			display:inline-block;
+		}
+		#filter-btn{
+			display:inline-block;
+		}
+		.refine-filter{
+			background-color: #ccc;
+			border-radius:10px;
+		}
+		.filter-span{
+			display: inline-block;
+			margin-right: 8px;
+		    background: #E2E1DF;
+		    padding: 5px 10px;
+		    border-radius: 3px;s
+
+		}
+		.close{
+			padding-top:100px;
+			float:none;
+		}
+		.filter-tag{
+			float:left;
+			margin-right:5px;
+			font-family: sans-serif;
+		}
 
 
 		}
@@ -141,6 +177,8 @@
    			text-align: center;			
 		}
 
+
+
 		/*-- rounded image --*/
 		.round-image {
 			width: 100px;
@@ -157,11 +195,12 @@
 		}
 
 
+
 	</style>
 
 
 
-<!-- BOOTSTRAP -->
+<!-- BOOTSTRAP MODAL-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -170,73 +209,127 @@
         <h4 class="modal-title" id="myModalLabel">Refine Search</h4>
       </div>
       <div class="modal-body row">
-      			<div class = "filter" data-mine = "major">
-						major 
-						<input id ="major" type="text" placeholder = "Major"> 
-						<img input-tag = "major" class = "plus" src = "{% static "build/img/plus.png" %} ">
+      		<div class = "filter-line">
+      			<div class = "filter col-md-4" data-mine = "major">
+						Major 
 				</div>
-				<div class = "filter" data-mine = "major">
-					hobby <input id ="hobby" type="text" placeholder = "Hobby">
-						<img input-tag = "hobby" class = "plus" src = "{% static "build/img/plus.png" %} ">
+				<div class = "filter col-md-8">
+					<input id ="Major" type="text" placeholder = "Major"> 
+					<img input-tag = "Major" class = "plus" src = "{% static "build/img/plus.png" %} ">
+				</div>				
+			</div>
+      		<div class = "filter-line">
+				<div class = "filter col-md-4" data-mine = "hobby">
+					Hobby 
+				</div>
+				<div class = "filter col-md-8">
+					<input id ="Hobby" type="text" placeholder = "Hobby">
+					<img input-tag = "Hobby" class = "plus" src = "{% static "build/img/plus.png" %} ">
 				</div> 
-				<div class = "filter" data-mine = "major">
-					smoking <input id ="smoking" type="text" placeholder = "">
-						<img input-tag = "smoking" class = "plus" src = "{% static "build/img/plus.png" %} ">
-
+			</div>				
+      		<div class = "filter-line">
+				<div class = "filter col-md-4" data-mine = "smoking">
+					Smoking 
 				</div>
- 				<div class = "filter" data-mine = "major">
-					pet <input id ="pet" type="text" placeholder = "">
-						<img input-tag = "pet" class = "plus" src = "{% static "build/img/plus.png" %} ">
-
+				<div class = "filter col-md-8">
+					<input id ="Smoking" type="text" placeholder = "smoking">
+					<img input-tag = "Smoking" class = "plus" src = "{% static "build/img/plus.png" %} ">
+				</div>				
+ 			</div>				
+      		<div class = "filter-line">
+ 				<div class = "filter col-md-4" data-mine = "pet">
+					Pet 
 				</div>
-				<div class = "filter" data-mine = "major">
-					relationship_status <input id ="relationship_status" type="text" placeholder = "">
-					<img input-tag = "relationship_status" class = "plus" src = "{% static "build/img/plus.png" %} ">
-
+				<div class = "filter col-md-8">
+					<input id ="Pet" type="text" placeholder = "">
+					<img input-tag = "Pet" class = "plus" src = "{% static "build/img/plus.png" %} ">
 				</div>
-				<div class = "filter" data-mine = "major">
-					gender <input id ="gender" type="text" placeholder = "">
-					<img input-tag = "gender" class = "plus" src = "{% static "build/img/plus.png" %} ">
-
-
+			</div>				
+      		<div class = "filter-line">				
+				<div class = "filter col-md-4" data-mine = "relationship_status">
+					Relationship_status 
 				</div>
-				<div class = "filter">
-					nationality <input id ="nationality" type="text" placeholder = "">
-				<img input-tag = "nationality" class = "plus" src = "{% static "build/img/plus.png" %} ">					
+				<div class = "filter col-md-8">
+					<input id ="Relationship_status" type="text" placeholder = "">
+					<img input-tag = "Relationship_status" class = "plus" src = "{% static "build/img/plus.png" %} ">
 				</div>
-				<div class = "filter">
-					cleanliness <input id ="cleanliness" type="number" placeholder = "0">
-				<img input-tag = "cleanliness" class = "plus" src = "{% static "build/img/plus.png" %} ">					
+			</div>				
+      		<div class = "filter-line">				
+				<div class = "filter col-md-4 " data-mine = "gender">
+					Gender 
 				</div>
-				<div class = "filter">
-					sleeping_habit <input id ="sleeping_habit" type="number" placeholder = "0">
-				<img input-tag = "sleeping_habit" class = "plus" src = "{% static "build/img/plus.png" %} ">
-
-
+				<div class = "filter col-md-8">
+					<input id ="Gender" type="text" placeholder = "">
+					<img input-tag = "Gender" class = "plus" src = "{% static "build/img/plus.png" %} ">
 				</div>
-				<div class = "filter">
-					drinking <input id ="drinking" type="number" placeholder = "0">
-				<img input-tag = "drinking" class = "plus" src = "{% static "build/img/plus.png" %} ">
-
+			</div>				
+      		<div class = "filter-line">				
+				<div class = "filter col-md-4" data-mine = "nationality">
+					Nationality 
 				</div>
-				<div class = "filter">
-					noisiness <input id ="noisiness" type="number" placeholder = "0">
-					<img input-tag = "noisiness" class = "plus" src = "{% static "build/img/plus.png" %} ">
+				<div class = "filter col-md-8">
+					<input id ="Nationality" type="text" placeholder = "">
+					<img input-tag = "Nationality" class = "plus" src = "{% static "build/img/plus.png" %} ">			
 				</div>
-				<div class = "filter" data-mine = "major">
-					overnight_guests <input id ="overnight_guests" type="number" placeholder = "0">
-				<img input-tag = "overnight_guess" class = "plus" src = "{% static "build/img/plus.png" %} ">
-
+			</div>				
+      		<div class = "filter-line">				
+				<div class = "filter col-md-4" data-mine = "cleanliness">
+					Cleanliness 
 				</div>
-				<div class = "filter" data-mine = "major">
-					cooking <input id ="cooking" type="number" placeholder = "0">
-				<img input-tag = "cooking" class = "plus" src = "{% static "build/img/plus.png" %} ">
-
+				<div class = "filter col-md-8">
+					<input id ="Cleanliness" type="number" placeholder = "0">
+					<img input-tag = "Cleanliness" class = "plus" src = "{% static "build/img/plus.png" %} ">				
 				</div>
+			</div>				
+      		<div class = "filter-line">				
+				<div class = "filter col-md-4">
+					Sleeping_habit
+				</div>
+				<div class = "filter col-md-8">
+					<input id ="Sleeping_habit" type="number" placeholder = "0">
+					<img input-tag = "Sleeping_habit" class = "plus" src = "{% static "build/img/plus.png" %} ">
+				</div>
+			</div>				
+      		<div class = "filter-line">				
+				<div class = "filter col-md-4">
+					Drinking 
+				</div>
+				<div class = "filter col-md-8">
+					<input id ="Drinking" type="number" placeholder = "0">
+					<img input-tag = "Drinking" class = "plus" src = "{% static "build/img/plus.png" %} ">
+				</div>
+			</div>				
+      		<div class = "filter-line">				
+				<div class = "filter col-md-4">
+					Noisiness
+				</div>
+				<div class = "filter col-md-8">
+					<input id ="Noisiness" type="number" placeholder = "0">
+					<img input-tag = "Noisiness" class = "plus" src = "{% static "build/img/plus.png" %} ">
+				</div>
+			</div>				
+      		<div class = "filter-line">				
+				<div class = "filter col-md-4" data-mine = "major">
+					Overnight_guests
+				</div>
+				<div class = "filter col-md-8">
+					<input id ="Overnight_guests" type="number" placeholder = "0">
+					<img input-tag = "Overnight_guess" class = "plus" src = "{% static "build/img/plus.png" %} ">
+				</div>
+			</div>				
+      		<div class = "filter-line">				
+				<div class = "filter col-md-4" data-mine = "major">
+					Cooking 
+				</div>
+				<div class = "filter col-md-8">
+					<input id ="Cooking" type="number" placeholder = "0">
+					<img input-tag = "Cooking" class = "plus" src = "{% static "build/img/plus.png" %} ">
+				</div>
+			</div>				
 	</div>          
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="add-filters">Add Filters</button>
+		<button type="button" class="btn btn-primary" id="add-filters">Add Filters</button>
       </div>
     </div>
   </div>
@@ -245,16 +338,21 @@
 
 <!-- MODAL STYLE-->
 <style>
-	.plus {
-		margin-bottom : 5px;
-		cursor: pointer;
+	.filter{
+		padding-top: 5px;
+		margin-bottom: 15px;
 	}
 </style>
 
 
 <script>
-	/*
+	$( '.tt-hint' ).ready(function() {
+		$('.tt-hint').css("visibility","hidden")
+	});
 
+
+
+	/*
 		1.major
 		2.hobby
 		3.smoking
@@ -269,80 +367,129 @@
 		12.overnight_guests
 		13.cooking
 	*/
-
-
-
-	var filter_tags = ['major','hobby','smoking','pet','relationship_status','gender','nationality','cleanliness','sleeping_habit','drinking','noisiness','overnight_guests','cooking']
+	var filter_tags = ['Major','Hobby','Smoking','Pet','Relationship_status','Gender','Nationality','Cleanliness','Sleeping_habit','Drinking','Noisiness','Overnight_guests','Cooking']
 	var integer_tags = [
 	'cleanliness','sleeping_habit','drinking','noisiness','overnight_guests','cooking'
 	]
-	var filters = []
-	var values = []
+	var hash = {}
+
+	/*----------------------SHORTCUTS ONCLICKS----------------------------*/
 	$("#search-btn").click(function(e){
 		redirect();
 	});
 	$(document).keypress(function(e) {
-	    if(e.which == 13) {
+/*	    if(e.which == 13) {
 			redirect();
 	    }
-	});
+*/	});
 
+	$('#add-filters').click(function(e){
 
+		for (var elem in filter_tags){
+			var temp_value = $('#'+filter_tags[elem]).val()
+			if(!(temp_value === '')){
+				hash[filter_tags[elem]] = temp_value;
+			}
+		}
+		console.log(hash)
+		redrawFilters();
+		$('#myModal').modal('toggle');
+	})
 
 	$('.plus').click(function(e){
-		var tag = "#" + $(this).attr('input-tag');
-		var temp_value = $(tag).val();
+		var tag = $(this).attr('input-tag');
+		var temp_value = $("#"+tag).val();
 		if (temp_value){
-			filters.push(tag);
-			values.push(temp_value);
-			alert(temp_value)
+			hash[tag] = temp_value
 		}
-
-
+		redrawFilters();
 	})
 
 
+	/*----------------------FUNCTIONS----------------------------*/
+
 	function redirect(){
 		var university = $('#search-bar').val()
-		var url = '/find_people/?university=' + university
-    	window.location = url;
-//		$('#hello').load(url +  '#hello');
+		var url = '/find_people/?university=' + university 
+		for (var elem in hash){
+			url = url + "&" + elem + "=" + hash[elem]
+		}
+
+		alert(url)
+	   	window.location = url;
 	}
 
 	function checkFilter(tag,value){
 		
 	}
 
+	function deleteFilter(){
+		var tag_close = $(this).attr('data-close')
+		var deletion_tag = tag_close.substring(5); //(have close word infront of it)
+		delete hash[deletion_tag] 
+		$('#' + tag_close).remove()
+/*		$(deletion_tag).val() = 
+*/	}
+
+	function getFilters(){
+
+
+	}
 
 	function redrawFilters(){
 		$('#filter-list').empty();
-		for (var elem in filters){
-			var temp = filters[elem] + ":"+ values[elem];
-			temp = "<p>" + temp + "</p>";
+		for (var elem in hash){
+			var id_close = "close" + elem;
+			var button_close = "buttonclose" + elem;
+			var temp = elem + ":"+ hash[elem];
+			temp = "<div class = filter-span id = " + id_close + ">" + "<div class = filter-tag>" + temp + "</div> <button class = close id = " + button_close + " data-close =" + id_close  +">" + "×" + "</button>"  +"</div>";
 			$( "#filter-list" ).append(temp);
-		}
-		
+			$("#" + button_close).bind("click",deleteFilter); 
+		}		
 	}
 
-
-
-/*	$("#add-filters").click(function(e){
-
-		for (var elem in filter_tags) {
-			var temp = '';
-			var target = '#' + filter_tags[elem];
-			temp = $(target).val() ;
-			if (temp){
-				filters.push(filter_tags[elem])				
-				values.push(temp)
-			}
-		}
-
-		redrawFilters();
-
-		$('#myModal').modal('toggle');
-	});*/
 </script>
+<script src= "{% static "build/js/typeahead.js" %}"></script>
+<script src= "{% static "build/js/taggle.js" %}"></script>
+
+<!-- typeahead.js -->
+<script>
+	var universities = new Bloodhound({
+		datumTokenizer: Bloodhound.tokenizers.whitespace,
+		queryTokenizer: Bloodhound.tokenizers.whitespace,
+	  // url points to a json file that contains an array of country names, see
+	  // https://github.com/twitter/typeahead.js/blob/gh-pages/data/countries.json
+	 	prefetch: "{% static "data/data_universities.json" %}",
+
+		remote: {
+			url: "../search_name/",
+			prepare: function (query, settings) {
+				data_sent = {query:query,csrfmiddlewaretoken: '{{ csrf_token }}'}
+				settings.type = "post";
+/*						settings.contentType = "application/json; charset=UTF-8";
+*/						settings.data = data_sent;
+				return settings;
+				}
+			},
+		rateLimitWait : 1000
+
+	});
+
+	// passing in `null` for the `options` arguments will result in the default
+	// options being used
+	$('.typeahead').typeahead(null, {
+	  name: 'universities',
+	  source: universities,
+	  hint: false
+	});			
+</script>
+
+<style>
+	#search-bar{
+		width:500px;
+	}
+</style>
+
 
 
 </html>

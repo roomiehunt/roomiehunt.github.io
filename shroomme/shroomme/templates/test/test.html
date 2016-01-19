@@ -6,7 +6,7 @@
 	<head>
 	<!-- Latest compiled and minified CSS -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
@@ -18,82 +18,189 @@
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-	<link href="{% static 'css/test.css' %}" rel="stylesheet">
 
 
 
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css">
+<!--	<link href="{% static 'css/test.css' %}" rel="stylesheet"> -->
+
+
 
 
 	</head>
 
+
+
 	<body>
 
-	<h1>{{ name }}</h1>
-	<div class = "container">
-		<div class ="jumbotron">
-			<h1>Hi!</h1>
-			CSS TEST ON HOW TO WORK CSS
-			<button class="btn btn-primary" data-target="#myModal">Login</button>
 
-			<form action="" method="post">
-			    {% csrf_token %}
-			    {{ form }}
-			    <input type="submit" value="Submit" />
-			</form>
+<div id="the-basics">
+  <input class="typeahead" type="text" placeholder="States of USA">
+</div>
+		<h1> Hi </h1>
+		  <input id = "search-bar" class="typeahead" type="text" placeholder="University">
+		  <button id = "test_ajax"> ajax_me </button>
 
+		<script src = "{% static "build/js/typeahead.js"%}"></script>
 
-		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+		<script>
+			$('#test_ajax').click(function (e){
+				$.ajax({
+		        	url: '../search_name/',
+			        data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+			        type: 'POST',
+			        success: function()
+			        {
+			        	alert("ACCEPT ROOMATE REQUEST");
+						$('#'+this_id).hide('slow');																
+			        }
+				});
 
-  <input id="tags">
-
-<!-- MODAL-->
-<!-- MODAL-->
-<!-- MODAL-->
-<!-- MODAL-->
-<!-- MODAL-->
-<!-- MODAL-->
-<!-- MODAL-->
-		<div id="myModal" class="modal fade" role="dialog">
-		  <div class="modal-dialog">
-		    <!-- Modal content-->
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title">Log In</h4>
-		      </div>
-		      <div class="modal-body">
-		      	<div class ="container">
-					Login<br/>
-					<form action="" method="post">
-					    {% csrf_token %}
-					    {{login}}
-					    <input type="submit" value="Submit" />
-					</form>
-		      	</div>
-
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		      </div>
-		    </div>
-
-		  </div>
-		</div>
-
-		</div>
-	</div>
+			});
 
 
+		</script>
 
 
+		<script>
+
+			var substringMatcher = function(strs) {
+			  return function findMatches(q, cb) {
+			    var matches, substringRegex;
+
+			    // an array that will be populated with substring matches
+			    matches = [];
+
+			    // regex used to determine if a string contains the substring `q`
+			    substrRegex = new RegExp(q, 'i');
+
+			    // iterate through the pool of strings and for any string that
+			    // contains the substring `q`, add it to the `matches` array
+			    $.each(strs, function(i, str) {
+			      if (substrRegex.test(str)) {
+			        matches.push(str);
+			      }
+			    });
+
+			    cb(matches);
+			  };
+			};
+
+			var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
+			  'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
+			  'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
+			  'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
+			  'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
+			  'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
+			  'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
+			  'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
+			  'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+			];
+
+			$('#the-basics .typeahead').typeahead({
+			  hint: true,
+			  highlight: true,
+			  minLength: 1
+			},
+			{
+			  name: 'states',
+			  source: substringMatcher(states)
+			});
+
+		</script>
 
 
+		{% comment %}
+		<script>
+			var universities = new Bloodhound({
+				datumTokenizer: Bloodhound.tokenizers.whitespace,
+				queryTokenizer: Bloodhound.tokenizers.whitespace,
+			  // url points to a json file that contains an array of country names, see
+			  // https://github.com/twitter/typeahead.js/blob/gh-pages/data/countries.json
+			 	prefetch: "{% static "data/data_universities.json" %}",
+
+				remote: {
+					url: "../search_name/",
+					prepare: function (query, settings) {
+						data_sent = {query:query,csrfmiddlewaretoken: '{{ csrf_token }}'}
+						settings.type = "post";
+/*						settings.contentType = "application/json; charset=UTF-8";
+*/						settings.data = data_sent;
+						return settings;
+						}
+					},
+				rateLimitWait : 1000
+
+			});
+
+			// passing in `null` for the `options` arguments will result in the default
+			// options being used
+			$('.typeahead').typeahead(null, {
+			  name: 'universities',
+			  source: universities
+			});			
+		</script>
+
+		{% endcomment %}
+		<style>
+			#search-bar{
+				width:500px;
 
 
+			}
+		</style>
 	</body>
 
+
+
+	<style>
+.tt-query, /* UPDATE: newer versions use tt-input instead of tt-query */
+.tt-hint {
+    width: 396px;
+    height: 30px;
+    padding: 8px 12px;
+    font-size: 24px;
+    line-height: 30px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+}
+
+.tt-query { /* UPDATE: newer versions use tt-input instead of tt-query */
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.tt-hint {
+    color: #999;
+}
+
+.tt-menu { /* UPDATE: newer versions use tt-menu instead of tt-dropdown-menu */
+    width: 422px;
+    margin-top: 12px;
+    padding: 8px 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.tt-suggestion {
+    padding: 3px 20px;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.tt-suggestion.tt-is-under-cursor { /* UPDATE: newer versions use .tt-suggestion.tt-cursor */
+    color: #fff;
+    background-color: #0097cf;
+
+}
+
+.tt-suggestion p {
+    margin: 0;
+}
+
+
+	</style>
 
 </html>
